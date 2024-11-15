@@ -51,6 +51,9 @@ dependencies {
     implementation ("androidx.appcompat:appcompat:1.6.1")  // 최신 버전으로 사용
     implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation ("com.github.bumptech.glide:glide:4.15.1")  // 최신 버전 확인 후 사용
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4") // ConstraintLayout 상대적으로 화면 배치
+    implementation("com.squareup.retrofit2:retrofit:2.9.0") // Retrofit 기본 의존성 (REST API 통신)
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // JSON 파싱을 위한 Gson 컨버터
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")  // Glide 컴파일러
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

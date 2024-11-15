@@ -1,8 +1,10 @@
 package com.example.myapplication.data
 
 data class User(
-    val userID : Long,
-    val username : String,
+    val memberID : Long,
+    val memberName : String,
+    val memberPhone: String,
+    val memberEmail: String,
     val userImage : String,
 ) {
 
