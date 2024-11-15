@@ -1,0 +1,35 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable border
+drawable error_image
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable placeholder_image
+id imageView
+id menuName
+id menuPrice
+id storeCongestion
+id storeImage
+id storeListRecyclerView
+id storeLocation
+id storeName
+id todaySpecialMenuListRecyclerView
+id toolbar
+id userImage
+id userName
+layout activity_main
+layout item_image
+layout store_item
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme.MyApplication
+xml backup_rules
+xml data_extraction_rules
