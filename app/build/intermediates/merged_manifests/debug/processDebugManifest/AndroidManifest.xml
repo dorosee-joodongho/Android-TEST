@@ -30,7 +30,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
-            android:name="com.example.myapplication.MainActivity"
+            android:name="com.example.myapplication.ui.activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication" >
@@ -40,6 +40,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 사용자 메뉴 -->
+        <activity
+            android:name="com.example.myapplication.ui.activity.UserMenuActivity"
+            android:theme="@style/Theme.MyApplication" />
+
+        <!-- 회원가입 및 회원 정보 수정 -->
+        <activity
+            android:name="com.example.myapplication.ui.activity.UserActivity"
+            android:theme="@style/Theme.MyApplication" />
+
+        <!-- 가게 주문 -->
+        <activity
+            android:name="com.example.myapplication.ui.activity.StoreMenuActivity"
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name="androidx.compose.ui.tooling.PreviewActivity"
             android:exported="true" />

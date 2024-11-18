@@ -1,94 +1,118 @@
 [
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/drawable/ic_launcher_foreground.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_activity_menu.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_menu.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/xml_backup_rules.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/xml/backup_rules.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_activity_user.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_user.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/drawable_placeholder_image.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/drawable/placeholder_image.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/drawable_placeholder_image.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/drawable/placeholder_image.xml"
     },
     {
-        "merged": "com.example.myapplication.app-debug-51:/layout_store_item.xml.flat",
-        "source": "com.example.myapplication.app-main-53:/layout/store_item.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/drawable_border.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/drawable/border.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-anydpi/ic_launcher.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/drawable_error_image.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/drawable/error_image.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_fragment_header.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/fragment_header.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/drawable_border.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/drawable/border.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/drawable/ic_launcher_background.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/layout_store_item.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/layout/store_item.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-anydpi/ic_launcher.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/drawable_error_image.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/drawable/error_image.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.myapplication.app-debug-52:/layout_dialog_menu_action.xml.flat",
+        "source": "com.example.myapplication.app-main-54:/layout/dialog_menu_action.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/xml_data_extraction_rules.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/xml/data_extraction_rules.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_dialog_menu_action.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_menu_action.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/layout_item_image.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/layout/item_image.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_activity_main.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-anydpi/ic_launcher_round.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_item_image.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_image.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-51:/layout_activity_main.xml.flat",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-53:/layout/activity_main.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_menu_item.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/menu_item.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/xml_backup_rules.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_activity_store_menu.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_store_menu.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_store_item.xml.flat",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/store_item.xml"
     }
 ]

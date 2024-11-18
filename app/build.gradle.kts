@@ -37,6 +37,11 @@ android {
     buildFeatures {
         compose = true
     }
+    // ViewBinding 활성화
+    viewBinding {
+        enable = true  // Kotlin DSL에서 'enabled' 대신 'enable' 사용
+    }
+
 }
 
 dependencies {
@@ -48,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")  // Kotlin 최신 버전
     implementation ("androidx.appcompat:appcompat:1.6.1")  // 최신 버전으로 사용
     implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation ("com.github.bumptech.glide:glide:4.15.1")  // 최신 버전 확인 후 사용

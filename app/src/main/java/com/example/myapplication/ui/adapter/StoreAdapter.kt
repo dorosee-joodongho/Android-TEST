@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.Store
+import com.example.myapplication.ui.listener.OnItemClickListener
 
-class StoreAdapter(private val storeList: List<Store>) : RecyclerView.Adapter<StoreAdapter.StoreViewHolder>() {
+class StoreAdapter(
+    private val storeList: List<Store>,
+    private val listener : OnItemClickListener
+) : RecyclerView.Adapter<StoreAdapter.StoreViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.store_item, parent, false)
@@ -18,6 +22,7 @@ class StoreAdapter(private val storeList: List<Store>) : RecyclerView.Adapter<St
 
     override fun onBindViewHolder(holder: StoreViewHolder, position: Int) {
         val store = storeList[position]
+
         holder.storeName.text = store.storeName
         holder.storeLocation.text = store.location
         holder.storeCongestion.text = store.storeStatus
@@ -27,6 +32,11 @@ class StoreAdapter(private val storeList: List<Store>) : RecyclerView.Adapter<St
             .placeholder(R.drawable.ic_launcher_background)  // 로딩 중 이미지
             .error(R.drawable.error_image)  // 실패 시 이미지
             .into(holder.storeImage)     // ImageView에 이미지 넣기
+
+        // 클릭 리스너 설정
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,4 +50,5 @@ class StoreAdapter(private val storeList: List<Store>) : RecyclerView.Adapter<St
         val storeCongestion: TextView = itemView.findViewById(R.id.storeCongestion)
         val storeImage: ImageView = itemView.findViewById(R.id.storeImage)
     }
+
 }

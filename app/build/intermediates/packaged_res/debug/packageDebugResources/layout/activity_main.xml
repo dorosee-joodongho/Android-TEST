@@ -7,14 +7,6 @@
         android:padding="16dp">
 
     <!-- 1. 상단 Toolbar (유저 정보 및 앱 제목) -->
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/colorPrimary"
-            android:title="Smart-Lunch"
-            android:titleTextColor="@android:color/white"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <!-- 2. 유저 정보 (이름/아이콘 등) -->
     <LinearLayout

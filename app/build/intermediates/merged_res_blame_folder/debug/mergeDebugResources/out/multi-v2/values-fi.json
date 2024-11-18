@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.myapplication.app-mergeDebugResources-49:/values-fi/values-fi.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-50:/values-fi/values-fi.xml",
             "map": [
                 {
                     "source": "/Users/dorosee/.gradle/caches/8.9/transforms/e2097d5f9c8fb709a171b715c04051cd/transformed/material3-release/res/values-fi/values-fi.xml",

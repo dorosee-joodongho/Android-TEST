@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.Menu
+import com.example.myapplication.ui.listener.OnItemClickListener
 
-class ImageAdapter(todaySpacialMenuList : List<Menu>) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
+class ImageAdapter(
+    todaySpacialMenuList : List<Menu>,
+    private val listener : OnItemClickListener
+) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     private val imageUrls = todaySpacialMenuList.map { it.menuImg }
     private val menuNames = todaySpacialMenuList.map { it.name }
     private val menuPrices = todaySpacialMenuList.map { it.price }
@@ -35,6 +39,11 @@ class ImageAdapter(todaySpacialMenuList : List<Menu>) : RecyclerView.Adapter<Ima
         // 메뉴 이름과 가격을 TextView에 설정
         holder.menuName.text = menuName
         holder.menuPrice.text = menuPrice
+
+        // 클릭 리스너 설정
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(position)
+        }
     }
 
     override fun getItemCount(): Int = imageUrls.size
