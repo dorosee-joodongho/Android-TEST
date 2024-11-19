@@ -40,7 +40,7 @@ class UserActivity : AppCompatActivity() {
         val backButton = findViewById<TextView>(R.id.backButton)
 
         backButton.setOnClickListener {
-            onBackPressed() // 뒤로가기 동작
+            onBackPressed() // 뒤로 가기 동작
         }
 
         if (isUpdate) { // 정보 수정
@@ -97,7 +97,7 @@ class UserActivity : AppCompatActivity() {
         val phone = etPhone.text.toString()
         val password = etPassword.text.toString()
 
-        userService.updateMember(name, phone, password) { success -> // 올바른 메서드 이름 사용
+        userService.updateMember(name, phone, password) { success ->
             if (success) {
                 // 처리 성공
             } else {

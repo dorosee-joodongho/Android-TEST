@@ -26,15 +26,15 @@ class UserMenuActivity : AppCompatActivity() {
         val btnOrderHistory: Button = findViewById(R.id.btnOrderHistory)
         val btnLogout: Button = findViewById(R.id.btnLogout)
 
-//        btnDietRecord.setOnClickListener { // 식단 추가
-//            val intent = Intent(this, DietRecordActivity::class.java)
-//            startActivity(intent)
-//        }
+        btnDietRecord.setOnClickListener { // 식단 추가
+            val intent = Intent(this, DietAddActivity::class.java)
+            startActivity(intent)
+        }
 
-//        btnDietHistory.setOnClickListener { // 식단 정보
-//            val intent = Intent(this, DietHistoryActivity::class.java)
-//            startActivity(intent)
-//        }
+        btnDietHistory.setOnClickListener { // 식단 정보
+            val intent = Intent(this, DietViewActivity::class.java)
+            startActivity(intent)
+        }
 
         btnProfileEdit.setOnClickListener { // 회원 정보 수정
             val intent = Intent(this, UserActivity::class.java)
@@ -42,11 +42,11 @@ class UserMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        btnOrderHistory.setOnClickListener { // 주문 내역
-//            val intent = Intent(this, OrderHistoryActivity::class.java)
-//            startActivity(intent)
-//        }
-//
+        btnOrderHistory.setOnClickListener { // 주문 내역
+            val intent = Intent(this, OrderHistoryActivity::class.java)
+            startActivity(intent)
+        }
+
 //        btnLogout.setOnClickListener { // 로그아웃
 //            val intent = Intent(this, LogoutActivity::class.java)
 //            startActivity(intent)
