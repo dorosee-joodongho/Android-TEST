@@ -55,6 +55,12 @@
             android:name="com.example.myapplication.ui.activity.StoreMenuActivity"
             android:theme="@style/Theme.MyApplication" />
         <activity
+            android:name="com.example.myapplication.ui.activity.CartActivity"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name="com.example.myapplication.ui.activity.OrderHistoryActivity"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
             android:name="androidx.compose.ui.tooling.PreviewActivity"
             android:exported="true" />
         <activity

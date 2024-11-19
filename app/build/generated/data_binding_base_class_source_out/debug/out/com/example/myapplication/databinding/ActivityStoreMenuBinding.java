@@ -4,6 +4,7 @@ package com.example.myapplication.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,11 +21,15 @@ public final class ActivityStoreMenuBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button cartButton;
+
+  @NonNull
   public final RecyclerView recyclerView;
 
-  private ActivityStoreMenuBinding(@NonNull LinearLayout rootView,
+  private ActivityStoreMenuBinding(@NonNull LinearLayout rootView, @NonNull Button cartButton,
       @NonNull RecyclerView recyclerView) {
     this.rootView = rootView;
+    this.cartButton = cartButton;
     this.recyclerView = recyclerView;
   }
 
@@ -55,13 +60,19 @@ public final class ActivityStoreMenuBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cartButton;
+      Button cartButton = ViewBindings.findChildViewById(rootView, id);
+      if (cartButton == null) {
+        break missingId;
+      }
+
       id = R.id.recyclerView;
       RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
       if (recyclerView == null) {
         break missingId;
       }
 
-      return new ActivityStoreMenuBinding((LinearLayout) rootView, recyclerView);
+      return new ActivityStoreMenuBinding((LinearLayout) rootView, cartButton, recyclerView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

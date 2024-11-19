@@ -26,7 +26,7 @@ class StoreMenuAdapter(
         val menu = menuList[position]
 
         holder.menuName.text = menu.name
-        holder.menuPrice.text = menu.price
+        holder.menuPrice.text = "${menu.price}  원"
 
         // Glide로 이미지 로드
         Glide.with(context)

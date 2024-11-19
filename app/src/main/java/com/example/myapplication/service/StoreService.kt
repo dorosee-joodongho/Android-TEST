@@ -46,7 +46,7 @@ class StoreService {
         val menuList = mutableListOf<Menu>()
         for (i in 1..9) {
             val randomIndex = Random.nextInt(menuNames.size) // 랜덤한 메뉴 이름과 이미지 인덱스
-            val randomPrice = "${Random.nextInt(5000, 20000)}원" // 랜덤 가격 생성 (5000원 ~ 20000원)
+            val randomPrice = Random.nextInt(5000, 20000) // 랜덤 가격 생성 (5000원 ~ 20000원)
             val menu = Menu(
                 id = 1,
                 name = menuNames[randomIndex],
@@ -58,6 +58,7 @@ class StoreService {
         }
         return menuList
     }
+
 
 
 }

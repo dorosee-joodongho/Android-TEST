@@ -39,6 +39,13 @@
                 android:name=".ui.activity.StoreMenuActivity"
                 android:theme="@style/Theme.MyApplication" />
 
+        <activity
+                android:name=".ui.activity.CartActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <activity
+                android:name=".ui.activity.OrderHistoryActivity"
+                android:theme="@style/Theme.MyApplication" />
     </application>
 
 </manifest>

@@ -38,7 +38,7 @@ class ImageAdapter(
 
         // 메뉴 이름과 가격을 TextView에 설정
         holder.menuName.text = menuName
-        holder.menuPrice.text = menuPrice
+        holder.menuPrice.text = "$menuPrice 원"
 
         // 클릭 리스너 설정
         holder.itemView.setOnClickListener {

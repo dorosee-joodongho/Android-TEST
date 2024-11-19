@@ -915,6 +915,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable dialog_order_details
 drawable error_image
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -922,6 +923,7 @@ drawable ic_call_answer_video
 drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
+drawable ic_cart
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable notification_action_background
@@ -1047,6 +1049,9 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id carryVelocity
+id cartButton
+id cart_recycler_view
+id cart_title
 id center
 id center_vertical
 id chain
@@ -1056,6 +1061,7 @@ id checkbox
 id checked
 id chronometer
 id clockwise
+id closeButton
 id closest
 id collapseActionView
 id compose_view_saveable_id_tag
@@ -1072,6 +1078,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id delete_button
 id deltaRelative
 id dependency_ordering
 id dialogTitle
@@ -1136,6 +1143,10 @@ id inspection_slot_table_set
 id invisible
 id is_pooling_container_tag
 id italic
+id item_image
+id item_name
+id item_price
+id item_quantity
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -1155,6 +1166,7 @@ id menuName
 id menuPrice
 id message
 id middle
+id minus_button
 id motion_base
 id multiply
 id never
@@ -1170,6 +1182,11 @@ id notification_main_column_container
 id off
 id on
 id onInterceptTouchReturnSwipe
+id orderAmountText
+id orderDateText
+id orderImage
+id orderMenuText
+id order_button
 id overshoot
 id packed
 id parent
@@ -1178,6 +1195,7 @@ id parentRelative
 id path
 id pathRelative
 id percent
+id plus_button
 id pooling_container_listener_holder_tag
 id position
 id postLayout
@@ -1187,6 +1205,8 @@ id radio
 id ratio
 id rectangles
 id recyclerView
+id recyclerViewOrderDetails
+id recyclerViewOrders
 id report_drawn
 id reverseSawtooth
 id right
@@ -1240,6 +1260,7 @@ id storeImage
 id storeListRecyclerView
 id storeLocation
 id storeName
+id storeNameText
 id submenuarrow
 id submit_area
 id supportScrollUp
@@ -1269,6 +1290,8 @@ id todaySpecialMenuListRecyclerView
 id toggle
 id top
 id topPanel
+id totalAmountText
+id total_amount
 id transitionToEnd
 id transitionToStart
 id triangle
@@ -1334,8 +1357,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_cart
 layout activity_main
 layout activity_menu
+layout activity_order_history
 layout activity_store_menu
 layout activity_user
 layout custom_dialog
@@ -1343,7 +1368,9 @@ layout dialog_menu_action
 layout fragment_header
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_cart
 layout item_image
+layout item_order
 layout menu_item
 layout notification_action
 layout notification_action_tombstone
