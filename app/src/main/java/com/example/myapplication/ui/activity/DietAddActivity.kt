@@ -4,7 +4,10 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
+import com.example.myapplication.data.Diet
+import com.example.myapplication.data.MenuItem
 import com.example.myapplication.service.DietService
+import java.time.LocalDate
 
 class DietAddActivity : AppCompatActivity() {
     private val dietService = DietService()
@@ -43,25 +46,36 @@ class DietAddActivity : AppCompatActivity() {
 
         // 저장 버튼 클릭
         saveButton.setOnClickListener {
-            val selectedDate = dateSpinner.selectedItem.toString()
-            val dietName = dietNameInput.text.toString()
-            val menuData = menuList.map { menu ->
-                val menuName = menu.findViewById<EditText>(R.id.menu_name_input).text.toString()
-                val calories = menu.findViewById<EditText>(R.id.calories_input).text.toString()
-                val carbs = menu.findViewById<EditText>(R.id.carbs_input).text.toString()
-                val protein = menu.findViewById<EditText>(R.id.protein_input).text.toString()
-                val fat = menu.findViewById<EditText>(R.id.fat_input).text.toString()
+            val selectedDate = LocalDate.parse(dateSpinner.selectedItem.toString()) // 선택된 날짜를 LocalDate로 변환
+            val dietName = dietNameInput.text.toString() // 입력된 식단 이름 가져오기
 
-                mapOf(
-                    "menuName" to menuName,
-                    "calories" to calories,
-                    "carbs" to carbs,
-                    "protein" to protein,
-                    "fat" to fat
+            // 메뉴 데이터를 MenuItem 리스트로 변환
+            val menuItems = menuList.map { menu ->
+                val menuName = menu.findViewById<EditText>(R.id.menu_name_input).text.toString()
+                val calories = menu.findViewById<EditText>(R.id.calories_input).text.toString().toIntOrNull() ?: 0
+                val carbs = menu.findViewById<EditText>(R.id.carbs_input).text.toString().toIntOrNull() ?: 0
+                val protein = menu.findViewById<EditText>(R.id.protein_input).text.toString().toIntOrNull() ?: 0
+                val fat = menu.findViewById<EditText>(R.id.fat_input).text.toString().toIntOrNull() ?: 0
+
+                // MenuItem 객체 생성
+                MenuItem(
+                    name = menuName,
+                    calories = calories,
+                    carbs = carbs,
+                    protein = protein,
+                    fat = fat
                 )
             }
-            sendDataToBackend(selectedDate, dietName, menuData)
+
+            val diet = Diet(
+                id = null,
+                date = selectedDate,
+                name = dietName,
+                menuItems = menuItems
+            )
+            addDiet(diet) // 생성된 Diet 객체 저장 함수 호출
         }
+
     }
 
     private fun addMenuItem() {
@@ -78,9 +92,9 @@ class DietAddActivity : AppCompatActivity() {
     }
 
 //    식단 정보 추가
-    private fun sendDataToBackend(date: String, dietName: String, menuData: List<Map<String, String>>) {
-        dietService.addDiet(date, dietName, menuData) { success -> // 올바른 메서드 이름 사용
-            if (success) {
+    private fun addDiet(diet: Diet) {
+        dietService.saveDiet(diet) { success -> // 올바른 메서드 이름 사용
+            if (success !== null) {
                 Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "저장 실패, 다시 시도 해주세요.", Toast.LENGTH_SHORT).show()

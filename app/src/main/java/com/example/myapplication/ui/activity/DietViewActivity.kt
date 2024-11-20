@@ -3,47 +3,39 @@ package com.example.myapplication.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.CalendarView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.myapplication.R
-import com.example.myapplication.data.Diet
 import com.example.myapplication.data.MenuItem
-import com.example.myapplication.service.DietService
+import com.example.myapplication.ui.viewModel.DietViewModel
 import java.time.LocalDate
 
 class DietViewActivity : AppCompatActivity() {
 
-    private lateinit var totalCaloriesText: TextView
-    private lateinit var dietAnalysisButton: Button
     private lateinit var calendarView: CalendarView
-    private lateinit var prevDietButton: Button
-    private lateinit var nextDietButton: Button
-    private lateinit var selectedDietName: TextView
+    private lateinit var totalMonthlyCaloriesText: TextView
     private lateinit var menuListContainer: LinearLayout
+    private lateinit var selectedDietName: TextView
     private lateinit var totalCaloriesRow: TextView
     private lateinit var totalCarbsRow: TextView
     private lateinit var totalProteinRow: TextView
     private lateinit var totalFatRow: TextView
     private lateinit var editButton: Button
     private lateinit var deleteButton: Button
+    private lateinit var dietAnalysisButton: Button
 
-    private val dietActivity = DietService()
-
-    private var selectedDate: LocalDate = LocalDate.now()
-    private var currentDietIndex = 0
-    private var dietList: List<Diet> = emptyList()
+    private val viewModel: DietViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diet_view)
 
         initViews()
+        observeViewModel()
         setupListeners()
-        fetchDietDataForMonth(selectedDate)
+        viewModel.setSelectedDate(LocalDate.now())
 
         // 공통 헤더 설정
         val backButton = findViewById<TextView>(R.id.backButton)
@@ -54,92 +46,74 @@ class DietViewActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        totalCaloriesText = findViewById(R.id.total_calories_text)
-        dietAnalysisButton = findViewById(R.id.diet_analysis_button)
         calendarView = findViewById(R.id.calendar_view)
-        prevDietButton = findViewById(R.id.prev_diet_button)
-        nextDietButton = findViewById(R.id.next_diet_button)
-        selectedDietName = findViewById(R.id.selected_diet_name)
+        totalMonthlyCaloriesText = findViewById(R.id.total_calories_text)
         menuListContainer = findViewById(R.id.menu_list_container)
+        selectedDietName = findViewById(R.id.selected_diet_name)
         totalCaloriesRow = findViewById(R.id.total_calories_row)
         totalCarbsRow = findViewById(R.id.total_carbs_row)
         totalProteinRow = findViewById(R.id.total_protein_row)
         totalFatRow = findViewById(R.id.total_fat_row)
         editButton = findViewById(R.id.edit_button)
         deleteButton = findViewById(R.id.delete_button)
+        dietAnalysisButton = findViewById(R.id.diet_analysis_button)
+    }
+
+    private fun observeViewModel() {
+        viewModel.currentDiet.observe(this, Observer { diet ->
+            if (diet != null) {
+                populateDietTable(diet.menuItems)
+                selectedDietName.text = diet.name
+            } else {
+                showNoDietMessage()
+            }
+
+            // 월간 총 칼로리
+            viewModel.monthlyCalories.observe(this, Observer { totalCalories ->
+                totalMonthlyCaloriesText.text = "총 칼로리: $totalCalories kcal"
+            })
+        })
     }
 
     private fun setupListeners() {
-        dietAnalysisButton.setOnClickListener { // 식단 분석 버튼
-            val intent = Intent(this, DietAnalysisActivity::class.java)
-            startActivity(intent)
-        }
-
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDay = LocalDate.of(year, month + 1, dayOfMonth)
-            fetchDietDataForDay(selectedDay)
+            viewModel.setSelectedDate(selectedDay)
         }
 
-        prevDietButton.setOnClickListener {
-            if (currentDietIndex > 0) {
-                currentDietIndex--
-                updateDietDetails()
-            }
-        }
-
-        nextDietButton.setOnClickListener {
-            if (currentDietIndex < dietList.size - 1) {
-                currentDietIndex++
-                updateDietDetails()
-            }
-        }
-
-        editButton.setOnClickListener { // 수정 하기 버튼
-//            val intent = Intent(this, AddDietActivity::class.java).apply {
-//                putExtra("dietData", dietList[currentDietIndex])
-//            }
-//            startActivity(intent)
+        editButton.setOnClickListener {
+            viewModel.currentDiet.value?.let { diet ->
+                viewModel.updateDiet(diet) { success ->
+                    if (success) {
+                        showToast("식단이 수정되었습니다.")
+                    } else {
+                        showToast("수정에 실패하였습니다.")
+                    }
+                }
+            } ?: showToast("수정할 식단 정보가 없습니다.")
         }
 
         deleteButton.setOnClickListener {
-            deleteDiet(dietList[currentDietIndex].id)
+            viewModel.currentDiet.value?.let { diet ->
+                viewModel.deleteDiet(diet.id!!) { success ->
+                    if (success) {
+                        showToast("식단이 삭제되었습니다.")
+                    } else {
+                        showToast("식단 삭제에 실패했습니다.")
+                    }
+                }
+            } ?: showToast("삭제할 식단 정보가 없습니다.")
         }
-    }
 
-    private fun updateDietDetails() {
-        val diet = dietList[currentDietIndex]
-        selectedDietName.text = diet.name
-        populateDietTable(diet.menuItems)
-    }
-
-//    데이터 로딩 및 API 통신
-    private fun fetchDietDataForMonth(date: LocalDate) {
-        dietActivity.getDietDataForMonth(date.year, date.monthValue) { diets ->
-            dietList = diets
-            val total = diets.sumOf { it.menuItems.sumOf { menu -> menu.calories } }
-            totalCaloriesText.text = "총 칼로리: ${total} kcal"
-
-            if (diets.isNotEmpty()) {
-                currentDietIndex = 0
-                updateDietDetails()
-            }
-        }
-    }
-
-    private fun fetchDietDataForDay(date: LocalDate) {
-        dietActivity.getDietDataForDay(date) { diet ->
-            if (diet != null) {
-                dietList = listOf(diet)
-                currentDietIndex = 0
-                updateDietDetails()
-            } else {
-                Toast.makeText(this, "해당 날짜에 식단 정보가 없습니다.", Toast.LENGTH_SHORT).show()
-            }
+        dietAnalysisButton.setOnClickListener {
+            val intent = Intent(this, DietAnalysisActivity::class.java)
+            startActivity(intent)
         }
     }
 
     private fun populateDietTable(menuItems: List<MenuItem>) {
         menuListContainer.removeAllViews()
+
         var totalCalories = 0
         var totalCarbs = 0
         var totalProtein = 0
@@ -167,15 +141,22 @@ class DietViewActivity : AppCompatActivity() {
         totalFatRow.text = totalFat.toString()
     }
 
-    private fun deleteDiet(dietId: Int) {
-        dietActivity.deleteDiet(dietId) { success ->
-            if (success) {
-                Toast.makeText(this, "식단이 삭제되었습니다.", Toast.LENGTH_SHORT).show()
-                fetchDietDataForMonth(selectedDate)
-            } else {
-                Toast.makeText(this, "식단 삭제에 실패했습니다.", Toast.LENGTH_SHORT).show()
-            }
+    private fun showNoDietMessage() {
+        menuListContainer.removeAllViews()
+        val messageView = TextView(this).apply {
+            text = "식단 정보가 없습니다."
+            textSize = 16f
+            setTextColor(resources.getColor(R.color.black, theme))
         }
+        menuListContainer.addView(messageView)
+
+        totalCaloriesRow.text = "0"
+        totalCarbsRow.text = "0"
+        totalProteinRow.text = "0"
+        totalFatRow.text = "0"
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }
