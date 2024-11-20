@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.myapplication.R
+import com.example.myapplication.data.Diet
 import com.example.myapplication.data.MenuItem
 import com.example.myapplication.ui.viewModel.DietViewModel
 import java.time.LocalDate
@@ -25,8 +26,13 @@ class DietViewActivity : AppCompatActivity() {
     private lateinit var editButton: Button
     private lateinit var deleteButton: Button
     private lateinit var dietAnalysisButton: Button
+    private lateinit var prevDietButton: Button
+    private lateinit var nextDietButton: Button
 
     private val viewModel: DietViewModel by viewModels()
+
+    private var currentDietIndex = 0
+    private var dietsForSelectedDate: List<Diet> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +43,11 @@ class DietViewActivity : AppCompatActivity() {
         setupListeners()
         viewModel.setSelectedDate(LocalDate.now())
 
-        // 공통 헤더 설정
         val backButton = findViewById<TextView>(R.id.backButton)
         backButton.setOnClickListener {
-            onBackPressed() // 뒤로 가기 동작
+            onBackPressed()
         }
-        backButton.text = "←  내 식단" // 헤더 제목 변경
+        backButton.text = "←  내 식단"
     }
 
     private fun initViews() {
@@ -57,21 +62,23 @@ class DietViewActivity : AppCompatActivity() {
         editButton = findViewById(R.id.edit_button)
         deleteButton = findViewById(R.id.delete_button)
         dietAnalysisButton = findViewById(R.id.diet_analysis_button)
+        prevDietButton = findViewById(R.id.prev_diet_button)
+        nextDietButton = findViewById(R.id.next_diet_button)
     }
 
     private fun observeViewModel() {
-        viewModel.currentDiet.observe(this, Observer { diet ->
-            if (diet != null) {
-                populateDietTable(diet.menuItems)
-                selectedDietName.text = diet.name
+        viewModel.currentDiet.observe(this, Observer { diets ->
+            dietsForSelectedDate = diets ?: emptyList()
+            if (dietsForSelectedDate.isNotEmpty()) {
+                currentDietIndex = 0
+                displayCurrentDiet()
             } else {
                 showNoDietMessage()
             }
+        })
 
-            // 월간 총 칼로리
-            viewModel.monthlyCalories.observe(this, Observer { totalCalories ->
-                totalMonthlyCaloriesText.text = "총 칼로리: $totalCalories kcal"
-            })
+        viewModel.monthlyCalories.observe(this, Observer { totalCalories ->
+            totalMonthlyCaloriesText.text = "총 칼로리: $totalCalories kcal"
         })
     }
 
@@ -81,28 +88,32 @@ class DietViewActivity : AppCompatActivity() {
             viewModel.setSelectedDate(selectedDay)
         }
 
+        prevDietButton.setOnClickListener {
+            if (dietsForSelectedDate.isNotEmpty()) {
+                currentDietIndex = (currentDietIndex - 1 + dietsForSelectedDate.size) % dietsForSelectedDate.size
+                displayCurrentDiet()
+            }
+        }
+
+        nextDietButton.setOnClickListener {
+            if (dietsForSelectedDate.isNotEmpty()) {
+                currentDietIndex = (currentDietIndex + 1) % dietsForSelectedDate.size
+                displayCurrentDiet()
+            }
+        }
+
         editButton.setOnClickListener {
-            viewModel.currentDiet.value?.let { diet ->
-                viewModel.updateDiet(diet) { success ->
-                    if (success) {
-                        showToast("식단이 수정되었습니다.")
-                    } else {
-                        showToast("수정에 실패하였습니다.")
-                    }
-                }
-            } ?: showToast("수정할 식단 정보가 없습니다.")
+            val diet = getCurrentDiet() ?: return@setOnClickListener
+            viewModel.updateDiet(diet) { success ->
+                showToast(if (success) "식단이 수정되었습니다." else "수정에 실패하였습니다.")
+            }
         }
 
         deleteButton.setOnClickListener {
-            viewModel.currentDiet.value?.let { diet ->
-                viewModel.deleteDiet(diet.id!!) { success ->
-                    if (success) {
-                        showToast("식단이 삭제되었습니다.")
-                    } else {
-                        showToast("식단 삭제에 실패했습니다.")
-                    }
-                }
-            } ?: showToast("삭제할 식단 정보가 없습니다.")
+            val diet = getCurrentDiet() ?: return@setOnClickListener
+            viewModel.deleteDiet(diet.id!!) { success ->
+                showToast(if (success) "식단이 삭제되었습니다." else "삭제에 실패하였습니다.")
+            }
         }
 
         dietAnalysisButton.setOnClickListener {
@@ -110,6 +121,14 @@ class DietViewActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    private fun displayCurrentDiet() {
+        val currentDiet = getCurrentDiet() ?: return
+        populateDietTable(currentDiet.menuItems)
+        selectedDietName.text = currentDiet.name
+    }
+
+    private fun getCurrentDiet() = dietsForSelectedDate.getOrNull(currentDietIndex)
 
     private fun populateDietTable(menuItems: List<MenuItem>) {
         menuListContainer.removeAllViews()
@@ -150,6 +169,7 @@ class DietViewActivity : AppCompatActivity() {
         }
         menuListContainer.addView(messageView)
 
+        selectedDietName.text = "식단 이름"
         totalCaloriesRow.text = "0"
         totalCarbsRow.text = "0"
         totalProteinRow.text = "0"

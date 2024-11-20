@@ -16,8 +16,8 @@ class DietViewModel : ViewModel() {
     private val _dietList = MutableLiveData<List<Diet>>() // 전체 식단 데이터
 //    val dietList: LiveData<List<Diet>> = _dietList
 
-    private val _currentDiet = MutableLiveData<Diet?>() // 선택한 날짜의 식단
-    val currentDiet: LiveData<Diet?> = _currentDiet
+    private val _currentDiet = MutableLiveData<List<Diet>?>() // 선택한 날짜의 식단
+    val currentDiet: LiveData<List<Diet>?> = _currentDiet
 
     private val _monthlyCalories = MutableLiveData<Int>() // 월간 총 칼로리
     val monthlyCalories: LiveData<Int> = _monthlyCalories
@@ -57,7 +57,7 @@ class DietViewModel : ViewModel() {
         val allDiets = _dietList.value ?: return
 
         // 선택한 날짜의 식단을 필터링
-        _currentDiet.value = allDiets.find { it.date == date }
+        _currentDiet.value = allDiets.filter { it.date == date }
     }
 
     fun deleteDiet(dietId: Int, callback: (Boolean) -> Unit) {
