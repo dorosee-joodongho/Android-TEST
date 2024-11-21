@@ -35,15 +35,20 @@ public final class ItemOrderBinding implements ViewBinding {
   @NonNull
   public final TextView storeNameText;
 
+  @NonNull
+  public final TextView tvOrderName;
+
   private ItemOrderBinding(@NonNull LinearLayout rootView, @NonNull TextView orderAmountText,
       @NonNull TextView orderDateText, @NonNull ImageView orderImage,
-      @NonNull TextView orderMenuText, @NonNull TextView storeNameText) {
+      @NonNull TextView orderMenuText, @NonNull TextView storeNameText,
+      @NonNull TextView tvOrderName) {
     this.rootView = rootView;
     this.orderAmountText = orderAmountText;
     this.orderDateText = orderDateText;
     this.orderImage = orderImage;
     this.orderMenuText = orderMenuText;
     this.storeNameText = storeNameText;
+    this.tvOrderName = tvOrderName;
   }
 
   @Override
@@ -103,8 +108,14 @@ public final class ItemOrderBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvOrderName;
+      TextView tvOrderName = ViewBindings.findChildViewById(rootView, id);
+      if (tvOrderName == null) {
+        break missingId;
+      }
+
       return new ItemOrderBinding((LinearLayout) rootView, orderAmountText, orderDateText,
-          orderImage, orderMenuText, storeNameText);
+          orderImage, orderMenuText, storeNameText, tvOrderName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

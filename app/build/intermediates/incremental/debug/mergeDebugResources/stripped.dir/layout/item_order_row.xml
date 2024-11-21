@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <!-- 메뉴 항목 이름 -->
+    <TextView
+            android:id="@+id/tvItemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="메뉴 이름"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:paddingBottom="8dp"/>
+
+    <!-- 메뉴 단가, 수량, 총 금액 -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+        <TextView
+                android:id="@+id/tvUnitPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="단가"
+                android:textSize="14sp"
+                android:textColor="#333333" />
+
+        <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="수량"
+                android:textSize="14sp"
+                android:textColor="#333333" />
+
+        <TextView
+                android:id="@+id/tvItemTotalPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="금액"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:gravity="end" />
+    </LinearLayout>
+
+    <!-- 주문 상세 정보 -->
+    <TextView
+            android:id="@+id/tvStoreName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="상호명"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+    <TextView
+            android:id="@+id/tvOrderDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="주문일시"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+    <TextView
+            android:id="@+id/tvEstimatedTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="예상시간"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+    <TextView
+            android:id="@+id/tvWaitingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="대기시간"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+    <TextView
+            android:id="@+id/tvCrowdLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="혼잡도"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+</LinearLayout>

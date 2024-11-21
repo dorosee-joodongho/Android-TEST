@@ -13,20 +13,6 @@ class OrderAdapter(
     private val onOrderClick: (Order) -> Unit
 ) : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
-    inner class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val orderDateText: TextView = view.findViewById(R.id.orderDateText)
-        val storeNameText: TextView = view.findViewById(R.id.storeNameText)
-        val orderMenuText: TextView = view.findViewById(R.id.orderMenuText)
-        val orderAmountText: TextView = view.findViewById(R.id.orderAmountText)
-
-        init {
-            view.setOnClickListener {
-                val order = orders[adapterPosition]
-                onOrderClick(order)
-            }
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
         return OrderViewHolder(view)
@@ -34,11 +20,17 @@ class OrderAdapter(
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val order = orders[position]
-        holder.orderDateText.text = order.date
-        holder.storeNameText.text = order.storeName
-        holder.orderMenuText.text = order.menuSummary
-        holder.orderAmountText.text = "₩${order.amount}"
+        holder.bind(order)
+        holder.itemView.setOnClickListener { onOrderClick(order) }
     }
 
     override fun getItemCount(): Int = orders.size
+
+    class OrderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val tvOrderName: TextView = view.findViewById(R.id.tvOrderName)
+
+        fun bind(order: Order) {
+            tvOrderName.text = order.storeName
+        }
+    }
 }

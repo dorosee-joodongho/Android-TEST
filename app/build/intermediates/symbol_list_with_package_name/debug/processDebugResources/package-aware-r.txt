@@ -915,7 +915,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
-drawable dialog_order_details
+drawable dialog_background
 drawable error_image
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -1067,7 +1067,6 @@ id checkbox
 id checked
 id chronometer
 id clockwise
-id closeButton
 id closest
 id collapseActionView
 id compose_view_saveable_id_tag
@@ -1077,6 +1076,7 @@ id content
 id contentPanel
 id continuousVelocity
 id cos
+id crowdLevel
 id currentState
 id custom
 id customPanel
@@ -1114,6 +1114,7 @@ id edit_button
 id edit_query
 id edit_text_id
 id end
+id estimatedTime
 id et_confirm_password
 id et_email
 id et_name
@@ -1197,6 +1198,7 @@ id off
 id on
 id onInterceptTouchReturnSwipe
 id orderAmountText
+id orderDate
 id orderDateText
 id orderImage
 id orderMenuText
@@ -1222,7 +1224,6 @@ id radio
 id ratio
 id rectangles
 id recyclerView
-id recyclerViewOrderDetails
 id recyclerViewOrders
 id remove_menu_button
 id report_drawn
@@ -1230,6 +1231,7 @@ id reverseSawtooth
 id right
 id right_icon
 id right_side
+id rvOrderDetails
 id save_button
 id sawtooth
 id screen
@@ -1319,7 +1321,6 @@ id todaySpecialMenuListRecyclerView
 id toggle
 id top
 id topPanel
-id totalAmountText
 id total_amount
 id total_calories_row
 id total_calories_text
@@ -1329,6 +1330,17 @@ id total_protein_row
 id transitionToEnd
 id transitionToStart
 id triangle
+id tvCrowdLevel
+id tvEstimatedTime
+id tvItemName
+id tvItemTotalPrice
+id tvOrderDate
+id tvOrderName
+id tvQuantity
+id tvStoreName
+id tvTotalPrice
+id tvUnitPrice
+id tvWaitingTime
 id unchecked
 id uniform
 id up
@@ -1343,6 +1355,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id waitingTime
 id west
 id withText
 id wrap
@@ -1402,12 +1415,14 @@ layout activity_store_menu
 layout activity_user
 layout custom_dialog
 layout dialog_menu_action
+layout dialog_order_details
 layout fragment_header
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_cart
 layout item_image
 layout item_order
+layout item_order_row
 layout menu_item
 layout menu_item_layout
 layout notification_action
