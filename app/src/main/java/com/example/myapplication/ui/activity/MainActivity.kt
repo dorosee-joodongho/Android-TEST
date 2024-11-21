@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
-import com.example.myapplication.service.AuthService
+import com.example.myapplication.service.MemberService
 import com.example.myapplication.service.MenuService
 import com.example.myapplication.service.StoreService
 import com.example.myapplication.ui.adapter.ImageAdapter
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity(
         val storeRecyclerView: RecyclerView = findViewById(R.id.storeListRecyclerView)
 
         val menuService = MenuService()
-        val userService = AuthService()
+        val userService = MemberService()
         val storeService = StoreService()
 
         val getCurrentUser = userService.getCurrentUser() //현재 접속 중인 유저

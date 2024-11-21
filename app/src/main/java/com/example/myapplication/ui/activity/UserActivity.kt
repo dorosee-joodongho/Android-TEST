@@ -3,9 +3,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
-import com.example.myapplication.service.AuthService
+import com.example.myapplication.service.MemberService
 
 class UserActivity : AppCompatActivity() {
     private lateinit var etName: EditText
@@ -15,7 +16,7 @@ class UserActivity : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnAction: Button
 
-    private val userService = AuthService()
+    private val userService = MemberService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,7 @@ class UserActivity : AppCompatActivity() {
         val backButton = findViewById<TextView>(R.id.backButton)
 
         backButton.setOnClickListener {
-            onBackPressed() // 뒤로가기 동작
+            onBackPressed() // 뒤로 가기 동작
         }
 
         if (isUpdate) { // 정보 수정
@@ -80,14 +81,14 @@ class UserActivity : AppCompatActivity() {
 
         if (password == confirmPassword) {
             userService.addMember(name, phone, email, password) { success ->
-                if (success) {
-                    // 처리 성공
+                if (success !== null) {
+                    Toast.makeText(this, "회원 가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
                 } else {
-                    // 에러 처리
+                    Toast.makeText(this, "회원 가입에 실패하셨습니다. 다시 시도 해주세요.", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
-            // 비밀번호 확인 에러
+            Toast.makeText(this, "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -97,11 +98,11 @@ class UserActivity : AppCompatActivity() {
         val phone = etPhone.text.toString()
         val password = etPassword.text.toString()
 
-        userService.updateMember(name, phone, password) { success -> // 올바른 메서드 이름 사용
-            if (success) {
-                // 처리 성공
+        userService.updateMember(name, phone, password) { success ->
+            if (success !== null) {
+                Toast.makeText(this, "정보 수정에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
             } else {
-                // 에러 처리
+                Toast.makeText(this, "정보 수정에 실패하셨습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
     } // updateUser

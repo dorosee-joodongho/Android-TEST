@@ -34,6 +34,21 @@
                 android:name=".ui.activity.UserActivity"
                 android:theme="@style/Theme.MyApplication" />
 
+        <!-- 식단 기록 -->
+        <activity
+                android:name=".ui.activity.DietAddActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식단 정보 조회 -->
+        <activity
+                android:name=".ui.activity.DietViewActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식단 분석 -->
+        <activity
+                android:name=".ui.activity.DietAnalysisActivity"
+                android:theme="@style/Theme.MyApplication" />
+
         <!-- 가게 주문 -->
         <activity
                 android:name=".ui.activity.StoreMenuActivity"
