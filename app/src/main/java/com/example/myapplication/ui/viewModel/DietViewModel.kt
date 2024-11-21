@@ -11,10 +11,10 @@ class DietViewModel : ViewModel() {
     private val dietService = DietService()
 
     private val _selectedDate = MutableLiveData<LocalDate>(LocalDate.now())
-//    val selectedDate: LiveData<LocalDate> = _selectedDate
+    val selectedDate: LiveData<LocalDate> = _selectedDate
 
     private val _dietList = MutableLiveData<List<Diet>>() // 전체 식단 데이터
-//    val dietList: LiveData<List<Diet>> = _dietList
+    val dietList: LiveData<List<Diet>> = _dietList
 
     private val _currentDiet = MutableLiveData<List<Diet>?>() // 선택한 날짜의 식단
     val currentDiet: LiveData<List<Diet>?> = _currentDiet

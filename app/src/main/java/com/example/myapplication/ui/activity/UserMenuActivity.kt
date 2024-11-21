@@ -10,7 +10,7 @@ class UserMenuActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
+        setContentView(R.layout.activity_user_menu)
 
         val backButton = findViewById<TextView>(R.id.backButton)
 
@@ -20,16 +20,16 @@ class UserMenuActivity : AppCompatActivity() {
             onBackPressed() // 뒤로 가기 동작
         }
 
-        val btnDietRecord: Button = findViewById(R.id.btnDietRecord)
+//        val btnDietRecord: Button = findViewById(R.id.btnDietRecord)
         val btnDietHistory: Button = findViewById(R.id.btnDietHistory)
         val btnProfileEdit: Button = findViewById(R.id.btnProfileEdit)
         val btnOrderHistory: Button = findViewById(R.id.btnOrderHistory)
         val btnLogout: Button = findViewById(R.id.btnLogout)
 
-        btnDietRecord.setOnClickListener { // 식단 추가
-            val intent = Intent(this, DietAddActivity::class.java)
-            startActivity(intent)
-        }
+//        btnDietRecord.setOnClickListener { // 식단 추가
+//            val intent = Intent(this, DietAddActivity::class.java)
+//            startActivity(intent)
+//        }
 
         btnDietHistory.setOnClickListener { // 식단 정보
             val intent = Intent(this, DietViewActivity::class.java)

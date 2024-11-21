@@ -11,8 +11,8 @@ data class Diet(
 
 data class MenuItem(
     val name: String,
-    val calories: Int,
-    val carbs: Int,
-    val protein: Int,
-    val fat: Int
+    var calories: Int,
+    var carbs: Int,
+    var protein: Int,
+    var fat: Int
 )
