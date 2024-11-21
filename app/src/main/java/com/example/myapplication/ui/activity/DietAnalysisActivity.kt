@@ -97,7 +97,7 @@ class DietAnalysisActivity : AppCompatActivity() {
             MenuItem("", 0, 0, 0, 0)
         ) { acc, item ->
             acc.apply {
-                calories += item.calories
+                calorie += item.calorie
                 carbs += item.carbs
                 protein += item.protein
                 fat += item.fat
@@ -111,7 +111,7 @@ class DietAnalysisActivity : AppCompatActivity() {
                 "carbohydrates" to aggregatedData.carbs * 100 / totalNutrients,
                 "protein" to aggregatedData.protein * 100 / totalNutrients,
                 "fat" to aggregatedData.fat * 100 / totalNutrients,
-                "calories" to aggregatedData.calories // 칼로리는 합산 값 그대로 전달
+                "calories" to aggregatedData.calorie // 칼로리는 합산 값 그대로 전달
             )
         } else {
             mapOf("carbohydrates" to 0, "protein" to 0, "fat" to 0, "calories" to 0)

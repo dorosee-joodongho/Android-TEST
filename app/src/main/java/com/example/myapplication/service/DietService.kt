@@ -6,21 +6,21 @@ import java.time.LocalDate
 
 class DietService {
 
-//    // 식단 추가
-//    fun saveDiet(diet: Diet, callback: (Diet?) -> Unit) {
-//        // 식단 정보 저장
-//        callback(diet) // 저장 객체 반환
-//    }
-//    // 식단 수정
-//    fun updateDiet(diet: Diet, callback: (Diet?) -> Unit) {
-//        // 식단 정보 수정
-//        callback(diet)
-//    }
-//    // 식단 삭제
-//    fun deleteDiet(dietId: Int, callback: (Boolean) -> Unit) {
-//        // 식단 정보 삭제
-//        callback(true)
-//    }
+    // 식단 추가 : 구현 X
+    fun saveDiet(diet: Diet, callback: (Diet?) -> Unit) {
+        // 식단 정보 저장
+        callback(diet) // 저장 객체 반환
+    }
+    // 식단 수정 : 구현 X
+    fun updateDiet(diet: Diet, callback: (Diet?) -> Unit) {
+        // 식단 정보 수정
+        callback(diet)
+    }
+    // 식단 삭제 : 구현 X
+    fun deleteDiet(dietId: Long, callback: (Boolean) -> Unit) {
+        // 식단 정보 삭제
+        callback(true)
+    }
 
     // 식단 목록 가져오기
     fun getDietList(callback: (List<Diet>?) -> Unit) {

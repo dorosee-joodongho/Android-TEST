@@ -47,7 +47,7 @@ class DietViewModel : ViewModel() {
         // 현재 선택된 날짜의 월에 해당하는 식단 총 칼로리 계산
         val totalCalories = diets
             .filter { it.date.year == selectedDate.year && it.date.monthValue == selectedDate.monthValue }
-            .sumOf { diet -> diet.menuItems.sumOf { it.calories } }
+            .sumOf { diet -> diet.menuItems.sumOf { it.calorie } }
 
         _monthlyCalories.value = totalCalories
     }
@@ -60,7 +60,7 @@ class DietViewModel : ViewModel() {
         _currentDiet.value = allDiets.filter { it.date == date }
     }
 
-    fun deleteDiet(dietId: Int, callback: (Boolean) -> Unit) {
+    fun deleteDiet(dietId: Long, callback: (Boolean) -> Unit) {
         dietService.deleteDiet(dietId) { success ->
             if (success) {
                 // 서버에서 삭제 성공 시 로컬 데이터 업데이트

@@ -141,12 +141,12 @@ class DietViewActivity : AppCompatActivity() {
         menuItems.forEach { item ->
             val row = LayoutInflater.from(this).inflate(R.layout.menu_item_layout, menuListContainer, false)
             row.findViewById<TextView>(R.id.menu_name_input).text = item.name
-            row.findViewById<TextView>(R.id.calories_input).text = item.calories.toString()
+            row.findViewById<TextView>(R.id.calories_input).text = item.calorie.toString()
             row.findViewById<TextView>(R.id.carbs_input).text = item.carbs.toString()
             row.findViewById<TextView>(R.id.protein_input).text = item.protein.toString()
             row.findViewById<TextView>(R.id.fat_input).text = item.fat.toString()
 
-            totalCalories += item.calories
+            totalCalories += item.calorie
             totalCarbs += item.carbs
             totalProtein += item.protein
             totalFat += item.fat

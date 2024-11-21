@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+    <!-- 메뉴 이미지 -->
+    <ImageView
+            android:id="@+id/ivMenuImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="8dp"
+            android:background="#CCCCCC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- 메뉴 이름 -->
+    <TextView
+            android:id="@+id/tvMenuName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="메뉴 이름"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintStart_toEndOf="@id/ivMenuImage"
+            app:layout_constraintTop_toTopOf="@id/ivMenuImage"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 메뉴 설명 -->
+    <TextView
+            android:id="@+id/tvMenuDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="메뉴 설명"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tvMenuName"
+            app:layout_constraintTop_toBottomOf="@id/tvMenuName"
+            app:layout_constraintEnd_toEndOf="@id/tvMenuName" />
+
+    <!-- 메뉴 가격 -->
+    <TextView
+            android:id="@+id/tvMenuPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₩0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="@id/tvMenuName"
+            app:layout_constraintTop_toBottomOf="@id/tvMenuDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

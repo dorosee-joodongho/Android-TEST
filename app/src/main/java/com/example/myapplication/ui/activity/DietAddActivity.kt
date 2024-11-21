@@ -60,7 +60,7 @@ class DietAddActivity : AppCompatActivity() {
                 // MenuItem 객체 생성
                 MenuItem(
                     name = menuName,
-                    calories = calories,
+                    calorie = calories,
                     carbs = carbs,
                     protein = protein,
                     fat = fat
