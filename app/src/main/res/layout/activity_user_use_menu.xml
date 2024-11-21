@@ -30,11 +30,18 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- 식단 기록 버튼 -->
+<!--        <Button-->
+<!--                android:id="@+id/btnDietRecord"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="식단 기록" />-->
+
+        <!-- 주문 내역 조회 버튼 -->
         <Button
-                android:id="@+id/btnDietRecord"
+                android:id="@+id/btnOrderHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="식단 기록" />
+                android:text="주문 내역 조회" />
 
         <!-- 내 식단 조회 버튼 -->
         <Button
@@ -49,13 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="개인 정보 수정" />
-
-        <!-- 주문 내역 조회 버튼 -->
-        <Button
-                android:id="@+id/btnOrderHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="주문 내역 조회" />
 
         <!-- 로그아웃 버튼 -->
         <Button

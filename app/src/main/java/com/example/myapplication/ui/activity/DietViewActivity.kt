@@ -59,8 +59,8 @@ class DietViewActivity : AppCompatActivity() {
         totalCarbsRow = findViewById(R.id.total_carbs_row)
         totalProteinRow = findViewById(R.id.total_protein_row)
         totalFatRow = findViewById(R.id.total_fat_row)
-        editButton = findViewById(R.id.edit_button)
-        deleteButton = findViewById(R.id.delete_button)
+//        editButton = findViewById(R.id.edit_button)
+//        deleteButton = findViewById(R.id.delete_button)
         dietAnalysisButton = findViewById(R.id.diet_analysis_button)
         prevDietButton = findViewById(R.id.prev_diet_button)
         nextDietButton = findViewById(R.id.next_diet_button)
@@ -102,19 +102,19 @@ class DietViewActivity : AppCompatActivity() {
             }
         }
 
-        editButton.setOnClickListener {
-            val diet = getCurrentDiet() ?: return@setOnClickListener
-            viewModel.updateDiet(diet) { success ->
-                showToast(if (success) "식단이 수정되었습니다." else "수정에 실패하였습니다.")
-            }
-        }
-
-        deleteButton.setOnClickListener {
-            val diet = getCurrentDiet() ?: return@setOnClickListener
-            viewModel.deleteDiet(diet.id!!) { success ->
-                showToast(if (success) "식단이 삭제되었습니다." else "삭제에 실패하였습니다.")
-            }
-        }
+//        editButton.setOnClickListener {
+//            val diet = getCurrentDiet() ?: return@setOnClickListener
+//            viewModel.updateDiet(diet) { success ->
+//                showToast(if (success) "식단이 수정되었습니다." else "수정에 실패하였습니다.")
+//            }
+//        }
+//
+//        deleteButton.setOnClickListener {
+//            val diet = getCurrentDiet() ?: return@setOnClickListener
+//            viewModel.deleteDiet(diet.id!!) { success ->
+//                showToast(if (success) "식단이 삭제되었습니다." else "삭제에 실패하였습니다.")
+//            }
+//        }
 
         dietAnalysisButton.setOnClickListener {
             val intent = Intent(this, DietAnalysisActivity::class.java)
@@ -141,12 +141,12 @@ class DietViewActivity : AppCompatActivity() {
         menuItems.forEach { item ->
             val row = LayoutInflater.from(this).inflate(R.layout.menu_item_layout, menuListContainer, false)
             row.findViewById<TextView>(R.id.menu_name_input).text = item.name
-            row.findViewById<TextView>(R.id.calories_input).text = item.calories.toString()
+            row.findViewById<TextView>(R.id.calories_input).text = item.calorie.toString()
             row.findViewById<TextView>(R.id.carbs_input).text = item.carbs.toString()
             row.findViewById<TextView>(R.id.protein_input).text = item.protein.toString()
             row.findViewById<TextView>(R.id.fat_input).text = item.fat.toString()
 
-            totalCalories += item.calories
+            totalCalories += item.calorie
             totalCarbs += item.carbs
             totalProtein += item.protein
             totalFat += item.fat

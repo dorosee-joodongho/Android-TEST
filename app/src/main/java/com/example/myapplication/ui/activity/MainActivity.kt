@@ -68,12 +68,12 @@ class MainActivity : ComponentActivity(
         // 유저 이름 또는 이미지 클릭 이벤트 처리
         findViewById<View>(R.id.userImage).setOnClickListener {
             // UserProfileActivity로 이동
-            val intent = Intent(this, UserMenuActivity::class.java)
+            val intent = Intent(this, UserUseMenuActivity::class.java)
             startActivity(intent)
         }
         findViewById<View>(R.id.userName).setOnClickListener {
             // UserProfileActivity로 이동
-            val intent = Intent(this, UserMenuActivity::class.java)
+            val intent = Intent(this, UserUseMenuActivity::class.java)
             startActivity(intent)
         }
 

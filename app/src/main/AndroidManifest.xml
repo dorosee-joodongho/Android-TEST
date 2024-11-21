@@ -26,7 +26,12 @@
         </activity>
         <!-- 사용자 메뉴 -->
         <activity
-                android:name=".ui.activity.UserMenuActivity"
+                android:name=".ui.activity.UserUseMenuActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 로그인 -->
+        <activity
+                android:name=".ui.activity.LoginActivity"
                 android:theme="@style/Theme.MyApplication" />
 
         <!-- 회원가입 및 회원 정보 수정 -->
@@ -61,6 +66,27 @@
         <activity
                 android:name=".ui.activity.OrderHistoryActivity"
                 android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 기능 메뉴 목록 -->
+        <activity
+                android:name=".ui.activity.StoreUseMenuActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 메뉴 목록 -->
+        <activity
+                android:name=".ui.activity.MenuListActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 조회 -->
+        <activity
+                android:name=".ui.activity.MenuDetailActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 등록 -->
+        <activity
+                android:name=".ui.activity.MenuRegisterActivity"
+                android:theme="@style/Theme.MyApplication" />
+
     </application>
 
 </manifest>
