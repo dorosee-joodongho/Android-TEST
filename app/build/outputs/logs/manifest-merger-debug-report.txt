@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-51:12
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-51:12
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-51:12
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-51:12
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-66:12
 MERGED from [androidx.databinding:viewbinding:8.7.2] /Users/dorosee/.gradle/caches/8.9/transforms/3802758146a027392bd5f80c64f71ad1/transformed/viewbinding-8.7.2/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/dorosee/.gradle/caches/8.9/transforms/97d95be18f1dab0674f564fcc81daf42/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/dorosee/.gradle/caches/8.9/transforms/95aac94b108dcaefd6b6ee0594e4cdf6/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
@@ -58,6 +58,7 @@ MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.6] /Users/dor
 MERGED from [androidx.compose.runtime:runtime-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/2f985d0c7b221f10ad64a405ef948920/transformed/runtime-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/dorosee/.gradle/caches/8.9/transforms/7ebb9252cdd8d8119ae480024722d928/transformed/annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/c7811bdc0c0d589aec2bd05a4ddef356/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /Users/dorosee/.gradle/caches/8.9/transforms/7d36e603078ff76649ec79bea33613bb/transformed/MPAndroidChart-v3.1.0/AndroidManifest.xml:2:1-20:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/dorosee/.gradle/caches/8.9/transforms/c7c00f627c6cf47b376fe950e30fdf68/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.15.1] /Users/dorosee/.gradle/caches/8.9/transforms/950643f0a9676aaf1c5d4e4b72bc735f/transformed/gifdecoder-4.15.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.3] /Users/dorosee/.gradle/caches/8.9/transforms/c3d53a1e4e1eb912aab4616af72fd838/transformed/exifinterface-1.3.3/AndroidManifest.xml:17:1-24:12
@@ -81,8 +82,8 @@ ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/Andro
 	android:name
 		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-49:19
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-49:19
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-64:19
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-64:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/dorosee/.gradle/caches/8.9/transforms/97d95be18f1dab0674f564fcc81daf42/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/dorosee/.gradle/caches/8.9/transforms/97d95be18f1dab0674f564fcc81daf42/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [com.github.bumptech.glide:glide:4.15.1] /Users/dorosee/.gradle/caches/8.9/transforms/233550c68e05b4d3aedfeca1ef0b38be/transformed/glide-4.15.1/AndroidManifest.xml:9:5-20
@@ -159,24 +160,42 @@ ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/Andro
 		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:35:17-59
 	android:name
 		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:34:17-57
-activity#com.example.myapplication.ui.activity.StoreMenuActivity
+activity#com.example.myapplication.ui.activity.DietAddActivity
 ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:38:9-40:62
 	android:theme
 		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:40:17-59
 	android:name
-		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:39:17-62
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:39:17-60
+activity#com.example.myapplication.ui.activity.DietViewActivity
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:43:9-45:62
+	android:theme
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:45:17-59
+	android:name
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:44:17-61
+activity#com.example.myapplication.ui.activity.DietAnalysisActivity
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:48:9-50:62
+	android:theme
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:50:17-59
+	android:name
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:49:17-65
+activity#com.example.myapplication.ui.activity.StoreMenuActivity
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:53:9-55:62
+	android:theme
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:55:17-59
+	android:name
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:54:17-62
 activity#com.example.myapplication.ui.activity.CartActivity
-ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:42:9-44:62
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:57:9-59:62
 	android:theme
-		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:44:17-59
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:59:17-59
 	android:name
-		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:43:17-57
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:58:17-57
 activity#com.example.myapplication.ui.activity.OrderHistoryActivity
-ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:46:9-48:62
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:61:9-63:62
 	android:theme
-		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:48:17-59
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:63:17-59
 	android:name
-		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:47:17-65
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:62:17-65
 uses-sdk
 INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml
@@ -289,6 +308,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/dorosee/.
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/dorosee/.gradle/caches/8.9/transforms/7ebb9252cdd8d8119ae480024722d928/transformed/annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/c7811bdc0c0d589aec2bd05a4ddef356/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/c7811bdc0c0d589aec2bd05a4ddef356/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /Users/dorosee/.gradle/caches/8.9/transforms/7d36e603078ff76649ec79bea33613bb/transformed/MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] /Users/dorosee/.gradle/caches/8.9/transforms/7d36e603078ff76649ec79bea33613bb/transformed/MPAndroidChart-v3.1.0/AndroidManifest.xml:16:5-18:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/dorosee/.gradle/caches/8.9/transforms/c7c00f627c6cf47b376fe950e30fdf68/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/dorosee/.gradle/caches/8.9/transforms/c7c00f627c6cf47b376fe950e30fdf68/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.github.bumptech.glide:gifdecoder:4.15.1] /Users/dorosee/.gradle/caches/8.9/transforms/950643f0a9676aaf1c5d4e4b72bc735f/transformed/gifdecoder-4.15.1/AndroidManifest.xml:5:5-7:41

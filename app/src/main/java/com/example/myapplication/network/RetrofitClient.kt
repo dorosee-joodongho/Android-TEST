@@ -1,21 +1,40 @@
 package com.example.myapplication.network
 
-import android.content.Context
 import android.content.SharedPreferences
-import okhttp3.Interceptor
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonDeserializer
+import com.google.gson.JsonElement
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Type
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://api.example.com/"
+    private const val BASE_URL = "http://localhost:8080/"
     private var sharedPreferences: SharedPreferences? = null
 
-    // Retrofit 초기화 함수
-    fun initialize(context: Context) {
-        sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+    // Gson을 사용할 때 Double을 Long으로 변환하는 디시리얼라이저
+    val longDeserializer: JsonDeserializer<Long> = JsonDeserializer { json: JsonElement, typeOfT: Type, context ->
+        json.asJsonPrimitive.asDouble.toLong()  // Double을 Long으로 변환
+    }
+
+    // Gson 빌더에서 디시리얼라이저 등록
+    val gson: Gson = GsonBuilder()
+        .registerTypeAdapter(Long::class.java, longDeserializer)  // Long 타입에 대한 변환 설정
+        .registerTypeAdapter(Int::class.java, JsonDeserializer { json, _, _ ->
+            json.asJsonPrimitive.asDouble.toInt()  // Double을 Int로 변환
+        })
+        .create()
+
+    // Retrofit 인스턴스 생성
+    val instance: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))  // GsonConverterFactory로 커스텀 Gson 사용
+            .build()
     }
 
     private val client: OkHttpClient by lazy {
@@ -30,71 +49,8 @@ object RetrofitClient {
             .build()
     }
 
-    // Retrofit 인스턴스
-    val instance: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    // Authorization Token 반환
+    fun getAuthToken(): String? {
+        return sharedPreferences?.getString("auth_token", null)
     }
 }
-
-// RetrofitApi 예제 : API 엔드 포인트 전부 정의하기
-/*
-interface RetrofitApi {
-    @GET("user/profile")
-    suspend fun getUserProfile(): UserProfile
-}
-*/
-
-// Service 예제
-/*
-class UserService(private val retrofitApi: RetrofitApi) {
-
-    suspend fun getUserProfile(): Result<UserProfile> {
-        return try {
-            val profile = retrofitApi.getUserProfile()
-            Result.success(profile)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-}
-
- */
-
-// Activity 예제
-/*
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var userService: UserService
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // RetrofitClient에서 RetrofitApi 생성
-        val retrofitApi = RetrofitClient.instance.create(RetrofitApi::class.java)
-
-        // UserService 초기화
-        userService = UserService(retrofitApi)
-
-        // 사용자 프로필 가져오기
-        fetchUserProfile()
-    }
-
-    private fun fetchUserProfile() {
-        lifecycleScope.launch {
-            val result = userService.getUserProfile()
-            result.onSuccess { profile ->
-                Log.d("MainActivity", "User Profile: $profile")
-                findViewById<TextView>(R.id.userNameTextView).text = profile.name
-            }.onFailure { e ->
-                Log.e("MainActivity", "Error: ${e.message}")
-                Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-}
- */
