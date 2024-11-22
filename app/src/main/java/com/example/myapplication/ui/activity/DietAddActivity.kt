@@ -59,7 +59,7 @@ class DietAddActivity : AppCompatActivity() {
 
                 // MenuItem 객체 생성
                 MenuItem(
-                    name = menuName,
+                    menuName = menuName,
                     calorie = calories,
                     carbs = carbs,
                     protein = protein,
@@ -70,7 +70,7 @@ class DietAddActivity : AppCompatActivity() {
             val diet = Diet(
                 id = null,
                 date = selectedDate,
-                name = dietName,
+                dietName = dietName,
                 menuItems = menuItems
             )
             addDiet(diet) // 생성된 Diet 객체 저장 함수 호출

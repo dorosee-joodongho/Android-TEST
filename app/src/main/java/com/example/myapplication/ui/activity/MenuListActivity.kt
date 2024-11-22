@@ -6,18 +6,20 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.data.MenuDetail
 import com.example.myapplication.service.MenuDetailService
 import com.example.myapplication.ui.adapter.MenuAdapter
+import kotlinx.coroutines.launch
 
 class MenuListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnAddMenu: Button
-    private val menuService = MenuDetailService() // MenuDetailService 인스턴스 생성
-    private lateinit var menuList: MutableList<MenuDetail> // 메뉴 데이터 리스트
+    private val menuService = MenuDetailService()
+    private lateinit var menuList: List<MenuDetail> // 메뉴 데이터 리스트
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +38,39 @@ class MenuListActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // 서비스에서 데이터 가져오기
-        menuService.getMenuDetailsList { data ->
-            if (data != null) {
-                menuList = data.toMutableList()
-                setupRecyclerView(menuList)
-            } else {
-                Toast.makeText(this, "메뉴 데이터를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
-            }
-        }
+        fetchMenuData()
 
         // "새로운 메뉴 등록하기" 버튼 클릭 리스너
         btnAddMenu.setOnClickListener {
-            val intent = Intent(this, MenuRegisterActivity::class.java)
-            startActivity(intent)
+            // menuList가 초기화되고 비어있지 않은지 확인
+            if (::menuList.isInitialized && menuList.isNotEmpty()) {
+                val firstStoreId = menuList.first().storeId
+                val intent = Intent(this, MenuAddActivity::class.java).apply {
+                    putExtra("storeId", firstStoreId)
+                }
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "메뉴 데이터를 로드할 수 없습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun fetchMenuData() {
+        lifecycleScope.launch {
+            try {
+                // 메뉴 데이터를 비동기적으로 가져옴
+                val data = menuService.getMenuDetailList()
+
+                if (data.isNotEmpty()) {
+                    menuList = data.toMutableList()
+                    setupRecyclerView(menuList)  // 리사이클러뷰 업데이트
+                } else {
+                    Toast.makeText(this@MenuListActivity, "메뉴 데이터가 비어 있습니다.", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                // 오류 처리
+                Toast.makeText(this@MenuListActivity, "메뉴 데이터를 가져오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

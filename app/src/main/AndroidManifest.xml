@@ -84,7 +84,7 @@
 
         <!-- 식당 등록 -->
         <activity
-                android:name=".ui.activity.MenuRegisterActivity"
+                android:name=".ui.activity.MenuAddActivity"
                 android:theme="@style/Theme.MyApplication" />
 
     </application>

@@ -106,7 +106,6 @@ class UserActivity : AppCompatActivity() {
         val phone = etPhone.text.toString()
         val password = etPassword.text.toString()
 
-        // 코루틴을 사용하여 비동기 처리
         lifecycleScope.launch {
             try {
                 val success = userService.updateMember(name, phone, password)

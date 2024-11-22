@@ -15,6 +15,4 @@ class MenuService {
             Menu(6 , "추천 메뉴 6" , 6600 , "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",6),
         )
     }
-
-
 }

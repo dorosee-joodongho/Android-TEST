@@ -5,12 +5,12 @@ import java.time.LocalDate
 data class Diet(
     val id: Long?,
     val date: LocalDate,
-    val name: String,
+    val dietName: String,
     val menuItems: List<MenuItem>
 )
 
 data class MenuItem(
-    val name: String,
+    val menuName: String,
     var calorie: Int,
     var carbs: Int,
     var protein: Int,
