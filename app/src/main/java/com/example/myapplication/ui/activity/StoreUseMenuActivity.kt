@@ -16,7 +16,7 @@ class StoreUseMenuActivity: AppCompatActivity() {
         setContentView(R.layout.activity_store_use_menu)
 
         val backButton = findViewById<TextView>(R.id.backButton)
-        backButton.text = "←  가게 목록" // 헤더 제목 변경
+        backButton.text = "←  목록" // 헤더 제목 변경
         backButton.setOnClickListener {
             onBackPressed() // 뒤로 가기 동작
         }

@@ -6,6 +6,9 @@ data class Member(
     val memberPhone: String,
     val memberEmail: String,
     val userImage : String,
-) {
+)
 
-}
+data class LoginResponse(
+    val isMember: Int,
+    val token: String
+)
