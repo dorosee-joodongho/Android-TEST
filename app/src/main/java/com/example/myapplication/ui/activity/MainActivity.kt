@@ -26,10 +26,10 @@ class MainActivity : ComponentActivity(
         val storeRecyclerView: RecyclerView = findViewById(R.id.storeListRecyclerView)
 
         val menuService = MenuService()
-        val userService = MemberService()
+        val memberService = MemberService(this@MainActivity)
         val storeService = StoreService()
 
-        val getCurrentUser = userService.getCurrentUser() //현재 접속 중인 유저
+        val getCurrentUser = memberService.getCurrentUser() //현재 접속 중인 유저
         val todaySpecialInfoList = menuService.getTodayBestMenu() //오늘 추천 메뉴 리스트
         val nearbyStores = storeService.getNearbyStores() //근처 가게 목록들
 
