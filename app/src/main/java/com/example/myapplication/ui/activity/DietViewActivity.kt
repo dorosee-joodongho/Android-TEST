@@ -125,7 +125,7 @@ class DietViewActivity : AppCompatActivity() {
     private fun displayCurrentDiet() {
         val currentDiet = getCurrentDiet() ?: return
         populateDietTable(currentDiet.menuItems)
-        selectedDietName.text = currentDiet.name
+        selectedDietName.text = currentDiet.dietName
     }
 
     private fun getCurrentDiet() = dietsForSelectedDate.getOrNull(currentDietIndex)
@@ -140,7 +140,7 @@ class DietViewActivity : AppCompatActivity() {
 
         menuItems.forEach { item ->
             val row = LayoutInflater.from(this).inflate(R.layout.menu_item_layout, menuListContainer, false)
-            row.findViewById<TextView>(R.id.menu_name_input).text = item.name
+            row.findViewById<TextView>(R.id.menu_name_input).text = item.menuName
             row.findViewById<TextView>(R.id.calories_input).text = item.calorie.toString()
             row.findViewById<TextView>(R.id.carbs_input).text = item.carbs.toString()
             row.findViewById<TextView>(R.id.protein_input).text = item.protein.toString()

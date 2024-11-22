@@ -53,7 +53,6 @@ class MemberService(context: Context) {
         }
     }
 
-
     // 회원가입
     suspend fun saveMember(name: String, phone: String, email: String, password: String) : Boolean {
         return true

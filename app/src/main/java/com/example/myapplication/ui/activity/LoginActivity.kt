@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
 import com.example.myapplication.service.MemberService
+import com.example.myapplication.utils.ToastUtils
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
@@ -101,24 +102,16 @@ class LoginActivity : AppCompatActivity() {
                     } else {// 가게 로그인
                         StoreUseMenuActivity::class.java
                     }
-                    showToast("로그인 성공")
+                    ToastUtils.showToast(this@LoginActivity, "로그인 성공")
                     startActivity(Intent(this@LoginActivity, targetActivity))
                     finish()
                 } else {
-                    showToast("잘못된 이메일 또는 비밀번호입니다.")
+                    ToastUtils.showToast(this@LoginActivity,"잘못된 이메일 또는 비밀번호입니다.")
                 }
             } catch (e: Exception) {
                 val errorMessage = e.message ?: "로그인 중 오류가 발생했습니다. 다시 시도해주세요."
-                showToast(errorMessage)
+                ToastUtils.showToast(this@LoginActivity, errorMessage)
             }
         }
     }
-
-    // Toast 메시지를 간소화하는 헬퍼 함수
-    private fun showToast(message: String) {
-        Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
-    }
-
-
-
 }

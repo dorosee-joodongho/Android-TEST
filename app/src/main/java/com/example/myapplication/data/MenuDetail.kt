@@ -4,7 +4,7 @@ import android.net.Uri
 import java.io.Serializable
 
 data class MenuDetail (
-    val id: Long?,
+    val menuId: Long?,
     val storeId : Long,
     var name: String,
     var description: String,
