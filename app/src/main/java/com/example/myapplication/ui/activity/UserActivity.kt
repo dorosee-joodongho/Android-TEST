@@ -80,7 +80,7 @@ class UserActivity : AppCompatActivity() {
         val confirmPassword = etConfirmPassword.text.toString()
 
         if (password == confirmPassword) {
-            userService.addMember(name, phone, email, password) { success ->
+            userService.saveMember(name, phone, email, password) { success ->
                 if (success !== null) {
                     Toast.makeText(this, "회원 가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
                 } else {

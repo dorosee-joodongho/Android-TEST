@@ -7,8 +7,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
+import com.example.myapplication.service.MemberService
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
@@ -71,18 +74,51 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    // 로그인 처리 (예시, 실제로는 API 호출 등 필요)
+    // 로그인 처리 예시
     private fun loginUser(email: String, password: String) {
-        // 여기서는 로그인 성공 여부를 간단히 예시로 처리
         if (email == "test@naver.com" && password == "1234") {
-            // 로그인 성공 시 메인 화면으로 이동
             Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
             // val intent = Intent(this, MainActivity::class.java)
             val intent = Intent(this, StoreUseMenuActivity::class.java)
             startActivity(intent)
-            finish() // 로그인 후 현재 화면 종료
+            finish()
         } else {
             Toast.makeText(this, "잘못된 이메일 또는 비밀번호입니다.", Toast.LENGTH_SHORT).show()
         }
     }
+
+    // 로그인
+    private fun loginUser2(email: String, password: String) {
+        lifecycleScope.launch {
+            val memberService = MemberService(this@LoginActivity)
+
+            try {
+                val loginResult = memberService.login(email, password)
+
+                if (loginResult != null) {
+                    val targetActivity = if (loginResult) { // 고객 로그인
+                        MainActivity::class.java
+                    } else {// 가게 로그인
+                        StoreUseMenuActivity::class.java
+                    }
+                    showToast("로그인 성공")
+                    startActivity(Intent(this@LoginActivity, targetActivity))
+                    finish()
+                } else {
+                    showToast("잘못된 이메일 또는 비밀번호입니다.")
+                }
+            } catch (e: Exception) {
+                val errorMessage = e.message ?: "로그인 중 오류가 발생했습니다. 다시 시도해주세요."
+                showToast(errorMessage)
+            }
+        }
+    }
+
+    // Toast 메시지를 간소화하는 헬퍼 함수
+    private fun showToast(message: String) {
+        Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
+
+
 }
