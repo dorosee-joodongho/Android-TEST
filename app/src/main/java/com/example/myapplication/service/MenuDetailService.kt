@@ -6,8 +6,8 @@ import com.example.myapplication.network.APIService
 import com.example.myapplication.network.RetrofitClient
 
 class MenuDetailService {
-    private val apiService = RetrofitClient.instance.create(APIService::class.java)
-    private val apiCall = APICall(apiService)
+//    private val apiService = RetrofitClient.instance.create(APIService::class.java)
+//    private val apiCall = APICall(apiService)
 
     // 식단 목록 가져오기
     fun getMenuDetailList(): List<MenuDetail> {
@@ -15,28 +15,30 @@ class MenuDetailService {
     }
 
     suspend fun saveMenuDetail(menuDetail: MenuDetail): Boolean? {
-        return try {
-            val response : Boolean? = apiCall.apiCall(
-                method = "POST",
-                apiEndpoint = "/menu/save",
-                requestBody = menuDetail
-            )
-            response == true
-        } catch (e: Exception) {
-            println("오류 발생: ${e.message}")
-            null // 저장 실패
-        }
+        return true
+//        return try {
+//            val response : Boolean? = apiCall.apiCall(
+//                method = "POST",
+//                apiEndpoint = "/menu/save",
+//                requestBody = menuDetail
+//            )
+//            response == true
+//        } catch (e: Exception) {
+//            println("오류 발생: ${e.message}")
+//            null // 저장 실패
+//        }
     }
 
     // 메뉴 수정
     suspend fun updateMenuDetail(menuDetail: MenuDetail): Boolean? {
         return try {
-            val response: Boolean? = apiCall.apiCall(
-                method = "PUT",
-                apiEndpoint = "/menu/update/${menuDetail.menuId}", // menuId로 특정 메뉴 식별
-                requestBody = menuDetail
-            )
-            response == true
+//            val response: Boolean? = apiCall.apiCall(
+//                method = "PUT",
+//                apiEndpoint = "/menu/update/${menuDetail.menuId}", // menuId로 특정 메뉴 식별
+//                requestBody = menuDetail
+//            )
+//            response == true
+            true
         } catch (e: Exception) {
             println("오류 발생: ${e.message}")
             null // 수정 실패
@@ -46,11 +48,12 @@ class MenuDetailService {
     // 메뉴 삭제
     suspend fun deleteMenuDetail(menuId: Long): Boolean? {
         return try {
-            val response: Boolean? = apiCall.apiCall(
-                method = "DELETE",
-                apiEndpoint = "/menu/delete/$menuId" // menuId로 특정 메뉴 식별
-            )
-            response == true
+//            val response: Boolean? = apiCall.apiCall(
+//                method = "DELETE",
+//                apiEndpoint = "/menu/delete/$menuId" // menuId로 특정 메뉴 식별
+//            )
+//            response == true
+            true
         } catch (e: Exception) {
             println("오류 발생: ${e.message}")
             null // 삭제 실패

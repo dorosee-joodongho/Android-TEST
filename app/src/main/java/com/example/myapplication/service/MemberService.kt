@@ -3,14 +3,12 @@ package com.example.myapplication.service
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.myapplication.data.Member
-import com.example.myapplication.data.LoginResponse
-import com.example.myapplication.network.APICall
-import com.example.myapplication.network.APIService
-import com.example.myapplication.network.RetrofitClient
+import com.example.myapplication.data.PostJoinRequestDto
+import com.example.myapplication.network.RetrofitApi
 
-class MemberService(context: Context) {
-    private val apiService = RetrofitClient.instance.create(APIService::class.java)
-    private val apiCall = APICall(apiService)
+class MemberService(context: Context, private val retrofitApi: RetrofitApi) {
+//    private val apiService = RetrofitClient.instance.create(APIService::class.java)
+//    private val apiCall = APICall(apiService)
     private val sharedPreferences: SharedPreferences = context.applicationContext.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
     // 현재 사용자 정보를 반환하는 함수 (예시)
@@ -22,40 +20,56 @@ class MemberService(context: Context) {
 
     // 로그인 처리 함수
     suspend fun login(email: String, password: String): Boolean? {
-        val requestBody = mapOf(
-            "email" to email,
-            "password" to password
-        )
-
-        return try {
-            // 로그인 API 호출
-            val response: LoginResponse? = apiCall.apiCall(
-                method = "POST",
-                apiEndpoint = "/login",
-                requestBody = requestBody,
-            )
-
-            // 응답이 null이면 실패
-            response?.let {
-                if (it.isMember == 1) {
-                    val token = it.token
-                    token?.let {
-                        saveAuthToken(it) // 토큰 저장
-                    }
-                    true // 고객 로그인
-                } else {
-                    false // 가게 로그인
-                }
-            } // 응답이 null일 경우 실패
-        } catch (e: Exception) {
-            println("로그인 중 오류 발생: ${e.message}")
-            null // 로그인 실패
-        }
+        return true
+//        val requestBody = mapOf(
+//            "email" to email,
+//            "password" to password
+//        )
+//
+//        return try {
+//            // 로그인 API 호출
+//            val response: LoginResponse? = apiCall.apiCall(
+//                method = "POST",
+//                apiEndpoint = "/login",
+//                requestBody = requestBody,
+//            )
+//
+//            // 응답이 null이면 실패
+//            response?.let {
+//                if (it.isMember == 1) {
+//                    val token = it.token
+//                    token?.let {
+//                        saveAuthToken(it) // 토큰 저장
+//                    }
+//                    true // 고객 로그인
+//                } else {
+//                    false // 가게 로그인
+//                }
+//            } // 응답이 null일 경우 실패
+//        } catch (e: Exception) {
+//            println("로그인 중 오류 발생: ${e.message}")
+//            null // 로그인 실패
+//        }
     }
 
     // 회원가입
-    suspend fun saveMember(name: String, phone: String, email: String, password: String) : Boolean {
-        return true
+    suspend fun saveMember(name: String, phone: String, email: String, password: String): Boolean {
+        val joinInfo = PostJoinRequestDto(
+            name = name,
+            phone = phone,
+            email = email,
+            password = password
+        )
+
+        return try {
+            // Retrofit API 호출
+            val response = retrofitApi.join(joinInfo)
+            println("회원가입 응답 코드: ${response.code}")
+            response.code == "SU" // 성공 여부 확인
+        } catch (e: Exception) {
+            println("회원가입 중 오류 발생: ${e.message}")
+            false
+        }
     }
 
     // 회원 정보 수정

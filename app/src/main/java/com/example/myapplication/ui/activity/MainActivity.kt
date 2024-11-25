@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MemberService
 import com.example.myapplication.service.MenuService
 import com.example.myapplication.service.StoreService
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity(
         val storeRecyclerView: RecyclerView = findViewById(R.id.storeListRecyclerView)
 
         val menuService = MenuService()
-        val memberService = MemberService(this@MainActivity)
+        val memberService = MemberService(this@MainActivity, RetrofitClient.instance)
         val storeService = StoreService()
 
         val getCurrentUser = memberService.getCurrentUser() //현재 접속 중인 유저
