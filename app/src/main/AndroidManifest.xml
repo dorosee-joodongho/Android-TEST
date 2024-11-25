@@ -78,12 +78,12 @@
                 android:name=".ui.activity.MenuListActivity"
                 android:theme="@style/Theme.MyApplication" />
 
-        <!-- 식당 조회 -->
+        <!-- 식당 메뉴 조회 -->
         <activity
                 android:name=".ui.activity.MenuDetailActivity"
                 android:theme="@style/Theme.MyApplication" />
 
-        <!-- 식당 등록 -->
+        <!-- 식당 메뉴 등록 -->
         <activity
                 android:name=".ui.activity.MenuAddActivity"
                 android:theme="@style/Theme.MyApplication" />

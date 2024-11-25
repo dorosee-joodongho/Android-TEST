@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -12,6 +13,7 @@ import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MemberService
 import com.example.myapplication.utils.ToastUtils
 import kotlinx.coroutines.launch
+import android.util.Patterns
 
 class UserActivity : AppCompatActivity() {
     private lateinit var etName: EditText
@@ -85,12 +87,17 @@ class UserActivity : AppCompatActivity() {
         val password = etPassword.text.toString()
         val confirmPassword = etConfirmPassword.text.toString()
 
+        // 유효성 검사
+        if (!isValidInput(name, phone, email, password, confirmPassword)) return
+
         if (password == confirmPassword) {
             lifecycleScope.launch {
                 try {
                     val success = userService.saveMember(name, phone, email, password)
                     if (success) {
                         ToastUtils.showToast(this@UserActivity, "회원 가입에 성공하셨습니다.")
+                        val intent = Intent(this@UserActivity, LoginActivity::class.java)
+                        startActivity(intent)
                     } else {
                         ToastUtils.showToast(this@UserActivity, "회원 가입에 실패하셨습니다. 다시 시도 해주세요.")
                     }
@@ -109,6 +116,9 @@ class UserActivity : AppCompatActivity() {
         val phone = etPhone.text.toString()
         val password = etPassword.text.toString()
 
+        // 유효성 검사
+        if (!isValidUpdateInput(name, phone, password)) return
+
         lifecycleScope.launch {
             try {
                 val success = userService.updateMember(name, phone, password)
@@ -121,5 +131,45 @@ class UserActivity : AppCompatActivity() {
                 ToastUtils.showToast(this@UserActivity, "정보 수정 중 오류가 발생했습니다.")
             }
         }
+    }
+
+    private fun isValidInput(name: String, phone: String, email: String, password: String, confirmPassword: String): Boolean {
+        if (name.isEmpty()) {
+            ToastUtils.showToast(this, "이름을 입력해주세요.")
+            return false
+        }
+        if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
+            ToastUtils.showToast(this, "유효한 전화번호를 입력해주세요.")
+            return false
+        }
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            ToastUtils.showToast(this, "유효한 이메일 주소를 입력해주세요.")
+            return false
+        }
+        if (password.isEmpty() || password.length < 4) {
+            ToastUtils.showToast(this, "비밀번호는 4자리 이상이어야 합니다.")
+            return false
+        }
+        if (confirmPassword.isEmpty() || confirmPassword != password) {
+            ToastUtils.showToast(this, "비밀번호가 일치하지 않습니다.")
+            return false
+        }
+        return true
+    }
+
+    private fun isValidUpdateInput(name: String, phone: String, password: String): Boolean {
+        if (name.isEmpty()) {
+            ToastUtils.showToast(this, "이름을 입력해주세요.")
+            return false
+        }
+        if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
+            ToastUtils.showToast(this, "유효한 전화번호를 입력해주세요.")
+            return false
+        }
+        if (password.isEmpty() || password.length < 6) {
+            ToastUtils.showToast(this, "비밀번호는 6자리 이상이어야 합니다.")
+            return false
+        }
+        return true
     }
 }

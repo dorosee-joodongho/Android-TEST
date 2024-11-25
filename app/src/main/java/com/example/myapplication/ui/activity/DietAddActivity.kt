@@ -69,12 +69,12 @@ class DietAddActivity : AppCompatActivity() {
                 )
             }
 
-            val diet = Diet(
-                id = null,
-                date = selectedDate,
-                dietName = dietName,
-                menuItems = menuItems
-            )
+//            val diet = Diet(
+//                id = null,
+//                date = selectedDate,
+//                dietName = dietName,
+//                menuItems = menuItems
+//            )
 //            addDiet(diet) // 생성된 Diet 객체 저장 함수 호출
         }
 

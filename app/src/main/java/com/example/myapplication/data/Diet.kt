@@ -3,9 +3,7 @@ package com.example.myapplication.data
 import java.time.LocalDate
 
 data class Diet(
-    val id: Long?,
     val date: LocalDate,
-    val dietName: String,
     val menuItems: List<MenuItem>
 )
 

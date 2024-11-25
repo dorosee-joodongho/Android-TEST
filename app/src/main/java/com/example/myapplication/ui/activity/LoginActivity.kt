@@ -77,19 +77,6 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    // 로그인 처리 예시
-//    private fun loginUser(email: String, password: String) {
-//        if (email == "test@naver.com" && password == "1234") {
-//            Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-//            // val intent = Intent(this, MainActivity::class.java)
-//            val intent = Intent(this, StoreUseMenuActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        } else {
-//            Toast.makeText(this, "잘못된 이메일 또는 비밀번호입니다.", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
     // 로그인
     private fun loginUser(email: String, password: String) {
         lifecycleScope.launch {

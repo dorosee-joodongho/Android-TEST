@@ -68,6 +68,12 @@ class DietViewModel : ViewModel() {
         val allDiets = _dietList.value ?: return
 
         // 선택한 날짜의 식단을 필터링
-        _currentDiet.value = allDiets.filter { it.date == date }
+        val filteredDiets = allDiets.filter { it.date == date }
+
+        if (filteredDiets.isEmpty()) {
+            _currentDiet.value = null // 선택된 날짜에 식단이 없으면 null로 설정
+        } else {
+            _currentDiet.value = filteredDiets
+        }
     }
 }
