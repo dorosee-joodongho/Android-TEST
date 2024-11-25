@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.data.MenuDetail
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MenuDetailService
 import com.example.myapplication.utils.ToastUtils
 import kotlinx.coroutines.launch
@@ -29,7 +30,7 @@ class MenuDetailActivity : AppCompatActivity() {
     private lateinit var ivMenuImage: ImageView
     private lateinit var btnSelectImage: Button
 
-    private val menuService = MenuDetailService()
+    private val menuService = MenuDetailService(RetrofitClient.instance)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

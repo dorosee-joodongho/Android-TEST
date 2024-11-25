@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.data.MenuDetail
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MenuDetailService
 import com.example.myapplication.ui.adapter.MenuAdapter
 import kotlinx.coroutines.launch
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 class MenuListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnAddMenu: Button
-    private val menuService = MenuDetailService()
+    private val menuService = MenuDetailService(RetrofitClient.instance)
     private lateinit var menuList: List<MenuDetail> // 메뉴 데이터 리스트
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +38,8 @@ class MenuListActivity : AppCompatActivity() {
         // RecyclerView 초기화
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // 서비스에서 데이터 가져오기
         fetchMenuData()
 
-        // "새로운 메뉴 등록하기" 버튼 클릭 리스너
         btnAddMenu.setOnClickListener {
             // menuList가 초기화되고 비어있지 않은지 확인
             if (::menuList.isInitialized && menuList.isNotEmpty()) {

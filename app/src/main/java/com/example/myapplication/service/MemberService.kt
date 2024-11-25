@@ -2,7 +2,6 @@ package com.example.myapplication.service
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.myapplication.data.LoginResponse
 import com.example.myapplication.data.Member
 import com.example.myapplication.data.PostJoinRequestDto
 import com.example.myapplication.data.PostLoginRequestDto
@@ -51,7 +50,6 @@ class MemberService(context: Context, private val retrofitApi: RetrofitApi) {
         )
 
         return try {
-            // Retrofit API 호출
             val response = retrofitApi.join(joinInfo)
             println("회원가입 응답 코드: ${response.code}")
             response.code == "SU" // 성공 여부 확인

@@ -62,6 +62,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // JSON 파싱을 위한 Gson 컨버터
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0") // 그래프 라이브러리
     implementation("com.squareup.picasso:picasso:2.71828") // 이미지 로딩
+    implementation("com.squareup.okhttp3:okhttp:4.10.0") // RequestBody
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0") // RequestBody
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")  // Glide 컴파일러
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

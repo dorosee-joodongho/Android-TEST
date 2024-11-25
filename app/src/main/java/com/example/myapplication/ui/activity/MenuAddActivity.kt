@@ -1,8 +1,10 @@
 package com.example.myapplication.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -12,10 +14,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
-import com.example.myapplication.data.MenuDetail
+import com.example.myapplication.data.MenuDetailRequest
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MenuDetailService
+import com.example.myapplication.ui.activity.MenuListActivity
 import com.example.myapplication.utils.ToastUtils
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.IOException
 
 class MenuAddActivity : AppCompatActivity() {
     private var storeId: Long = -1L // 기본값
@@ -35,6 +41,7 @@ class MenuAddActivity : AppCompatActivity() {
     private lateinit var btnSelectImage: Button
 
     private var selectedImageUri: Uri? = null
+    private var selectedImageFile: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,14 +96,14 @@ class MenuAddActivity : AppCompatActivity() {
             val protein = protein.text.toString().toIntOrNull() ?: 0
             val fat = fat.text.toString().toIntOrNull() ?: 0
 
-            if (name.isNotEmpty() && price != null && selectedImageUri != null) {
-                val newMenu = MenuDetail(
-                    menuId = null,
-                    storeId = 1, // 임시
+            if (name.isNotEmpty() && price != null && selectedImageFile != null) {
+                val newMenu = MenuDetailRequest(
+                    menuId = 1, // 임시
+                    storeId = storeId,
                     name = name,
                     description = description,
                     price = price,
-                    menuImg = selectedImageUri,
+                    menuImg = selectedImageFile,
                     calorie = calorie,
                     carbs = carbs,
                     protein = protein,
@@ -105,7 +112,7 @@ class MenuAddActivity : AppCompatActivity() {
                 )
 
                 // 서버로 데이터 전송 로직
-//                saveMenuDetail(newMenu)
+                saveMenuDetail(newMenu)
             } else {
                 Toast.makeText(this, "모든 필드를 입력하고 이미지를 선택해주세요.", Toast.LENGTH_SHORT).show()
             }
@@ -113,22 +120,20 @@ class MenuAddActivity : AppCompatActivity() {
 
     }
 
-    private fun saveMenuDetail(newMenu: MenuDetail) {
+    private fun saveMenuDetail(newMenu: MenuDetailRequest) {
         lifecycleScope.launch {
-            val memberService = MenuDetailService()
+            val memberService = MenuDetailService(RetrofitClient.instance)
 
             try {
-                val loginResult = memberService.saveMenuDetail(newMenu)
+                val saveResult = memberService.saveMenuDetail(newMenu)
 
-                if (loginResult != null) {
-                    ToastUtils.showToast(this@MenuAddActivity,"메뉴 저장 성공")
+                if (saveResult) {
+                    ToastUtils.showToast(this@MenuAddActivity, "메뉴 저장 성공")
                     startActivity(Intent(this@MenuAddActivity, MenuListActivity::class.java))
                     finish()
-                } else {
-                    ToastUtils.showToast(this@MenuAddActivity,"메뉴 저장 실패")
                 }
             } catch (e: Exception) {
-                val errorMessage = e.message ?: "메뉴 저장 중 오류가 발생했습니다.. 다시 시도해주세요."
+                val errorMessage = e.message ?: "메뉴 저장 중 오류가 발생했습니다. 다시 시도해주세요."
                 ToastUtils.showToast(this@MenuAddActivity, errorMessage)
             }
         }
@@ -146,8 +151,44 @@ class MenuAddActivity : AppCompatActivity() {
         if (requestCode == IMAGE_PICK_REQUEST_CODE && resultCode == RESULT_OK) {
             selectedImageUri = data?.data
             ivMenuImage.setImageURI(selectedImageUri)
+
+            // Uri를 File로 변환
+            selectedImageFile = uriToFile(selectedImageUri, this)
         }
     }
+
+    private fun uriToFile(uri: Uri?, context: Context): File? {
+        return uri?.let {
+            val fileName = getFileNameFromUri(uri, context) ?: "temp_image"
+            val file = File(context.cacheDir, fileName)
+            try {
+                context.contentResolver.openInputStream(uri)?.use { inputStream ->
+                    file.outputStream().use { outputStream ->
+                        inputStream.copyTo(outputStream)
+                    }
+                }
+                file
+            } catch (e: IOException) {
+                e.printStackTrace()
+                null
+            }
+        }
+    }
+
+    private fun getFileNameFromUri(uri: Uri, context: Context): String? {
+        var fileName: String? = null
+        val cursor = context.contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (nameIndex != -1) {
+                    fileName = it.getString(nameIndex)
+                }
+            }
+        }
+        return fileName
+    }
+
 
     companion object {
         private const val IMAGE_PICK_REQUEST_CODE = 1000
