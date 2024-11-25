@@ -8,8 +8,13 @@ data class Member(
     val userImage : String,
 )
 
+data class PostLoginRequestDto(
+    val email: String,
+    val password: String
+)
+
 data class LoginResponse(
-    val isMember: Int,
+    val isMember: Boolean,
     val token: String
 )
 
@@ -18,4 +23,8 @@ data class PostJoinRequestDto (
     val phone: String,
     val email: String,
     val password: String
+)
+
+data class PostJoinResponseDto(
+    val code: String
 )
