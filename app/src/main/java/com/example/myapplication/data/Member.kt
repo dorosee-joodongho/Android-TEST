@@ -12,3 +12,10 @@ data class LoginResponse(
     val isMember: Int,
     val token: String
 )
+
+data class PostJoinRequestDto (
+    val name: String,
+    val phone: String,
+    val email: String,
+    val password: String
+)

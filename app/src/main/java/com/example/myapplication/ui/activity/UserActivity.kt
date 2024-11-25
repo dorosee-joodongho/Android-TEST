@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MemberService
 import kotlinx.coroutines.launch
 
@@ -19,7 +20,9 @@ class UserActivity : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnAction: Button
 
-    private val userService = MemberService(this)
+    private val userService by lazy {
+        MemberService(applicationContext, RetrofitClient.instance)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

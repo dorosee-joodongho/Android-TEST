@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MemberService
 import com.example.myapplication.utils.ToastUtils
 import com.squareup.picasso.Picasso
@@ -91,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
     // 로그인
     private fun loginUser2(email: String, password: String) {
         lifecycleScope.launch {
-            val memberService = MemberService(this@LoginActivity)
+            val memberService = MemberService(this@LoginActivity, RetrofitClient.instance)
 
             try {
                 val loginResult = memberService.login(email, password)
