@@ -25,13 +25,7 @@ public final class ActivityDietViewBinding implements ViewBinding {
   public final CalendarView calendarView;
 
   @NonNull
-  public final Button deleteButton;
-
-  @NonNull
   public final Button dietAnalysisButton;
-
-  @NonNull
-  public final Button editButton;
 
   @NonNull
   public final LinearLayout menuListContainer;
@@ -61,8 +55,7 @@ public final class ActivityDietViewBinding implements ViewBinding {
   public final TextView totalProteinRow;
 
   private ActivityDietViewBinding(@NonNull LinearLayout rootView,
-      @NonNull CalendarView calendarView, @NonNull Button deleteButton,
-      @NonNull Button dietAnalysisButton, @NonNull Button editButton,
+      @NonNull CalendarView calendarView, @NonNull Button dietAnalysisButton,
       @NonNull LinearLayout menuListContainer, @NonNull Button nextDietButton,
       @NonNull Button prevDietButton, @NonNull TextView selectedDietName,
       @NonNull TextView totalCaloriesRow, @NonNull TextView totalCaloriesText,
@@ -70,9 +63,7 @@ public final class ActivityDietViewBinding implements ViewBinding {
       @NonNull TextView totalProteinRow) {
     this.rootView = rootView;
     this.calendarView = calendarView;
-    this.deleteButton = deleteButton;
     this.dietAnalysisButton = dietAnalysisButton;
-    this.editButton = editButton;
     this.menuListContainer = menuListContainer;
     this.nextDietButton = nextDietButton;
     this.prevDietButton = prevDietButton;
@@ -117,21 +108,9 @@ public final class ActivityDietViewBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.delete_button;
-      Button deleteButton = ViewBindings.findChildViewById(rootView, id);
-      if (deleteButton == null) {
-        break missingId;
-      }
-
       id = R.id.diet_analysis_button;
       Button dietAnalysisButton = ViewBindings.findChildViewById(rootView, id);
       if (dietAnalysisButton == null) {
-        break missingId;
-      }
-
-      id = R.id.edit_button;
-      Button editButton = ViewBindings.findChildViewById(rootView, id);
-      if (editButton == null) {
         break missingId;
       }
 
@@ -189,10 +168,9 @@ public final class ActivityDietViewBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityDietViewBinding((LinearLayout) rootView, calendarView, deleteButton,
-          dietAnalysisButton, editButton, menuListContainer, nextDietButton, prevDietButton,
-          selectedDietName, totalCaloriesRow, totalCaloriesText, totalCarbsRow, totalFatRow,
-          totalProteinRow);
+      return new ActivityDietViewBinding((LinearLayout) rootView, calendarView, dietAnalysisButton,
+          menuListContainer, nextDietButton, prevDietButton, selectedDietName, totalCaloriesRow,
+          totalCaloriesText, totalCarbsRow, totalFatRow, totalProteinRow);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

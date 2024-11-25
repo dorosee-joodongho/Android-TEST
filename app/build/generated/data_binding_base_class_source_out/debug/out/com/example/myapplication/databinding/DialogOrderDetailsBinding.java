@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.myapplication.R;
@@ -21,38 +20,42 @@ public final class DialogOrderDetailsBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final TextView crowdLevel;
+  public final LinearLayout orderItemsContainer;
 
   @NonNull
-  public final TextView estimatedTime;
+  public final TextView tvCrowdLevel;
 
   @NonNull
-  public final TextView orderDate;
+  public final TextView tvEstimatedTime;
 
   @NonNull
-  public final RecyclerView rvOrderDetails;
+  public final TextView tvOrderDate;
 
   @NonNull
-  public final TextView storeName;
+  public final TextView tvStatus;
+
+  @NonNull
+  public final TextView tvStoreName;
+
+  @NonNull
+  public final TextView tvTitle;
 
   @NonNull
   public final TextView tvTotalPrice;
 
-  @NonNull
-  public final TextView waitingTime;
-
-  private DialogOrderDetailsBinding(@NonNull LinearLayout rootView, @NonNull TextView crowdLevel,
-      @NonNull TextView estimatedTime, @NonNull TextView orderDate,
-      @NonNull RecyclerView rvOrderDetails, @NonNull TextView storeName,
-      @NonNull TextView tvTotalPrice, @NonNull TextView waitingTime) {
+  private DialogOrderDetailsBinding(@NonNull LinearLayout rootView,
+      @NonNull LinearLayout orderItemsContainer, @NonNull TextView tvCrowdLevel,
+      @NonNull TextView tvEstimatedTime, @NonNull TextView tvOrderDate, @NonNull TextView tvStatus,
+      @NonNull TextView tvStoreName, @NonNull TextView tvTitle, @NonNull TextView tvTotalPrice) {
     this.rootView = rootView;
-    this.crowdLevel = crowdLevel;
-    this.estimatedTime = estimatedTime;
-    this.orderDate = orderDate;
-    this.rvOrderDetails = rvOrderDetails;
-    this.storeName = storeName;
+    this.orderItemsContainer = orderItemsContainer;
+    this.tvCrowdLevel = tvCrowdLevel;
+    this.tvEstimatedTime = tvEstimatedTime;
+    this.tvOrderDate = tvOrderDate;
+    this.tvStatus = tvStatus;
+    this.tvStoreName = tvStoreName;
+    this.tvTitle = tvTitle;
     this.tvTotalPrice = tvTotalPrice;
-    this.waitingTime = waitingTime;
   }
 
   @Override
@@ -82,33 +85,45 @@ public final class DialogOrderDetailsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.crowdLevel;
-      TextView crowdLevel = ViewBindings.findChildViewById(rootView, id);
-      if (crowdLevel == null) {
+      id = R.id.orderItemsContainer;
+      LinearLayout orderItemsContainer = ViewBindings.findChildViewById(rootView, id);
+      if (orderItemsContainer == null) {
         break missingId;
       }
 
-      id = R.id.estimatedTime;
-      TextView estimatedTime = ViewBindings.findChildViewById(rootView, id);
-      if (estimatedTime == null) {
+      id = R.id.tvCrowdLevel;
+      TextView tvCrowdLevel = ViewBindings.findChildViewById(rootView, id);
+      if (tvCrowdLevel == null) {
         break missingId;
       }
 
-      id = R.id.orderDate;
-      TextView orderDate = ViewBindings.findChildViewById(rootView, id);
-      if (orderDate == null) {
+      id = R.id.tvEstimatedTime;
+      TextView tvEstimatedTime = ViewBindings.findChildViewById(rootView, id);
+      if (tvEstimatedTime == null) {
         break missingId;
       }
 
-      id = R.id.rvOrderDetails;
-      RecyclerView rvOrderDetails = ViewBindings.findChildViewById(rootView, id);
-      if (rvOrderDetails == null) {
+      id = R.id.tvOrderDate;
+      TextView tvOrderDate = ViewBindings.findChildViewById(rootView, id);
+      if (tvOrderDate == null) {
         break missingId;
       }
 
-      id = R.id.storeName;
-      TextView storeName = ViewBindings.findChildViewById(rootView, id);
-      if (storeName == null) {
+      id = R.id.tvStatus;
+      TextView tvStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.tvStoreName;
+      TextView tvStoreName = ViewBindings.findChildViewById(rootView, id);
+      if (tvStoreName == null) {
+        break missingId;
+      }
+
+      id = R.id.tvTitle;
+      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
         break missingId;
       }
 
@@ -118,14 +133,8 @@ public final class DialogOrderDetailsBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.waitingTime;
-      TextView waitingTime = ViewBindings.findChildViewById(rootView, id);
-      if (waitingTime == null) {
-        break missingId;
-      }
-
-      return new DialogOrderDetailsBinding((LinearLayout) rootView, crowdLevel, estimatedTime,
-          orderDate, rvOrderDetails, storeName, tvTotalPrice, waitingTime);
+      return new DialogOrderDetailsBinding((LinearLayout) rootView, orderItemsContainer,
+          tvCrowdLevel, tvEstimatedTime, tvOrderDate, tvStatus, tvStoreName, tvTitle, tvTotalPrice);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

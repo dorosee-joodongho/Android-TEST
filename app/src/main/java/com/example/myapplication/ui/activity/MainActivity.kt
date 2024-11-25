@@ -30,7 +30,10 @@ class MainActivity : ComponentActivity(
         val storeService = StoreService()
 
         val getCurrentUser = memberService.getCurrentUser() //현재 접속 중인 유저
+
+
         val todaySpecialInfoList = menuService.getTodayBestMenu() //오늘 추천 메뉴 리스트
+
         val nearbyStores = storeService.getNearbyStores() //근처 가게 목록들
 
         //유저 이미지 표시

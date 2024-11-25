@@ -1,15 +1,67 @@
 [
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/menu_item_layout.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/menu_item_layout.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-mergeDebugResources-51:/layout/item_order_row.xml",
-        "source": "com.example.myapplication.app-main-54:/layout/item_order_row.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_user_use_menu.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_user_use_menu.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/fragment_header.xml",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/fragment_header.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_menu_list.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_menu_list.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_order_details.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_order_details.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_menu_action.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_menu_action.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_diet_add.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_diet_add.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_order.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_order.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_image.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_image.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_store_menu.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_store_menu.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_diet_analysis.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_diet_analysis.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_menu.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_menu.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-51:/layout/activity_store_use_menu.xml",
+        "source": "com.example.myapplication.app-main-54:/layout/activity_store_use_menu.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_cart.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_cart.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_cart.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_cart.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_login.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/menu_item_layout.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/menu_item_layout.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_user.xml",
@@ -20,24 +72,8 @@
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_order_detais.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_menu_action.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_menu_action.xml"
-    },
-    {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_order_details.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_order_details.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_order_details.xml",
-        "source": "com.example.myapplication.app-main-54:/layout/dialog_order_details.xml"
-    },
-    {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_order_row.xml",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_order_row.xml"
-    },
-    {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_diet_add.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_diet_add.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_diet_view.xml",
@@ -48,40 +84,24 @@
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/menu_item.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_order.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_order.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_store_use_menu.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_store_use_menu.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_store_menu.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_store_menu.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_menu.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_menu.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_image.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_image.xml"
-    },
-    {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_diet_analysis.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_diet_analysis.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_menu_register.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_menu_register.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/store_item.xml",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/store_item.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_menu.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_menu.xml"
-    },
-    {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_cart.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_cart.xml"
-    },
-    {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_main.xml",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_main.xml"
-    },
-    {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_cart.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/item_cart.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_order_history.xml",

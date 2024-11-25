@@ -6,7 +6,7 @@ class APICall(
 ) {
     val BASEURL = "http://localhost:8080/"
 
-    suspend fun <T> apiCall(
+    fun <T> apiCall(
         method: String,
         apiEndpoint: String,
         requestBody: Any? = null,
