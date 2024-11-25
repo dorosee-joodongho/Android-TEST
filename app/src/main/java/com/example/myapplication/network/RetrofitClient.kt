@@ -14,9 +14,10 @@ import java.lang.reflect.Type
 object RetrofitClient {
     private const val BASE_URL = "http://10.0.2.2:8080/"
     private var sharedPreferences: SharedPreferences? = null
+
     // Retrofit 초기화 함수
     fun initialize(context: Context) {
-        sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
     }
     private val client: OkHttpClient by lazy {
         OkHttpClient.Builder()

@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        RetrofitClient.initialize(this) // Context 전달
 
         initViews()
 

@@ -1,5 +1,6 @@
 package com.example.myapplication.network
 
+// 사용 X
 //API 호출시 사용 바람 apiService 의존성(DI) 해서
 class APICall(
     private val apiService: APIService

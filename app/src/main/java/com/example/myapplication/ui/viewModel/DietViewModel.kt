@@ -2,13 +2,16 @@ package com.example.myapplication.ui.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.Diet
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.DietService
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class DietViewModel : ViewModel() {
 
-    private val dietService = DietService()
+    private val dietService = DietService(RetrofitClient.instance)
 
     private val _selectedDate = MutableLiveData<LocalDate>(LocalDate.now())
     val selectedDate: LiveData<LocalDate> = _selectedDate
@@ -26,13 +29,21 @@ class DietViewModel : ViewModel() {
         fetchAllDiets() // 앱 초기화 시 한 번만 호출
     }
 
+    // 전체 식단 데이터 가져오기
     private fun fetchAllDiets() {
-        dietService.getDietList { diets ->
-            _dietList.value = diets
-            filterDietForSelectedDate() // 초기 선택 날짜에 맞는 데이터를 설정
-            calculateMonthlyCalories() // 월간 총 칼로리 계산
+        viewModelScope.launch {
+            try {
+                val diets = dietService.getDietList()
+                _dietList.value = diets
+                filterDietForSelectedDate() // 초기 날짜 기준으로 필터링
+                calculateMonthlyCalories() // 초기 월간 칼로리 계산
+            } catch (e: Exception) {
+                println("식단 데이터를 가져오는 중 오류 발생: ${e.message}")
+                _dietList.value = emptyList() // 오류 시 빈 리스트로 초기화
+            }
         }
     }
+
 
     fun setSelectedDate(date: LocalDate) {
         _selectedDate.value = date
@@ -58,31 +69,5 @@ class DietViewModel : ViewModel() {
 
         // 선택한 날짜의 식단을 필터링
         _currentDiet.value = allDiets.filter { it.date == date }
-    }
-
-    fun deleteDiet(dietId: Long, callback: (Boolean) -> Unit) {
-        dietService.deleteDiet(dietId) { success ->
-            if (success) {
-                // 서버에서 삭제 성공 시 로컬 데이터 업데이트
-                _dietList.value = _dietList.value?.filter { it.id != dietId }
-                filterDietForSelectedDate()
-            }
-            callback(success)
-        }
-    }
-
-    fun updateDiet(diet: Diet, callback: (Boolean) -> Unit) {
-        dietService.updateDiet(diet) { updatedDiet ->
-            if (updatedDiet != null) {
-                // 서버 업데이트 성공 시 로컬 데이터 수정
-                _dietList.value = _dietList.value?.map {
-                    if (it.id == updatedDiet.id) updatedDiet else it
-                }
-                filterDietForSelectedDate()
-                callback(true)
-            } else {
-                callback(false)
-            }
-        }
     }
 }

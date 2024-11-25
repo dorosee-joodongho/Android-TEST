@@ -2,6 +2,7 @@ package com.example.myapplication.network
 
 import retrofit2.http.*
 
+// 사용 X
 interface APIService {
 
     // GET 요청 (헤더에 Banner 토큰을 추가)

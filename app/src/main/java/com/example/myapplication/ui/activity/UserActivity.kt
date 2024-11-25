@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
 import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MemberService
+import com.example.myapplication.utils.ToastUtils
 import kotlinx.coroutines.launch
 
 class UserActivity : AppCompatActivity() {
@@ -63,7 +64,7 @@ class UserActivity : AppCompatActivity() {
             if (isUpdate) {
                 updateUser()
             } else {
-                registerUser()
+                saveMember()
             }
         }
     }
@@ -76,7 +77,7 @@ class UserActivity : AppCompatActivity() {
         etEmail.setText(currentUser.memberEmail)
     }
 
-    private fun registerUser() {
+    private fun saveMember() {
         // 회원가입 로직 호출
         val name = etName.text.toString()
         val phone = etPhone.text.toString()
@@ -85,21 +86,20 @@ class UserActivity : AppCompatActivity() {
         val confirmPassword = etConfirmPassword.text.toString()
 
         if (password == confirmPassword) {
-            // 코루틴을 사용하여 비동기 처리
             lifecycleScope.launch {
                 try {
                     val success = userService.saveMember(name, phone, email, password)
                     if (success) {
-                        Toast.makeText(this@UserActivity, "회원 가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
+                        ToastUtils.showToast(this@UserActivity, "회원 가입에 성공하셨습니다.")
                     } else {
-                        Toast.makeText(this@UserActivity, "회원 가입에 실패하셨습니다. 다시 시도 해주세요.", Toast.LENGTH_SHORT).show()
+                        ToastUtils.showToast(this@UserActivity, "회원 가입에 실패하셨습니다. 다시 시도 해주세요.")
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(this@UserActivity, "회원 가입 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                    ToastUtils.showToast(this@UserActivity, "회원 가입 중 오류가 발생했습니다.")
                 }
             }
         } else {
-            Toast.makeText(this, "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
+            ToastUtils.showToast(this, "비밀번호를 확인해주세요.")
         }
     }
 
@@ -113,12 +113,12 @@ class UserActivity : AppCompatActivity() {
             try {
                 val success = userService.updateMember(name, phone, password)
                 if (success) {
-                    Toast.makeText(this@UserActivity, "정보 수정에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
+                    ToastUtils.showToast(this@UserActivity, "정보 수정에 성공하셨습니다.")
                 } else {
-                    Toast.makeText(this@UserActivity, "정보 수정에 실패하셨습니다. 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
+                    ToastUtils.showToast(this@UserActivity, "정보 수정에 실패하셨습니다. 다시 시도해주세요.")
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@UserActivity, "정보 수정 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                ToastUtils.showToast(this@UserActivity, "정보 수정 중 오류가 발생했습니다.")
             }
         }
     }

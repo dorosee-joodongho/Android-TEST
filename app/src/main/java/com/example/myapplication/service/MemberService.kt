@@ -26,9 +26,9 @@ class MemberService(context: Context, private val retrofitApi: RetrofitApi) {
         )
 
         return try {
-            // Retrofit API 호출
             val response = retrofitApi.login(loginInfo)
             println("로그인 응답: ${response}")
+            println("저장된 토큰 : ${getAuthToken()}")
             saveAuthToken(response.token)
             if (response.isMember) {
                 return true // 고객 로그인

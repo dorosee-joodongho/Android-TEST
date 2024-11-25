@@ -2,29 +2,21 @@ package com.example.myapplication.service
 
 import com.example.myapplication.data.Diet
 import com.example.myapplication.data.MenuItem
+import com.example.myapplication.network.RetrofitApi
 import java.time.LocalDate
 
-class DietService {
-
-    // 식단 추가 : 구현 X
-    fun saveDiet(diet: Diet, callback: (Diet?) -> Unit) {
-        // 식단 정보 저장
-        callback(diet) // 저장 객체 반환
-    }
-    // 식단 수정 : 구현 X
-    fun updateDiet(diet: Diet, callback: (Diet?) -> Unit) {
-        // 식단 정보 수정
-        callback(diet)
-    }
-    // 식단 삭제 : 구현 X
-    fun deleteDiet(dietId: Long, callback: (Boolean) -> Unit) {
-        // 식단 정보 삭제
-        callback(true)
-    }
+class DietService(private val retrofitApi: RetrofitApi) {
 
     // 식단 목록 가져오기
-    fun getDietList(callback: (List<Diet>?) -> Unit) {
-        callback(sampleDietData) // 목록 반환
+    suspend fun getDietList(): List<Diet> {
+        try {
+            val response = retrofitApi.getDietList()
+            println("식단 목록 : ${response}")
+            return response.data
+        } catch (e: Exception) {
+            println("식단 목록 가져오는 중 오류: ${e.message}")
+            throw e
+        }
     }
 
     companion object {
