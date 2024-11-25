@@ -71,10 +71,10 @@ class UserUseMenuActivity : AppCompatActivity() {
 
     private fun logout() {
         // Preferences 삭제
-//        val sharedPreferences = getSharedPreferences("user_preferences", MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//        editor.remove("key_name") // key_name을 원하는 키로 변경
-//        editor.apply()
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear() // 모든 데이터 제거
+        editor.apply()
 
         Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_SHORT).show()
 

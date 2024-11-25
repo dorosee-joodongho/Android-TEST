@@ -16,3 +16,7 @@ data class MenuItem(
     var protein: Int,
     var fat: Int
 )
+
+data class DietResponse(
+    val data: List<Diet>
+)

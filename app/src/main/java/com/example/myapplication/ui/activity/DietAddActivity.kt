@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.data.Diet
 import com.example.myapplication.data.MenuItem
+import com.example.myapplication.network.RetrofitApi
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.DietService
 import java.time.LocalDate
 
 class DietAddActivity : AppCompatActivity() {
-    private val dietService = DietService()
+    private val dietService = DietService(RetrofitClient.instance)
     private lateinit var menuListContainer: LinearLayout
     private val menuList = mutableListOf<View>()
 
@@ -73,7 +75,7 @@ class DietAddActivity : AppCompatActivity() {
                 dietName = dietName,
                 menuItems = menuItems
             )
-            addDiet(diet) // 생성된 Diet 객체 저장 함수 호출
+//            addDiet(diet) // 생성된 Diet 객체 저장 함수 호출
         }
 
     }
@@ -92,13 +94,13 @@ class DietAddActivity : AppCompatActivity() {
     }
 
 //    식단 정보 추가
-    private fun addDiet(diet: Diet) {
-        dietService.saveDiet(diet) { success -> // 올바른 메서드 이름 사용
-            if (success !== null) {
-                Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "저장 실패, 다시 시도 해주세요.", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+//    private fun addDiet(diet: Diet) {
+//        dietService.saveDiet(diet) { success -> // 올바른 메서드 이름 사용
+//            if (success !== null) {
+//                Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
+//            } else {
+//                Toast.makeText(this, "저장 실패, 다시 시도 해주세요.", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
 }
