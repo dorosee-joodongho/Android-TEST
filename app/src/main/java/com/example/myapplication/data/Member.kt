@@ -25,6 +25,13 @@ data class PostJoinRequestDto (
     val password: String
 )
 
+data class MemberDto(
+    val memberId: Long,
+    val memberName: String,
+    val memberPhone: String,
+    val memberEmail: String
+)
+
 data class PostJoinResponseDto(
     val code: String
 )

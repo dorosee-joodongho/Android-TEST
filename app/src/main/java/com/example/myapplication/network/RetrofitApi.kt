@@ -2,6 +2,7 @@ package com.example.myapplication.network
 
 import com.example.myapplication.data.DietResponse
 import com.example.myapplication.data.LoginResponse
+import com.example.myapplication.data.MemberDto
 import com.example.myapplication.data.MenuDetail
 import com.example.myapplication.data.PostJoinRequestDto
 import com.example.myapplication.data.PostJoinResponseDto
@@ -26,6 +27,18 @@ interface RetrofitApi {
     @POST("login")
     suspend fun login(@Body postLoginRequestDto: PostLoginRequestDto): LoginResponse
 
+    @GET("member")
+    suspend fun getMember(): MemberDto
+
+    @Multipart
+    @PUT("update")
+    suspend fun updateMember(
+        @Part("memberId") memberId: RequestBody,
+        @Part("memberName") memberName: RequestBody,
+        @Part("memberPhone") memberPhone: RequestBody,
+        @Part("memberPassword") memberPassword: RequestBody,
+    ): ResponseBody
+
     @GET("diet")
     suspend fun getDietList(): DietResponse
 
@@ -47,9 +60,6 @@ interface RetrofitApi {
 
     @GET("store/list")
     suspend fun getStoreMenuList(): List<MenuDetail>
-
-    @GET("store/list/{menuId}")
-    suspend fun storeMenuListDetail(@Path("menuId") menuId: Int): MenuDetail
 
     @DELETE("menu/delete/{menuId}")
     suspend fun deleteMenu(@Path("menuId") menuId: Int)
