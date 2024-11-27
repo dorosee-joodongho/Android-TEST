@@ -1,6 +1,5 @@
 package com.example.myapplication.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -49,9 +48,9 @@ class MenuDetailActivity : AppCompatActivity() {
         initViews()
 
         // 기존 값들을 EditText에 세팅
-        menuName.setText(menu.name)
+        menuName.setText(menu.menuName)
         menuPrice.setText(menu.price.toString())
-        description.setText(menu.description)
+        description.setText(menu.menuDescription)
         calorie.setText(menu.calorie.toString())
         carbs.setText(menu.carbs.toString())
         protein.setText(menu.protein.toString())
@@ -90,9 +89,9 @@ class MenuDetailActivity : AppCompatActivity() {
                 updatedDescription.isNotEmpty() && updatedCalorie != null &&
                 updatedCarbs != null && updatedProtein != null && updatedFat != null
             ) {
-                menu.name = updatedName
+                menu.menuName = updatedName
                 menu.price = updatedPrice
-                menu.description = updatedDescription
+                menu.menuDescription = updatedDescription
                 menu.calorie = updatedCalorie
                 menu.carbs = updatedCarbs
                 menu.protein = updatedProtein

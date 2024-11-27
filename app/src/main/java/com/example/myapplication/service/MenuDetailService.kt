@@ -12,13 +12,18 @@ import java.io.File
 class MenuDetailService(private val retrofitApi: RetrofitApi) {
 
     // 식단 목록 가져오기
-    fun getMenuDetailList(): List<MenuDetail> {
-        return menuDetails
+    suspend fun getMenuDetailList(): List<MenuDetail>? {
+        try {
+            val response = retrofitApi.getStoreMenuList()
+            println("메뉴 목록 $response")
+            return response
+        } catch (e: Exception) {
+            println("식단 목록 가져오는 중 오류 발생: ${e.message}")
+            return null
+        }
     }
 
     suspend fun saveMenuDetail(menuDetail: MenuDetailRequest): Boolean {
-        println("menuDetail ${menuDetail}")
-        println("파일 이름 ${menuDetail.menuImg?.name}")
         return try {
             // RequestBody 형식으로 변환
             val menuId = prepareStringPart("1")
@@ -37,7 +42,7 @@ class MenuDetailService(private val retrofitApi: RetrofitApi) {
             val response = retrofitApi.saveMenu(
                 menuId, storeId, name, description, price, calorie, carbs, protein, fat, isSoldOut, menuImg
             )
-            println("메뉴 저장 성공: ${response}")
+            println("메뉴 저장 성공: ${response.string()}")
             true
         } catch (e: Exception) {
             println("메뉴 저장 중 오류 발생: ${e.message}")
@@ -60,8 +65,8 @@ class MenuDetailService(private val retrofitApi: RetrofitApi) {
             MenuDetail(
                 menuId = 1,
                 storeId = 1,
-                name = "김치찌개",
-                description = "매콤하고 맛있는 김치찌개",
+                menuName = "김치찌개",
+                menuDescription = "매콤하고 맛있는 김치찌개",
                 price = 8000,
                 menuImg = null,
                 calorie = 400,
@@ -73,8 +78,8 @@ class MenuDetailService(private val retrofitApi: RetrofitApi) {
             MenuDetail(
                 menuId = 2,
                 storeId = 1,
-                name = "된장찌개",
-                description = "구수한 된장찌개",
+                menuName = "된장찌개",
+                menuDescription = "구수한 된장찌개",
                 price = 7000,
                 menuImg = null,
                 calorie = 350,
