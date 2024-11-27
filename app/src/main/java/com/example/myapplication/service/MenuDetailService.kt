@@ -3,6 +3,7 @@ package com.example.myapplication.service
 import com.example.myapplication.data.MenuDetail
 import com.example.myapplication.data.MenuDetailRequest
 import com.example.myapplication.network.RetrofitApi
+import com.example.myapplication.utils.TransRequestBody
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -26,18 +27,18 @@ class MenuDetailService(private val retrofitApi: RetrofitApi) {
     suspend fun saveMenuDetail(menuDetail: MenuDetailRequest): Boolean {
         return try {
             // RequestBody 형식으로 변환
-            val menuId = prepareStringPart("1")
-            val storeId = prepareStringPart(menuDetail.storeId.toString())
-            val name = prepareStringPart(menuDetail.name)
-            val description = prepareStringPart(menuDetail.description)
-            val price = prepareStringPart(menuDetail.price.toString())
-            val calorie = prepareStringPart(menuDetail.calorie.toString())
-            val carbs = prepareStringPart(menuDetail.carbs.toString())
-            val protein = prepareStringPart(menuDetail.protein.toString())
-            val fat = prepareStringPart(menuDetail.fat.toString())
-            val isSoldOut = prepareStringPart(menuDetail.isSoldOut.toString())
+            val menuId = TransRequestBody.prepareStringPart("1")
+            val storeId = TransRequestBody.prepareStringPart(menuDetail.storeId.toString())
+            val name = TransRequestBody.prepareStringPart(menuDetail.name)
+            val description = TransRequestBody.prepareStringPart(menuDetail.description)
+            val price = TransRequestBody.prepareStringPart(menuDetail.price.toString())
+            val calorie = TransRequestBody.prepareStringPart(menuDetail.calorie.toString())
+            val carbs = TransRequestBody.prepareStringPart(menuDetail.carbs.toString())
+            val protein = TransRequestBody.prepareStringPart(menuDetail.protein.toString())
+            val fat = TransRequestBody.prepareStringPart(menuDetail.fat.toString())
+            val isSoldOut = TransRequestBody.prepareStringPart(menuDetail.isSoldOut.toString())
 
-            val menuImg = menuDetail.menuImg?.let { prepareFilePart(it) }
+            val menuImg = menuDetail.menuImg?.let { TransRequestBody.prepareFilePart(it) }
 
             val response = retrofitApi.saveMenu(
                 menuId, storeId, name, description, price, calorie, carbs, protein, fat, isSoldOut, menuImg
@@ -92,14 +93,5 @@ class MenuDetailService(private val retrofitApi: RetrofitApi) {
         )
     }
 
-    // 텍스트 데이터를 RequestBody로 변환
-    fun prepareStringPart(value: String): RequestBody {
-        return RequestBody.create("text/plain".toMediaTypeOrNull(), value)
-    }
 
-    // 이미지 파일을 MultipartBody.Part로 변환
-    fun prepareFilePart(file: File): MultipartBody.Part {
-        val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-        return MultipartBody.Part.createFormData("menuImg", file.name, requestFile)
-    }
 }

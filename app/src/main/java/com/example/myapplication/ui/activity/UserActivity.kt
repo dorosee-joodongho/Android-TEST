@@ -23,6 +23,8 @@ class UserActivity : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnAction: Button
 
+    private var memberId = -1L
+
     private val userService by lazy {
         MemberService(applicationContext, RetrofitClient.instance)
     }
@@ -72,11 +74,22 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun loadUserData() {
-        // 현재 로그인된 사용자 정보 불러오기
-        val currentUser = userService.getCurrentUser()
-        etName.setText(currentUser.memberName)
-        etPhone.setText(currentUser.memberPhone)
-        etEmail.setText(currentUser.memberEmail)
+        lifecycleScope.launch {
+            try {
+                val currentUser = userService.getMember()
+
+                if (currentUser != null) {
+                    memberId = currentUser.memberID
+                    etName.setText(currentUser.memberName)
+                    etPhone.setText(currentUser.memberPhone)
+                    etEmail.setText(currentUser.memberEmail)
+                } else {
+                    ToastUtils.showToast(this@UserActivity, "정보 로드 실패")
+                }
+            } catch (e: Exception) {
+                println("사용자 정보 로드 실패 : ${e.message}")
+            }
+        }
     }
 
     private fun saveMember() {
@@ -121,7 +134,7 @@ class UserActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             try {
-                val success = userService.updateMember(name, phone, password)
+                val success = userService.updateMember(memberId, name, phone, password)
                 if (success) {
                     ToastUtils.showToast(this@UserActivity, "정보 수정에 성공하셨습니다.")
                 } else {
@@ -166,8 +179,8 @@ class UserActivity : AppCompatActivity() {
             ToastUtils.showToast(this, "유효한 전화번호를 입력해주세요.")
             return false
         }
-        if (password.isEmpty() || password.length < 6) {
-            ToastUtils.showToast(this, "비밀번호는 6자리 이상이어야 합니다.")
+        if (password.isEmpty() || password.length < 4) {
+            ToastUtils.showToast(this, "비밀번호는 4자리 이상이어야 합니다.")
             return false
         }
         return true
