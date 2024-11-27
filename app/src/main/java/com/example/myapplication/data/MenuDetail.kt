@@ -1,14 +1,13 @@
 package com.example.myapplication.data
 
-import android.net.Uri
 import java.io.File
 import java.io.Serializable
 
 data class MenuDetail (
     val menuId: Long?,
     val storeId : Long,
-    var name: String,
-    var description: String,
+    var menuName: String,
+    var menuDescription: String,
     var price : Int,
     var menuImg : String?,
     var calorie: Int,
@@ -31,10 +30,6 @@ data class MenuDetailRequest (
     var fat: Int,
     var isSoldOut: Int // 1이 품절
 ) : Serializable
-
-data class GetStoreMenuListResponseDto(
-    val list: List<GetStoreMenuItem>
-)
 
 data class GetStoreMenuItem(
     val menuId: Int,

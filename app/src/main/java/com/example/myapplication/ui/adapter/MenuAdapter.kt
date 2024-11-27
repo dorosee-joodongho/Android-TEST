@@ -23,8 +23,8 @@ class MenuAdapter(
 
         fun bind(menu: MenuDetail) {
             // 메뉴 데이터 바인딩
-            tvMenuName.text = menu.name
-            tvMenuDescription.text = menu.description
+            tvMenuName.text = menu.menuName
+            tvMenuDescription.text = menu.menuDescription
             tvMenuPrice.text = "₩${menu.price}"
 
             // 메뉴 이미지 바인딩 (Glide 사용)

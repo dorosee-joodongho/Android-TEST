@@ -60,7 +60,7 @@ class MenuListActivity : AppCompatActivity() {
                 // 메뉴 데이터를 비동기적으로 가져옴
                 val data = menuService.getMenuDetailList()
 
-                if (data.isNotEmpty()) {
+                if (data != null && data.isNotEmpty()) {
                     menuList = data.toMutableList()
                     setupRecyclerView(menuList)  // 리사이클러뷰 업데이트
                 } else {
