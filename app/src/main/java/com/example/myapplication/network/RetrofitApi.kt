@@ -1,6 +1,7 @@
 package com.example.myapplication.network
 
 import com.example.myapplication.data.DietResponse
+import com.example.myapplication.data.GetStoreMenuListResponseDto
 import com.example.myapplication.data.LoginResponse
 import com.example.myapplication.data.MemberDto
 import com.example.myapplication.data.MenuDetail
@@ -36,7 +37,7 @@ interface RetrofitApi {
         @Part("memberId") memberId: RequestBody,
         @Part("memberName") memberName: RequestBody,
         @Part("memberPhone") memberPhone: RequestBody,
-        @Part("memberPassword") memberPassword: RequestBody,
+        @Part("password") password: RequestBody,
     ): ResponseBody
 
     @GET("diet")
@@ -46,7 +47,6 @@ interface RetrofitApi {
     @POST("menu/save")
     suspend fun saveMenu(
         @Part("menuId") menuId: RequestBody,
-        @Part("storeId") storeId: RequestBody,
         @Part("name") name: RequestBody,
         @Part("description") description: RequestBody,
         @Part("price") price: RequestBody,
@@ -59,15 +59,15 @@ interface RetrofitApi {
     ): ResponseBody
 
     @GET("store/list")
-    suspend fun getStoreMenuList(): List<MenuDetail>
+    suspend fun getStoreMenuList(): GetStoreMenuListResponseDto
 
     @DELETE("menu/delete/{menuId}")
-    suspend fun deleteMenu(@Path("menuId") menuId: Int)
+    suspend fun deleteMenu(@Path("menuId") menuId: Long)
 
     @Multipart
     @PUT("menu/update/{menuId}")
     suspend fun updateMenu(
-        @Path("menuId") menuId: Int,
+        @Path("menuId") menuId: Long,
         @Part("name") name: RequestBody,
         @Part("description") description: RequestBody,
         @Part("price") price: RequestBody,

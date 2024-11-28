@@ -5,11 +5,10 @@ import java.io.Serializable
 
 data class MenuDetail (
     val menuId: Long?,
-    val storeId : Long,
     var menuName: String,
     var menuDescription: String,
-    var price : Int,
-    var menuImg : String?,
+    var menuPrice : Int,
+    var menuImage : String?,
     var calorie: Int,
     var carbs: Int,
     var protein: Int,
@@ -17,9 +16,12 @@ data class MenuDetail (
     var isSoldOut: Int // 1이 품절
 ) : Serializable
 
+data class GetStoreMenuListResponseDto(
+    val list: List<MenuDetail>
+)
+
 data class MenuDetailRequest (
     val menuId: Long?,
-    val storeId : Long,
     var name: String,
     var description: String,
     var price : Int,

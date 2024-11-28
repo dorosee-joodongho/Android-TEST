@@ -1,10 +1,8 @@
 package com.example.myapplication.ui.activity
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.OpenableColumns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -17,15 +15,12 @@ import com.example.myapplication.R
 import com.example.myapplication.data.MenuDetailRequest
 import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.MenuDetailService
-import com.example.myapplication.ui.activity.MenuListActivity
+import com.example.myapplication.utils.ImageUtils
 import com.example.myapplication.utils.ToastUtils
 import kotlinx.coroutines.launch
 import java.io.File
-import java.io.IOException
 
 class MenuAddActivity : AppCompatActivity() {
-    private var storeId: Long = -1L // 기본값
-
     private lateinit var menuName: EditText
     private lateinit var menuPrice: EditText
     private lateinit var description: EditText
@@ -53,15 +48,6 @@ class MenuAddActivity : AppCompatActivity() {
         }
         backButton.text = "←  메뉴 등록"
 
-        // Intent로 전달된 storeId 값 가져오기
-        storeId = intent.getLongExtra("storeId", -1L)
-
-        if (storeId != -1L) {
-            Toast.makeText(this, "Store ID: $storeId", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Store ID를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
-        }
-
         menuName = findViewById(R.id.menuName)
         menuPrice = findViewById(R.id.price)
         description = findViewById(R.id.description)
@@ -78,7 +64,7 @@ class MenuAddActivity : AppCompatActivity() {
 
 
         btnSelectImage.setOnClickListener {
-            selectImageFromGallery()
+            ImageUtils.selectImageFromGallery(this, IMAGE_PICK_REQUEST_CODE)
         }
 
         // 메뉴 등록 화면이므로 삭제, 수정, 품절 버튼 숨김
@@ -98,8 +84,7 @@ class MenuAddActivity : AppCompatActivity() {
 
             if (name.isNotEmpty() && price != null && selectedImageFile != null) {
                 val newMenu = MenuDetailRequest(
-                    menuId = 1, // 임시
-                    storeId = storeId,
+                    menuId = 1,
                     name = name,
                     description = description,
                     price = price,
@@ -139,12 +124,6 @@ class MenuAddActivity : AppCompatActivity() {
         }
     }
 
-    private fun selectImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_REQUEST_CODE)
-    }
-
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -153,45 +132,11 @@ class MenuAddActivity : AppCompatActivity() {
             ivMenuImage.setImageURI(selectedImageUri)
 
             // Uri를 File로 변환
-            selectedImageFile = uriToFile(selectedImageUri, this)
+            selectedImageFile = ImageUtils.uriToFile(selectedImageUri, this)
         }
     }
-
-    private fun uriToFile(uri: Uri?, context: Context): File? {
-        return uri?.let {
-            val fileName = getFileNameFromUri(uri, context) ?: "temp_image"
-            val file = File(context.cacheDir, fileName)
-            try {
-                context.contentResolver.openInputStream(uri)?.use { inputStream ->
-                    file.outputStream().use { outputStream ->
-                        inputStream.copyTo(outputStream)
-                    }
-                }
-                file
-            } catch (e: IOException) {
-                e.printStackTrace()
-                null
-            }
-        }
-    }
-
-    private fun getFileNameFromUri(uri: Uri, context: Context): String? {
-        var fileName: String? = null
-        val cursor = context.contentResolver.query(uri, null, null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                if (nameIndex != -1) {
-                    fileName = it.getString(nameIndex)
-                }
-            }
-        }
-        return fileName
-    }
-
 
     companion object {
         private const val IMAGE_PICK_REQUEST_CODE = 1000
     }
-
 }
