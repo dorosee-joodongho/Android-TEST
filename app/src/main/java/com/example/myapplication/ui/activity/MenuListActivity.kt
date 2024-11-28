@@ -21,6 +21,12 @@ class MenuListActivity : AppCompatActivity() {
     private lateinit var btnAddMenu: Button
     private val menuService = MenuDetailService(RetrofitClient.instance)
     private lateinit var menuList: List<MenuDetail> // 메뉴 데이터 리스트
+    private lateinit var adapter: MenuAdapter // RecyclerView 어댑터
+
+    override fun onResume() {
+        super.onResume()
+        fetchMenuData()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,21 +42,19 @@ class MenuListActivity : AppCompatActivity() {
         btnAddMenu = findViewById(R.id.btnAddMenu)
 
         // RecyclerView 초기화
+        adapter = MenuAdapter(emptyList()) { selectedMenu ->
+            val intent = Intent(this, MenuDetailActivity::class.java)
+            intent.putExtra("menu", selectedMenu)
+            startActivityForResult(intent, MENU_DETAIL_REQUEST_CODE)
+        }
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
 
         fetchMenuData()
 
         btnAddMenu.setOnClickListener {
-            // menuList가 초기화되고 비어있지 않은지 확인
-            if (::menuList.isInitialized && menuList.isNotEmpty()) {
-                val firstStoreId = menuList.first().storeId
-                val intent = Intent(this, MenuAddActivity::class.java).apply {
-                    putExtra("storeId", firstStoreId)
-                }
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "메뉴 데이터를 로드할 수 없습니다.", Toast.LENGTH_SHORT).show()
-            }
+            val intent = Intent(this@MenuListActivity, MenuAddActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -62,7 +66,7 @@ class MenuListActivity : AppCompatActivity() {
 
                 if (data != null && data.isNotEmpty()) {
                     menuList = data.toMutableList()
-                    setupRecyclerView(menuList)  // 리사이클러뷰 업데이트
+                    adapter.updateMenuList(menuList) // 어댑터 데이터 갱신
                 } else {
                     Toast.makeText(this@MenuListActivity, "메뉴 데이터가 비어 있습니다.", Toast.LENGTH_SHORT).show()
                 }
@@ -73,12 +77,20 @@ class MenuListActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupRecyclerView(menuList: List<MenuDetail>) {
-        val adapter = MenuAdapter(menuList) { selectedMenu ->
-            val intent = Intent(this, MenuDetailActivity::class.java)
-            intent.putExtra("menu", selectedMenu)
-            startActivity(intent)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == MENU_DETAIL_REQUEST_CODE && resultCode == RESULT_OK) {
+            val deletedMenuId = data?.getLongExtra("deletedMenuId", -1)
+            if (deletedMenuId != null && deletedMenuId != -1L) {
+                // 삭제된 메뉴를 리스트에서 제거
+                menuList = menuList.filter { it.menuId != deletedMenuId }
+                adapter.updateMenuList(menuList)
+            }
         }
-        recyclerView.adapter = adapter
     }
+
+    companion object {
+        private const val MENU_DETAIL_REQUEST_CODE = 1001
+    }
+
 }

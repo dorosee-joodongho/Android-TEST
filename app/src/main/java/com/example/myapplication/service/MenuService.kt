@@ -1,8 +1,6 @@
 package com.example.myapplication.service
 
 import com.example.myapplication.data.Menu
-import com.example.myapplication.network.APICall
-import com.example.myapplication.network.APIService
 import com.example.myapplication.network.RetrofitClient
 
 class MenuService {

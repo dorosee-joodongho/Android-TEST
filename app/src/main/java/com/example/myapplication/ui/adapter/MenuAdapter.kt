@@ -11,7 +11,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.MenuDetail
 
 class MenuAdapter(
-    private val menuList: List<MenuDetail>,
+    private var menuList: List<MenuDetail>,
     private val onItemClick: (MenuDetail) -> Unit
 ) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
@@ -25,11 +25,11 @@ class MenuAdapter(
             // 메뉴 데이터 바인딩
             tvMenuName.text = menu.menuName
             tvMenuDescription.text = menu.menuDescription
-            tvMenuPrice.text = "₩${menu.price}"
+            tvMenuPrice.text = "₩${menu.menuPrice}"
 
             // 메뉴 이미지 바인딩 (Glide 사용)
             Glide.with(itemView.context)
-                .load(menu.menuImg) // 이미지 URI 또는 URL
+                .load(menu.menuImage) // 이미지 URI 또는 URL
                 .placeholder(R.drawable.placeholder_image) // 이미지 로드 중 보여줄 기본 이미지
                 .error(R.drawable.error_image) // 이미지 로드 실패 시 보여줄 기본 이미지
                 .into(ivMenuImage)
@@ -38,6 +38,11 @@ class MenuAdapter(
                 onItemClick(menu)
             }
         }
+    }
+
+    fun updateMenuList(newMenuList: List<MenuDetail>) {
+        menuList = newMenuList
+        notifyDataSetChanged() // 데이터 변경 알림
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
