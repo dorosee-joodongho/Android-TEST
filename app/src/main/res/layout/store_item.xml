@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        android:elevation="8dp"
+        >
+
+    <!-- 가게 이미지 -->
+    <ImageView
+            android:id="@+id/storeImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Store Image" />
+
+    <!-- 가게 이름 -->
+    <TextView
+            android:id="@+id/storeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Name"
+            android:textSize="18sp"
+            android:textColor="#333"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+    <!-- 가게 위치 -->
+    <TextView
+            android:id="@+id/storeLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:layout_marginBottom="4dp"/>
+
+    <!-- 가게 혼잡도 -->
+    <TextView
+            android:id="@+id/storeCongestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Congestion"
+            android:textSize="14sp"
+            android:textColor="#FF6347"
+            android:layout_marginBottom="8dp"/>
+
+</LinearLayout>

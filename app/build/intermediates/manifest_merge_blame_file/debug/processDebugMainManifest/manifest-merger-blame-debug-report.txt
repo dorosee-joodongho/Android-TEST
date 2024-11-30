@@ -1,0 +1,259 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.myapplication"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="33"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:5:22-64
+12
+13    <permission
+13-->[androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/baf3f5c1c6ca2135ae1e42171c78052a/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+14        android:name="com.example.myapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+14-->[androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/baf3f5c1c6ca2135ae1e42171c78052a/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+15        android:protectionLevel="signature" />
+15-->[androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/baf3f5c1c6ca2135ae1e42171c78052a/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+16
+17    <uses-permission android:name="com.example.myapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+17-->[androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/baf3f5c1c6ca2135ae1e42171c78052a/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+17-->[androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/baf3f5c1c6ca2135ae1e42171c78052a/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+18
+19    <application
+19-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-91:19
+20        android:allowBackup="true"
+20-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:8:9-35
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/baf3f5c1c6ca2135ae1e42171c78052a/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+22        android:dataExtractionRules="@xml/data_extraction_rules"
+22-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:9:9-65
+23        android:debuggable="true"
+24        android:extractNativeLibs="false"
+25        android:fullBackupContent="@xml/backup_rules"
+25-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:10:9-54
+26        android:icon="@mipmap/ic_launcher"
+26-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:11:9-43
+27        android:label="@string/app_name"
+27-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:12:9-41
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:13:9-54
+29        android:supportsRtl="true"
+29-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:14:9-35
+30        android:testOnly="true"
+31        android:theme="@style/Theme.MyApplication"
+31-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:15:9-51
+32        android:usesCleartextTraffic="true" >
+32-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:16:9-44
+33        <activity
+33-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:18:9-27:20
+34            android:name="com.example.myapplication.ui.activity.LoginActivity"
+34-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:19:13-54
+35            android:exported="true"
+35-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:20:13-36
+36            android:label="@string/app_name"
+36-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:21:13-45
+37            android:theme="@style/Theme.MyApplication" >
+37-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:22:13-55
+38            <intent-filter>
+38-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:23:13-26:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:24:17-69
+39-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:24:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:25:17-77
+41-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:25:27-74
+42            </intent-filter>
+43        </activity>
+44        <!-- 사용자 메인 화면 -->
+45        <activity
+45-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:29:9-31:62
+46            android:name="com.example.myapplication.ui.activity.MainActivity"
+46-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:30:17-57
+47            android:theme="@style/Theme.MyApplication" />
+47-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:31:17-59
+48
+49        <!-- 사용자 메뉴 -->
+50        <activity
+50-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:34:9-36:62
+51            android:name="com.example.myapplication.ui.activity.UserUseMenuActivity"
+51-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:35:17-64
+52            android:theme="@style/Theme.MyApplication" />
+52-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:36:17-59
+53
+54        <!-- 회원가입 및 회원 정보 수정 -->
+55        <activity
+55-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:39:9-41:62
+56            android:name="com.example.myapplication.ui.activity.UserActivity"
+56-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:40:17-57
+57            android:theme="@style/Theme.MyApplication" />
+57-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:41:17-59
+58
+59        <!-- 식단 기록 -->
+60        <activity
+60-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:44:9-46:62
+61            android:name="com.example.myapplication.ui.activity.DietAddActivity"
+61-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:45:17-60
+62            android:theme="@style/Theme.MyApplication" />
+62-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:46:17-59
+63
+64        <!-- 식단 정보 조회 -->
+65        <activity
+65-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:49:9-51:62
+66            android:name="com.example.myapplication.ui.activity.DietViewActivity"
+66-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:50:17-61
+67            android:theme="@style/Theme.MyApplication" />
+67-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:51:17-59
+68
+69        <!-- 식단 분석 -->
+70        <activity
+70-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:54:9-56:62
+71            android:name="com.example.myapplication.ui.activity.DietAnalysisActivity"
+71-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:55:17-65
+72            android:theme="@style/Theme.MyApplication" />
+72-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:56:17-59
+73
+74        <!-- 가게 주문 -->
+75        <activity
+75-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:59:9-61:62
+76            android:name="com.example.myapplication.ui.activity.StoreMenuActivity"
+76-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:60:17-62
+77            android:theme="@style/Theme.MyApplication" />
+77-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:61:17-59
+78        <activity
+78-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:63:9-65:62
+79            android:name="com.example.myapplication.ui.activity.CartActivity"
+79-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:64:17-57
+80            android:theme="@style/Theme.MyApplication" />
+80-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:65:17-59
+81        <activity
+81-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:67:9-69:62
+82            android:name="com.example.myapplication.ui.activity.OrderHistoryActivity"
+82-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:68:17-65
+83            android:theme="@style/Theme.MyApplication" />
+83-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:69:17-59
+84
+85        <!-- 식당 기능 메뉴 목록 -->
+86        <activity
+86-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:72:9-74:62
+87            android:name="com.example.myapplication.ui.activity.StoreUseMenuActivity"
+87-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:73:17-65
+88            android:theme="@style/Theme.MyApplication" />
+88-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:74:17-59
+89
+90        <!-- 식당 메뉴 목록 -->
+91        <activity
+91-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:77:9-79:62
+92            android:name="com.example.myapplication.ui.activity.MenuListActivity"
+92-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:78:17-61
+93            android:theme="@style/Theme.MyApplication" />
+93-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:79:17-59
+94
+95        <!-- 식당 메뉴 조회 -->
+96        <activity
+96-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:82:9-84:62
+97            android:name="com.example.myapplication.ui.activity.MenuDetailActivity"
+97-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:83:17-63
+98            android:theme="@style/Theme.MyApplication" />
+98-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:84:17-59
+99
+100        <!-- 식당 메뉴 등록 -->
+101        <activity
+101-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:87:9-89:62
+102            android:name="com.example.myapplication.ui.activity.MenuAddActivity"
+102-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:88:17-60
+103            android:theme="@style/Theme.MyApplication" />
+103-->/Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:89:17-59
+104        <activity
+104-->[androidx.compose.ui:ui-tooling-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/3e8ef9e241a85842cc516d82814c15e5/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
+105            android:name="androidx.compose.ui.tooling.PreviewActivity"
+105-->[androidx.compose.ui:ui-tooling-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/3e8ef9e241a85842cc516d82814c15e5/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
+106            android:exported="true" />
+106-->[androidx.compose.ui:ui-tooling-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/3e8ef9e241a85842cc516d82814c15e5/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
+107        <activity
+107-->[androidx.compose.ui:ui-test-manifest:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/006181e91a79c0ba2cedca810be707d0/transformed/ui-test-manifest-1.6.6/AndroidManifest.xml:23:9-25:39
+108            android:name="androidx.activity.ComponentActivity"
+108-->[androidx.compose.ui:ui-test-manifest:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/006181e91a79c0ba2cedca810be707d0/transformed/ui-test-manifest-1.6.6/AndroidManifest.xml:24:13-63
+109            android:exported="true" />
+109-->[androidx.compose.ui:ui-test-manifest:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/006181e91a79c0ba2cedca810be707d0/transformed/ui-test-manifest-1.6.6/AndroidManifest.xml:25:13-36
+110
+111        <provider
+111-->[androidx.emoji2:emoji2:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/6271bf03e8f986fb942b2e995fa8d149/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+112            android:name="androidx.startup.InitializationProvider"
+112-->[androidx.emoji2:emoji2:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/6271bf03e8f986fb942b2e995fa8d149/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+113            android:authorities="com.example.myapplication.androidx-startup"
+113-->[androidx.emoji2:emoji2:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/6271bf03e8f986fb942b2e995fa8d149/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+114            android:exported="false" >
+114-->[androidx.emoji2:emoji2:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/6271bf03e8f986fb942b2e995fa8d149/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+115            <meta-data
+115-->[androidx.emoji2:emoji2:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/6271bf03e8f986fb942b2e995fa8d149/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+116                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+116-->[androidx.emoji2:emoji2:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/6271bf03e8f986fb942b2e995fa8d149/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+117                android:value="androidx.startup" />
+117-->[androidx.emoji2:emoji2:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/6271bf03e8f986fb942b2e995fa8d149/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+118            <meta-data
+118-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/dorosee/.gradle/caches/8.9/transforms/add95c54f57d0fa23ca7f4bcd0388250/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+119                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+119-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/dorosee/.gradle/caches/8.9/transforms/add95c54f57d0fa23ca7f4bcd0388250/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+120                android:value="androidx.startup" />
+120-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/dorosee/.gradle/caches/8.9/transforms/add95c54f57d0fa23ca7f4bcd0388250/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+121            <meta-data
+121-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+122                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+123                android:value="androidx.startup" />
+123-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+124        </provider>
+125        <provider
+125-->[com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
+126            android:name="com.squareup.picasso.PicassoProvider"
+126-->[com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
+127            android:authorities="com.example.myapplication.com.squareup.picasso"
+127-->[com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
+128            android:exported="false" />
+128-->[com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
+129
+130        <receiver
+130-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+131            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+131-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+132            android:directBootAware="false"
+132-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+133            android:enabled="true"
+133-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+134            android:exported="true"
+134-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+135            android:permission="android.permission.DUMP" >
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+136            <intent-filter>
+136-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+137                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+137-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+138            </intent-filter>
+139            <intent-filter>
+139-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+140                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+141            </intent-filter>
+142            <intent-filter>
+142-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+143                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+143-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+143-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+144            </intent-filter>
+145            <intent-filter>
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+146                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+146-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+146-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/dorosee/.gradle/caches/8.9/transforms/20019146b32103db9c06041cb31f0881/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+147            </intent-filter>
+148        </receiver>
+149    </application>
+150
+151</manifest>

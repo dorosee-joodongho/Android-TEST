@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
+
+
+    <!-- 주문 가게 -->
+    <TextView
+            android:id="@+id/tvOrderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2022-10-15 (화)"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+
+    <!-- 주문 날짜 -->
+    <TextView
+            android:id="@+id/orderDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2022-10-15 (화)"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+    <!-- 주문 정보 -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+        <!-- 이미지 -->
+        <ImageView
+                android:id="@+id/orderImage"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+                />
+
+        <!-- 가게명 및 메뉴 -->
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/storeNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="가게명"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+            <TextView
+                    android:id="@+id/orderMenuText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="짜장면 외 3"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <!-- 금액 -->
+        <TextView
+                android:id="@+id/orderAmountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₩23,000원"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:gravity="end" />
+    </LinearLayout>
+</LinearLayout>

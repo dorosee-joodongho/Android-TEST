@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 사용자 메인 화면 -->
+        <activity
+                android:name=".ui.activity.MainActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 사용자 메뉴 -->
+        <activity
+                android:name=".ui.activity.UserUseMenuActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 회원가입 및 회원 정보 수정 -->
+        <activity
+                android:name=".ui.activity.UserActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식단 기록 -->
+        <activity
+                android:name=".ui.activity.DietAddActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식단 정보 조회 -->
+        <activity
+                android:name=".ui.activity.DietViewActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식단 분석 -->
+        <activity
+                android:name=".ui.activity.DietAnalysisActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 가게 주문 -->
+        <activity
+                android:name=".ui.activity.StoreMenuActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <activity
+                android:name=".ui.activity.CartActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <activity
+                android:name=".ui.activity.OrderHistoryActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 기능 메뉴 목록 -->
+        <activity
+                android:name=".ui.activity.StoreUseMenuActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 메뉴 목록 -->
+        <activity
+                android:name=".ui.activity.MenuListActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 메뉴 조회 -->
+        <activity
+                android:name=".ui.activity.MenuDetailActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 메뉴 등록 -->
+        <activity
+                android:name=".ui.activity.MenuAddActivity"
+                android:theme="@style/Theme.MyApplication" />
+
+    </application>
+
+</manifest>

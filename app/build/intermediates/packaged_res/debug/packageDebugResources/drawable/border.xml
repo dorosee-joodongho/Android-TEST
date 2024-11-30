@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/white"/> <!-- 배경색을 화이트로 설정 -->
+    <stroke
+            android:color="#DDDDDD"
+            android:width="2dp"/>
+
+    <corners android:radius="8dp"/> <!-- 모서리 둥글게 처리 -->
+</shape>
