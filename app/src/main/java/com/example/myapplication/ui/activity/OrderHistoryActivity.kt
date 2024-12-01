@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.activity
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.Gravity
@@ -7,7 +8,9 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ui.adapter.OrderAdapter
@@ -15,23 +18,43 @@ import com.example.myapplication.R
 import com.example.myapplication.data.Order
 import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.OrderService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class OrderHistoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_history)
+
+
         val orderService = OrderService(RetrofitClient.instance)
 
-        val orders = orderService.getOrderHistory(1) // 유저 ID로 해당 유저의 주문 내역 가져오기
+        // 비동기로 주문 내역을 가져옵니다.
+        CoroutineScope(Dispatchers.Main).launch {
+            // UI에서 로딩 표시 (예: progress bar)
+            val orders = withContext(Dispatchers.IO) {
+                orderService.getOrderHistory()  // 비동기 호출
+            }
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewOrders)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = OrderAdapter(orders) { order ->
-            // 주문 클릭 시 다이얼로그 호출
-            showOrderDetailsDialog(order)
+            // 주문 내역이 없으면 Toast 표시
+            if (orders.isEmpty()) {
+                Toast.makeText(this@OrderHistoryActivity, "주문 내역이 없습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            // 주문 내역이 있으면 RecyclerView에 설정
+            val recyclerView: RecyclerView = findViewById(R.id.recyclerViewOrders)
+            recyclerView.layoutManager = LinearLayoutManager(this@OrderHistoryActivity)
+
+            recyclerView.adapter = OrderAdapter(orders) { order ->
+                // 주문 클릭 시 다이얼로그 호출
+                showOrderDetailsDialog(order)
+            }
         }
 
+        // 뒤로 가기 버튼
         val backBtn: Button = findViewById(R.id.backButton)
         backBtn.setOnClickListener {
             finish()
@@ -39,11 +62,13 @@ class OrderHistoryActivity : AppCompatActivity() {
     }
 
     private fun showOrderDetailsDialog(order: Order) {
-        // 다이얼로그 레이아웃 inflate
+
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_order_details, null)
 
+        // orderItemsContainer, tvTotalPrice, storeNameTextView, summaryTextView 초기화
         val orderItemsContainer: LinearLayout = dialogView.findViewById(R.id.orderItemsContainer)
         val tvTotalPrice: TextView = dialogView.findViewById(R.id.tvTotalPrice)
+
 
         // 주문 항목 동적으로 추가
         for (item in order.items) {
@@ -62,7 +87,6 @@ class OrderHistoryActivity : AppCompatActivity() {
                 text = item.name
                 layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
                 gravity = Gravity.CENTER // 가운데 정렬
-
             }
 
             // 단가
@@ -115,4 +139,5 @@ class OrderHistoryActivity : AppCompatActivity() {
 
         dialog.show()
     }
+
 }

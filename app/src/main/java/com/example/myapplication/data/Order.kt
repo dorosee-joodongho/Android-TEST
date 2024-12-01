@@ -6,7 +6,7 @@ data class Order(
     val storeName: String,
     val menuSummary: String,
     val amount: Int,
-
+    val orderImage : String,
     //대기 시간 관련
     val orderDate : String, //주문 시간
     val estimatedTime : String, //예상시간

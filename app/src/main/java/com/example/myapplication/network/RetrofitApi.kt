@@ -10,6 +10,7 @@ import com.example.myapplication.data.PostJoinResponseDto
 import com.example.myapplication.data.PostLoginRequestDto
 import com.example.myapplication.data.menu.MenuResponse
 import com.example.myapplication.data.order.OrderAfterKakaoPayDto
+import com.example.myapplication.data.order.OrderHistoryResponse
 import com.example.myapplication.data.order.PostOrderRequestDto
 import com.example.myapplication.data.store.MenuParentStoreEntity
 import com.example.myapplication.data.store.StoreResponse
@@ -95,6 +96,9 @@ interface RetrofitApi {
     @POST("/order/{storeId}")
     suspend fun menuOrder(@Path("storeId") storeId: Long,
                           @Body postOrder : PostOrderRequestDto) : OrderAfterKakaoPayDto
+
+    @GET("order/history")
+    suspend fun getOrderHistory() : OrderHistoryResponse
 }
 
 

@@ -8,24 +8,20 @@
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/fragment_header.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_menu_action.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_menu_action.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_menu_list.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_menu_list.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_order_details.xml",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_order_details.xml"
     },
     {
-        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_menu_list.xml",
-        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_menu_list.xml"
+        "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/dialog_menu_action.xml",
+        "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_menu_action.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_diet_add.xml",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/activity_diet_add.xml"
-    },
-    {
-        "merged": "com.example.myapplication.app-mergeDebugResources-51:/layout/activity_diet_view.xml",
-        "source": "com.example.myapplication.app-main-54:/layout/activity_diet_view.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/item_order.xml",
@@ -62,6 +58,10 @@
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/menu_item_layout.xml",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/menu_item_layout.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-51:/layout/item_order.xml",
+        "source": "com.example.myapplication.app-main-54:/layout/item_order.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-mergeDebugResources-51:/layout/activity_user.xml",

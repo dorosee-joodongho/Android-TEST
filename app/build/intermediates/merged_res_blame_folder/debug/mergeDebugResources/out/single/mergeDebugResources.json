@@ -32,10 +32,6 @@
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/dialog_order_details.xml"
     },
     {
-        "merged": "com.example.myapplication.app-debug-52:/layout_activity_diet_view.xml.flat",
-        "source": "com.example.myapplication.app-main-54:/layout/activity_diet_view.xml"
-    },
-    {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/mipmap-xxhdpi/ic_launcher.webp"
     },
@@ -194,6 +190,10 @@
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_menu_item_layout.xml.flat",
         "source": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-main-54:/layout/menu_item_layout.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-debug-52:/layout_item_order.xml.flat",
+        "source": "com.example.myapplication.app-main-54:/layout/item_order.xml"
     },
     {
         "merged": "/Users/dorosee/.gradle/daemon/8.9/com.example.myapplication.app-debug-52:/layout_menu_item.xml.flat",
