@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.OrderItem
 import com.example.myapplication.R
 import com.example.myapplication.data.Order
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.OrderService
 
 class OrderDetailsAdapter(private val items: List<OrderItem>) :
@@ -20,7 +21,7 @@ class OrderDetailsAdapter(private val items: List<OrderItem>) :
 
     override fun onBindViewHolder(holder: OrderDetailsViewHolder, position: Int) {
         val item = items[position]
-        val orderService  = OrderService()
+        val orderService  = OrderService(RetrofitClient.instance)
         val order = orderService.getOrderById()
         holder.bind(item , order)
     }

@@ -4,10 +4,13 @@ import com.example.myapplication.data.DietResponse
 import com.example.myapplication.data.GetStoreMenuListResponseDto
 import com.example.myapplication.data.LoginResponse
 import com.example.myapplication.data.MemberDto
+import com.example.myapplication.data.Order
 import com.example.myapplication.data.PostJoinRequestDto
 import com.example.myapplication.data.PostJoinResponseDto
 import com.example.myapplication.data.PostLoginRequestDto
 import com.example.myapplication.data.menu.MenuResponse
+import com.example.myapplication.data.order.OrderAfterKakaoPayDto
+import com.example.myapplication.data.order.PostOrderRequestDto
 import com.example.myapplication.data.store.MenuParentStoreEntity
 import com.example.myapplication.data.store.StoreResponse
 import okhttp3.MultipartBody
@@ -88,6 +91,10 @@ interface RetrofitApi {
 
     @GET("store")
     suspend fun getStoreList() : StoreResponse
+
+    @POST("/order/{storeId}")
+    suspend fun menuOrder(@Path("storeId") storeId: Long,
+                          @Body postOrder : PostOrderRequestDto) : OrderAfterKakaoPayDto
 }
 
 

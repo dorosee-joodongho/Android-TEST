@@ -1,10 +1,10 @@
 package com.example.myapplication.service
 
+import com.example.myapplication.data.GetStoreMenuListResponseDto
 import com.example.myapplication.data.menu.Menu
 import com.example.myapplication.data.store.Store
 import com.example.myapplication.data.store.StoreEntity
 import com.example.myapplication.network.RetrofitApi
-import kotlin.random.Random
 
 class StoreService(private val retrofitApi: RetrofitApi) {
 
@@ -29,38 +29,16 @@ class StoreService(private val retrofitApi: RetrofitApi) {
         return storeMenuList.shuffled().take(6)
     }
 
-    fun getStoreMenuList(storeId: Long): List<Menu> {
-        // 메뉴 이름 리스트 (임시로 사용할 메뉴 이름들)
-        val menuNames = listOf("Pizza", "Burger", "Pasta", "Sushi", "Steak", "Salad", "Tacos", "Sandwich", "Fries", "Soup")
+    suspend fun getStoreMenuList(storeId: Long): List<Menu> {
+        val response: GetStoreMenuListResponseDto = retrofitApi.getStoreMenuList()
+        val menuList : MutableList<Menu> = mutableListOf()
+        val menuResponseList = response.list
 
-        // 이미지 URL 리스트 (임시로 사용할 이미지 URL들)
-        val menuImages = listOf(
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg",
-            "https://img.freepik.com/free-vector/flat-design-korean-food-illustration_23-2149285208.jpg"
-        )
-
-        // 메뉴 리스트를 랜덤하게 9개 생성
-        val menuList = mutableListOf<Menu>()
-        for (i in 1..9) {
-            val randomIndex = Random.nextInt(menuNames.size) // 랜덤한 메뉴 이름과 이미지 인덱스
-            val randomPrice = Random.nextInt(5000, 20000) // 랜덤 가격 생성 (5000원 ~ 20000원)
-            val menu = Menu(
-                id = 1,
-                name = menuNames[randomIndex],
-                price = randomPrice,
-                menuImg = menuImages[randomIndex],
-                storeId = storeId
-            )
+        for (menuDetail in menuResponseList) {
+            val menu = Menu(menuDetail.menuId!! , menuDetail.menuName , menuDetail.menuPrice , menuDetail.menuImage!! , storeId)
             menuList.add(menu)
         }
+
         return menuList
     }
 

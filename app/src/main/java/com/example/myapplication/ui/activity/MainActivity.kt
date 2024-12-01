@@ -63,6 +63,7 @@ class MainActivity : ComponentActivity() {
                 override fun onItemClick(position: Int) {
                     val todaySpecialMenu = todaySpecialInfoList[position]
                     val intent = Intent(this@MainActivity, StoreMenuActivity::class.java)
+                    println(todaySpecialMenu.storeId)
                     intent.putExtra("storeId", todaySpecialMenu.storeId)
                     startActivity(intent)
                 }
@@ -74,7 +75,8 @@ class MainActivity : ComponentActivity() {
                 override fun onItemClick(position: Int) {
                     val store = nearbyStores[position]
                     val intent = Intent(this@MainActivity, StoreMenuActivity::class.java)
-                    intent.putExtra("storeId", store.storeId)
+                    println(store.storeId)
+                    intent.putExtra("storeId", store.storeId.toLong())
                     startActivity(intent)
                 }
             })

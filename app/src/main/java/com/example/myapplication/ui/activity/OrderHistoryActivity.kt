@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ui.adapter.OrderAdapter
 import com.example.myapplication.R
 import com.example.myapplication.data.Order
+import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.OrderService
 
 class OrderHistoryActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class OrderHistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_history)
-        val orderService = OrderService()
+        val orderService = OrderService(RetrofitClient.instance)
 
         val orders = orderService.getOrderHistory(1) // 유저 ID로 해당 유저의 주문 내역 가져오기
 
