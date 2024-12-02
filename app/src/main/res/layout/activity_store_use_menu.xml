@@ -30,11 +30,6 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- 주문 목록 조회 버튼 -->
-        <Button
-                android:id="@+id/btnOrderHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="주문 접수 내역 조회" />
 
         <!-- 메뉴 목록 조회 버튼 -->
         <Button

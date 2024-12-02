@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.fragment.StoreOrderDetailDialogFragment"
+        android:padding="16dp">
+
+    <!-- 상단 제목: 상세 주문 내역 -->
+    <TextView
+            android:id="@+id/orderDetailTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상세 주문 내역"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- 주문 상태 -->
+    <TextView
+            android:id="@+id/storeOrderStatusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="접수 완료"
+            android:textSize="14sp"
+            android:paddingBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderDetailTitleTextView"/>
+
+    <!-- 메뉴 항목들 테이블 제목 -->
+    <TextView
+            android:id="@+id/menuItemsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/storeOrderStatusTextView"/>
+
+    <!-- 항목, 단가, 수량, 금액 리스트 테이블 -->
+    <TableLayout
+            android:id="@+id/menuItemsTableLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menuItemsTextView"
+            android:layout_marginBottom="16dp">
+
+        <!-- 테이블 헤더 -->
+        <TableRow
+                android:background="@android:color/white"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="항목"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:padding="4dp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="단가"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="4dp" />
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="수량"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+
+            <TextView
+                    android:layout_width="53dp"
+                    android:layout_height="wrap_content"
+                    android:text="금액"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="4dp" />
+        </TableRow>
+
+        <!-- 메뉴 항목 텍스트 (동적으로 추가) -->
+        <TableRow
+                android:background="@android:color/white"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp">
+        </TableRow>
+
+    </TableLayout>
+
+    <!-- 총 결제 금액 -->
+    <TextView
+            android:id="@+id/totalPaymentTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="총 결제 금액"
+            android:textSize="16sp"
+            android:paddingTop="12dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menuItemsTableLayout"
+            android:layout_marginTop="4dp" />
+
+    <!-- 실제 금액 -->
+    <TextView
+            android:id="@+id/totalPaymentAmountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/totalPaymentTextView"
+            android:gravity="end"
+            android:paddingTop="12dp"
+            android:layout_marginTop="4dp" />
+
+    <!-- 주문일시 -->
+    <TextView
+            android:id="@+id/orderDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Date: "
+            android:textSize="14sp"
+            android:paddingTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalPaymentTextView"/>
+
+    <!-- 고객명 -->
+    <TextView
+            android:id="@+id/customerNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Customer: "
+            android:textSize="14sp"
+            android:paddingTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orderDateTextView"/>
+
+    <!-- 고객 전화번호 -->
+    <TextView
+            android:id="@+id/customerPhoneNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone: "
+            android:textSize="14sp"
+            android:paddingTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/customerNameTextView"/>
+
+    <!-- 취소 버튼 -->
+    <Button
+            android:id="@+id/cancelOrderButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="주문 취소"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/customerPhoneNumberTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

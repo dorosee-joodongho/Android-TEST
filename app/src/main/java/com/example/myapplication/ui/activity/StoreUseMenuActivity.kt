@@ -16,22 +16,16 @@ class StoreUseMenuActivity: AppCompatActivity() {
         setContentView(R.layout.activity_store_use_menu)
 
         val backButton = findViewById<TextView>(R.id.backButton)
-        backButton.text = "←  목록" // 헤더 제목 변경
+        backButton.text = "←  사용자 목록" // 헤더 제목 변경
         backButton.setOnClickListener {
             onBackPressed() // 뒤로 가기 동작
         }
 
         val btnMenuList: Button = findViewById(R.id.btnMenuList)
-        val btnOrderHistory: Button = findViewById(R.id.btnOrderHistory)
         val btnLogout: Button = findViewById(R.id.btnLogout)
 
         btnMenuList.setOnClickListener {
             val intent = Intent(this, MenuListActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnOrderHistory.setOnClickListener { // 주문 내역
-            val intent = Intent(this, OrderHistoryActivity::class.java)
             startActivity(intent)
         }
 
@@ -59,10 +53,10 @@ class StoreUseMenuActivity: AppCompatActivity() {
 
     private fun logout() {
         // Preferences 삭제
-//        val sharedPreferences = getSharedPreferences("user_preferences", MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//        editor.remove("key_name") // key_name을 원하는 키로 변경
-//        editor.apply()
+        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear() // 모든 데이터 제거
+        editor.apply()
 
         Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_SHORT).show()
 

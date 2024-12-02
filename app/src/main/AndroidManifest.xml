@@ -88,6 +88,11 @@
                 android:name=".ui.activity.MenuAddActivity"
                 android:theme="@style/Theme.MyApplication" />
 
+        <!-- 식당 주문 리스트 조회 -->
+        <activity
+                android:name=".ui.activity.StoreOrderActivity"
+                android:theme="@style/Theme.MyApplication" />
+
     </application>
 
 </manifest>
