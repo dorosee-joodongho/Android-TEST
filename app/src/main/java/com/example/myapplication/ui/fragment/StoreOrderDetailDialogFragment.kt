@@ -9,12 +9,10 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.myapplication.R
 import com.example.myapplication.data.storeOrder.StoreOrderDetail
 
 class StoreOrderDetailDialogFragment : DialogFragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,10 +23,12 @@ class StoreOrderDetailDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val status = arguments?.getString("status")
+        val orderId = arguments?.getLong("orderId")
         val orderDetail = arguments?.getParcelable<StoreOrderDetail>("orderDetail")
+        val totalPayment = orderDetail?.menuList?.sumOf { it.menuPrice * it.quantity }
 
-        view.findViewById<TextView>(R.id.storeOrderStatusTextView).text =
-            "${orderDetail?.status}"
+        view.findViewById<TextView>(R.id.storeOrderStatusTextView).text = "${status}"
 
         view.findViewById<TextView>(R.id.orderDateTextView).text =
             "주문 일자: ${orderDetail?.orderDate}"
@@ -39,8 +39,7 @@ class StoreOrderDetailDialogFragment : DialogFragment() {
         view.findViewById<TextView>(R.id.customerPhoneNumberTextView).text =
             "전화번호: ${orderDetail?.customerPhoneNumber}"
 
-        view.findViewById<TextView>(R.id.totalPaymentAmountTextView).text =
-            "${orderDetail?.totalPayment}"
+        view.findViewById<TextView>(R.id.totalPaymentAmountTextView).text = "${totalPayment}"
 
         // 메뉴 항목들
         val menuItemsTableLayout = view.findViewById<android.widget.TableLayout>(R.id.menuItemsTableLayout)
@@ -52,18 +51,18 @@ class StoreOrderDetailDialogFragment : DialogFragment() {
             tableRow.findViewById<TextView>(R.id.menuNameTextView).text = item.menuName
             tableRow.findViewById<TextView>(R.id.menuPriceTextView).text = item.menuPrice.toString()
             tableRow.findViewById<TextView>(R.id.menuQuantityTextView).text = item.quantity.toString()
-            tableRow.findViewById<TextView>(R.id.menuTotalAmountTextView).text = item.totalAmount.toString()
+            tableRow.findViewById<TextView>(R.id.menuTotalAmountTextView).text = (item.menuPrice * item.quantity).toString()
 
             menuItemsTableLayout.addView(tableRow)
         }
 
         // 취소 버튼 설정
         val cancelOrderButton = view.findViewById<Button>(R.id.cancelOrderButton)
-        if (orderDetail?.status == "취소") {
+        if (status == "취소") {
             cancelOrderButton.visibility = View.GONE
         } else {
             cancelOrderButton.setOnClickListener {
-                cancelOrder(orderDetail?.status)
+                cancelOrder(status)
             }
         }
 
@@ -81,10 +80,12 @@ class StoreOrderDetailDialogFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(orderDetail: StoreOrderDetail): StoreOrderDetailDialogFragment {
+        fun newInstance(orderDetail: StoreOrderDetail, status: String, orderId: Long): StoreOrderDetailDialogFragment {
             val fragment = StoreOrderDetailDialogFragment()
             val args = Bundle()
             args.putParcelable("orderDetail", orderDetail)
+            args.putString("status", status)
+            args.putLong("orderId", orderId)
             fragment.arguments = args
             return fragment
         }

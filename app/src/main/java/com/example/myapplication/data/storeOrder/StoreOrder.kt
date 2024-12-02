@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 
 data class StoreOrderItem(
-    val orderId: Int,
+    val orderId: Long,
     val orderDate: String,
     val totalPrice: Int,
     val status: String
@@ -13,9 +13,7 @@ data class StoreOrderItem(
 
 @Parcelize
 data class StoreOrderDetail(
-    val status: String,
     val menuList: List<StoreMenuItem>,
-    val totalPayment: Int,
     val orderDate: String,
     val customerName: String,
     val customerPhoneNumber: String
@@ -23,8 +21,13 @@ data class StoreOrderDetail(
 
 @Parcelize
 data class StoreMenuItem(
+    val orderDetailId: Long,
     val menuName: String,
     val menuPrice: Int,
     val quantity: Int,
-    val totalAmount: Int
 ): Parcelable
+
+
+data class GetStoreOrderResponseDto(
+    val orderItemList: List<StoreOrderItem>
+)

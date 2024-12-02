@@ -30,7 +30,6 @@ class DietAnalysisActivity : AppCompatActivity() {
     private var startDate: LocalDate = LocalDate.now().minusDays(7)
     private var endDate: LocalDate = LocalDate.now()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diet_analysis)

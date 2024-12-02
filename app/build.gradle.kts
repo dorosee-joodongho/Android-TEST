@@ -65,6 +65,10 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828") // 이미지 로딩
     implementation("com.squareup.okhttp3:okhttp:4.10.0") // RequestBody
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0") // RequestBody
+    implementation("org.java-websocket:Java-WebSocket:1.5.2") // STOMP 통신
+    implementation("com.github.NaikSoftware:StompProtocolAndroid:1.6.6")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")  // Glide 컴파일러
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

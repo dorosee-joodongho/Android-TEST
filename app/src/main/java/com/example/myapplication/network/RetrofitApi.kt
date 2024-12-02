@@ -14,6 +14,8 @@ import com.example.myapplication.data.order.OrderHistoryResponse
 import com.example.myapplication.data.order.PostOrderRequestDto
 import com.example.myapplication.data.store.MenuParentStoreEntity
 import com.example.myapplication.data.store.StoreResponse
+import com.example.myapplication.data.storeOrder.GetStoreOrderResponseDto
+import com.example.myapplication.data.storeOrder.StoreOrderDetail
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -85,6 +87,12 @@ interface RetrofitApi {
         @Part menuImg: MultipartBody.Part?
     ): ResponseBody
 
+    // 식당 주문 접수 가져오기
+    @GET("store/order")
+    suspend fun storeOrder(): GetStoreOrderResponseDto
+
+    @GET("store/order/{orderId}")
+    suspend fun orderDetail(@Path("orderId") orderId: Long,): StoreOrderDetail
 
     //추천 메뉴 목록 가지고오기
     @GET("recommendation")
