@@ -18,4 +18,11 @@ class OrderAfterKakaoPayDto(
     val ios_app_scheme: String? = null,
 
     val created_at: String? = null
-)
+) {
+    // toString() 메서드를 오버라이드하여 객체의 속성값을 출력
+    override fun toString(): String {
+        return "OrderAfterKakaoPayDto(tid=$tid, next_redirect_app_url=$next_redirect_app_url, " +
+                "next_redirect_mobile_url=$next_redirect_mobile_url, next_redirect_pc_url=$next_redirect_pc_url, " +
+                "android_app_scheme=$android_app_scheme, ios_app_scheme=$ios_app_scheme, created_at=$created_at)"
+    }
+}

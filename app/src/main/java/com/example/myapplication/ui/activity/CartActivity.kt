@@ -42,7 +42,7 @@ class CartActivity : AppCompatActivity() {
             // 결제 처리 및 주문 처리 비동기로 수행
             CoroutineScope(Dispatchers.Main).launch {
                 val payService = PayService()
-                val orderService = OrderService(RetrofitClient.instance)
+                val orderService = OrderService(RetrofitClient.instance, this@CartActivity)
 
                 // 결제 처리
                 val paymentResult = payService.executePayment(totalAmount)

@@ -1,5 +1,8 @@
 package com.example.myapplication.service
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import com.example.myapplication.data.CartItem
 import com.example.myapplication.data.Order
 import com.example.myapplication.data.OrderItem
@@ -8,15 +11,15 @@ import com.example.myapplication.data.order.OrderItemV2
 import com.example.myapplication.data.order.PostOrderRequestDto
 import com.example.myapplication.network.RetrofitApi
 
-class OrderService(private val retrofitApi: RetrofitApi) {
+class OrderService(private val retrofitApi: RetrofitApi, private val context: Context) {
 
-    suspend fun menuOrder(cartItems : MutableList<CartItem>)  : Boolean{
-        val orderRequestItemList : MutableList<MenuListItem> = mutableListOf()
+    suspend fun menuOrder(cartItems: MutableList<CartItem>): Boolean {
+        val orderRequestItemList: MutableList<MenuListItem> = mutableListOf()
         var totalPrice = 0
-        val storeId = cartItems[0].storeId //동일 가게 메뉴 이니 아무거나 가지고 오기
+        val storeId = cartItems[0].storeId
 
         cartItems.forEach {
-            val menuItem = MenuListItem(it.name  , it.price , it.quantity)
+            val menuItem = MenuListItem(it.name, it.price, it.quantity)
             orderRequestItemList.add(menuItem)
             totalPrice += menuItem.price
         }
@@ -25,12 +28,25 @@ class OrderService(private val retrofitApi: RetrofitApi) {
             orderRequestItemList,
             totalPrice
         )
-        //전송 로직
-        println("전송 데이터  $postOrderRequestDto")
 
-        retrofitApi.menuOrder(storeId , postOrderRequestDto)
-        return true
+        println("전송 데이터: $postOrderRequestDto")
+
+        return try {
+            val response = retrofitApi.menuOrder(storeId, postOrderRequestDto)
+            println("주문 성공: ${response}")
+            println(response.next_redirect_mobile_url)
+
+            response.next_redirect_mobile_url?.let {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
+
+            } ?: println("결제 링크를 찾을 수 없습니다.")
+            true
+        } catch (e: Exception) {
+            println("주문 중 오류 발생: ${e.message}")
+            false
+        }
     }
+
 
     fun getOrderById() : Order{
         return Order(
@@ -99,6 +115,20 @@ class OrderService(private val retrofitApi: RetrofitApi) {
         }
 
         return orderList
+    }
+
+    private fun openKakaoPay(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        try {
+            // 카카오톡 앱을 먼저 열어보려 시도
+            intent.setPackage("com.kakao.talk")
+            context.startActivity(intent) // Context를 통해 startActivity 호출
+        } catch (e: Exception) {
+            // 카카오톡이 설치되어 있지 않으면 기본 브라우저로 열기
+            intent.setPackage(null)
+            context.startActivity(intent) // Context를 통해 startActivity 호출
+        }
     }
 
 }

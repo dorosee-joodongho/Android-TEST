@@ -30,7 +30,7 @@ class OrderHistoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_order_history)
 
 
-        val orderService = OrderService(RetrofitClient.instance)
+        val orderService = OrderService(RetrofitClient.instance, this@OrderHistoryActivity)
 
         // 비동기로 주문 내역을 가져옵니다.
         CoroutineScope(Dispatchers.Main).launch {
