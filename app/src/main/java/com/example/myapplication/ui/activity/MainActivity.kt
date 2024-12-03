@@ -59,15 +59,17 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch {
             // 비동기적으로 오늘 추천 메뉴 데이터 가져오기
             val todaySpecialInfoList = menuService.getTodayBestMenu() // 오늘 추천 메뉴 리스트
-            menuRecyclerView.adapter = ImageAdapter(todaySpecialInfoList, object : OnItemClickListener {
-                override fun onItemClick(position: Int) {
-                    val todaySpecialMenu = todaySpecialInfoList[position]
-                    val intent = Intent(this@MainActivity, StoreMenuActivity::class.java)
-                    println(todaySpecialMenu.storeId)
-                    intent.putExtra("storeId", todaySpecialMenu.storeId)
-                    startActivity(intent)
-                }
-            })
+            if (todaySpecialInfoList != null) {
+                menuRecyclerView.adapter = ImageAdapter(todaySpecialInfoList, object : OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        val todaySpecialMenu = todaySpecialInfoList[position]
+                        val intent = Intent(this@MainActivity, StoreMenuActivity::class.java)
+                        println(todaySpecialMenu.storeId)
+                        intent.putExtra("storeId", todaySpecialMenu.storeId)
+                        startActivity(intent)
+                    }
+                })
+            }
 
             // 비동기적으로 근처 가게 목록 데이터 가져오기
             val nearbyStores = storeService.getNearbyStores() // 근처 가게 목록

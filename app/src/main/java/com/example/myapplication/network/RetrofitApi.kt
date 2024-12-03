@@ -8,6 +8,7 @@ import com.example.myapplication.data.Order
 import com.example.myapplication.data.PostJoinRequestDto
 import com.example.myapplication.data.PostJoinResponseDto
 import com.example.myapplication.data.PostLoginRequestDto
+import com.example.myapplication.data.menu.GetStoreListResponseDto
 import com.example.myapplication.data.menu.MenuResponse
 import com.example.myapplication.data.order.OrderAfterKakaoPayDto
 import com.example.myapplication.data.order.OrderHistoryResponse
@@ -107,6 +108,9 @@ interface RetrofitApi {
 
     @GET("order/history")
     suspend fun getOrderHistory() : OrderHistoryResponse
+
+    @GET("store/{storeId}")
+    suspend fun getStoreMenuList(@Path("storeId") storeId: Long) : GetStoreListResponseDto
 }
 
 

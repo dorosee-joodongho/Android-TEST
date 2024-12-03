@@ -8,7 +8,7 @@ data class MenuResponse(
 data class MenuEntity(
     val menuId: Int? = null,
 
-    val store: MenuParentStoreEntity,
+    val storeId: Int? = null,
     val menuName: String? = null,
     val menuImage: String? = null,
 

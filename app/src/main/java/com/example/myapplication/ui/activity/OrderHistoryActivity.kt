@@ -42,15 +42,15 @@ class OrderHistoryActivity : AppCompatActivity() {
             // 주문 내역이 없으면 Toast 표시
             if (orders.isEmpty()) {
                 Toast.makeText(this@OrderHistoryActivity, "주문 내역이 없습니다.", Toast.LENGTH_SHORT).show()
-            }
+            } else {
+                // 주문 내역이 있으면 RecyclerView에 설정
+                val recyclerView: RecyclerView = findViewById(R.id.recyclerViewOrders)
+                recyclerView.layoutManager = LinearLayoutManager(this@OrderHistoryActivity)
 
-            // 주문 내역이 있으면 RecyclerView에 설정
-            val recyclerView: RecyclerView = findViewById(R.id.recyclerViewOrders)
-            recyclerView.layoutManager = LinearLayoutManager(this@OrderHistoryActivity)
-
-            recyclerView.adapter = OrderAdapter(orders) { order ->
-                // 주문 클릭 시 다이얼로그 호출
-                showOrderDetailsDialog(order)
+                recyclerView.adapter = OrderAdapter(orders) { order ->
+                    // 주문 클릭 시 다이얼로그 호출
+                    showOrderDetailsDialog(order)
+                }
             }
         }
 

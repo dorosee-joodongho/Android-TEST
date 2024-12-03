@@ -7,7 +7,7 @@ import com.example.myapplication.utils.TransRequestBody
 
 class MenuDetailService(private val retrofitApi: RetrofitApi) {
 
-    // 식단 목록 가져오기
+    // 메뉴 목록 가져오기
     suspend fun getMenuDetailList(): List<MenuDetail>? {
         try {
             val response = retrofitApi.getStoreMenuList()

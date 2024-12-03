@@ -16,7 +16,7 @@ class ImageAdapter(
     private val listener : OnItemClickListener
 ) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     private val imageUrls = todaySpacialMenuList.map { it.menuImg }
-    private val menuNames = todaySpacialMenuList.map { it.name }
+    private val menuNames = todaySpacialMenuList.map { it.menuName }
     private val menuPrices = todaySpacialMenuList.map { it.price }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {

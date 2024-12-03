@@ -25,7 +25,7 @@ class StoreMenuAdapter(
         // 메뉴 데이터를 ViewHolder에 바인딩
         val menu = menuList[position]
 
-        holder.menuName.text = menu.name
+        holder.menuName.text = menu.menuName
         holder.menuPrice.text = "${menu.price}  원"
 
         // Glide로 이미지 로드

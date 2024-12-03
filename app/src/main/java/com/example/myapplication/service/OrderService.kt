@@ -3,9 +3,8 @@ package com.example.myapplication.service
 import com.example.myapplication.data.CartItem
 import com.example.myapplication.data.Order
 import com.example.myapplication.data.OrderItem
-import com.example.myapplication.data.menu.Menu
 import com.example.myapplication.data.order.MenuListItem
-import com.example.myapplication.data.order.OrderHistoryDto
+import com.example.myapplication.data.order.OrderItemV2
 import com.example.myapplication.data.order.PostOrderRequestDto
 import com.example.myapplication.network.RetrofitApi
 
@@ -55,44 +54,47 @@ class OrderService(private val retrofitApi: RetrofitApi) {
     }
 
     suspend fun getOrderHistory() : List<Order> {
-        val orderResponseList = retrofitApi.getOrderHistory().item
+        try {
+            val orderResponseList = retrofitApi.getOrderHistory().orderList
+            val orderList : MutableList<Order> = mutableListOf()
 
-        val orderList : MutableList<Order> = mutableListOf()
+            println("주문 내역 : $orderResponseList")
 
-        println("주문 History $orderResponseList")
-
-        for (order in orderResponseList){
-            val orderInfo = Order(
-                orderId = order.orderId!!.toLong() ,
-                date = order.orderDate.toString(),
-                storeName = order.storeName.toString(),
-                menuSummary = createMenuSummary(order),
-                amount = createAmount(order),
-                orderImage = order.storeImage!!,
-                orderDate = order.orderDate.toString(),
-                estimatedTime = "10분",
-                waitingTime = "10분",
-                crowdLevel = "보통",
-                items = createOrderItems(order),
-                totalPrice = order.totalPrice.toLong()
-            )
-            orderList.add(orderInfo)
+            if (orderResponseList != null) {
+                for (order in orderResponseList){
+                    val orderInfo = Order(
+                        orderId = order.orderId!!.toLong() ,
+                        date = order.orderDate.toString(),
+                        storeName = order.storeName.toString(),
+                        menuSummary = createMenuSummary(order.items),
+                        amount = order.items.size,
+                        orderImage = order.storeImg!!,
+                        orderDate = order.orderDate.toString(),
+                        estimatedTime = order.estimatedTime,
+                        waitingTime = order.waiting,
+                        crowdLevel = order.crowdLevel,
+                        items = createOrderItems(order.items),
+                        totalPrice = order.totalPrice.toLong()
+                    )
+                    orderList.add(orderInfo)
+                }
+                return orderList
+            }
+            return emptyList()
+        } catch (e: Exception) {
+            println("주문 내역 가져오는 중 오류 발생 : ${e.message}")
+            return emptyList()
         }
-        return orderList
     }
 
-    private fun createMenuSummary(order : OrderHistoryDto) : String =
-        order.menuName[0] + " 외 "+ order.menuName.size
+    private fun createMenuSummary(orderItem : List<OrderItemV2>) : String =
+        orderItem[0].name + " 외 "+ orderItem.size
 
-
-    private fun createAmount(order : OrderHistoryDto) : Int =
-        order.menuName.size
-
-    private fun createOrderItems(order: OrderHistoryDto) : List<OrderItem>{
+    private fun createOrderItems(orderItem : List<OrderItemV2>) : List<OrderItem>{
         val orderList : MutableList<OrderItem> = mutableListOf()
 
-        order.menuName.forEach {
-            val orderItem = OrderItem(it , 5000 , 1 , order.totalPrice)
+        orderItem.forEach {
+            val orderItem = OrderItem(it.name , it.unitPrice , it.quantity , it.totalPrice)
             orderList.add(orderItem)
         }
 

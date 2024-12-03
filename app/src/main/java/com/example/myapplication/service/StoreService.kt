@@ -1,6 +1,5 @@
 package com.example.myapplication.service
 
-import com.example.myapplication.data.GetStoreMenuListResponseDto
 import com.example.myapplication.data.menu.Menu
 import com.example.myapplication.data.store.Store
 import com.example.myapplication.data.store.StoreEntity
@@ -35,17 +34,16 @@ class StoreService(private val retrofitApi: RetrofitApi) {
         return arrayListOf()
     }
 
-    suspend fun getStoreMenuList(storeId: Long): List<Menu> {
-        val response: GetStoreMenuListResponseDto = retrofitApi.getStoreMenuList()
-        val menuList : MutableList<Menu> = mutableListOf()
-        val menuResponseList = response.list
-
-        for (menuDetail in menuResponseList) {
-            val menu = Menu(menuDetail.menuId!! , menuDetail.menuName , menuDetail.menuPrice , menuDetail.menuImage!! , storeId)
-            menuList.add(menu)
+    suspend fun getStoreMenuList(storeId: Long): List<Menu>? {
+        try {
+            val response = retrofitApi.getStoreMenuList(storeId)
+            println("메뉴 목록 : ${response.list}")
+            return response.list
+        } catch (e: Exception) {
+            println("메뉴 목록 가져오는 중 오류 발생 : ${e.message}")
+            return null
         }
 
-        return menuList
     }
 
 
