@@ -24,9 +24,15 @@ class StoreService(private val retrofitApi: RetrofitApi) {
             )
             storeMenuList.add(getStore)
         }
-
+        //size가 6보디 크면 6개중에 셔플해서 반환
+        if(storeMenuList.size > 6){
+            return storeMenuList.shuffled().take(6)
+        }
+        else if(storeMenuList.size > 0){
+            return storeMenuList
+        }
         // 랜덤으로 6개의 가게를 선택
-        return storeMenuList.shuffled().take(6)
+        return arrayListOf()
     }
 
     suspend fun getStoreMenuList(storeId: Long): List<Menu> {

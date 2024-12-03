@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+    <!-- 1. 상단 Toolbar (유저 정보 및 앱 제목) -->
+
+    <!-- 2. 유저 정보 (이름/아이콘 등) -->
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+        <!-- 유저 아이콘 -->
+        <ImageView
+                android:id="@+id/userImage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="User Image"
+                android:layout_gravity="center_vertical"/>
+
+        <!-- 유저 이름 -->
+        <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello, User!"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <!--3. 추천 메뉴 리스트 별도 분리-->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/todaySpecialMenuListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"/>
+
+    <!-- 4. 가게 목록   -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/storeListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp" />
+
+</LinearLayout>

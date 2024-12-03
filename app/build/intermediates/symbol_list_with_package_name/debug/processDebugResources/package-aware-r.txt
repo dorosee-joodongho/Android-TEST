@@ -1060,6 +1060,7 @@ id calendar_view
 id callMeasure
 id calorie
 id calories_input
+id cancelOrderButton
 id carbs
 id carbs_input
 id carryVelocity
@@ -1087,6 +1088,8 @@ id cos
 id currentState
 id custom
 id customPanel
+id customerNameTextView
+id customerPhoneNumberTextView
 id date_spinner
 id decelerate
 id decelerateAndComplete
@@ -1185,8 +1188,14 @@ id loginBut
 id match_constraint
 id match_parent
 id menuImage
+id menuItemsTableLayout
+id menuItemsTextView
 id menuName
+id menuNameTextView
 id menuPrice
+id menuPriceTextView
+id menuQuantityTextView
+id menuTotalAmountTextView
 id menu_list_container
 id menu_name_input
 id message
@@ -1209,6 +1218,8 @@ id on
 id onInterceptTouchReturnSwipe
 id orderAmountText
 id orderDateText
+id orderDateTextView
+id orderDetailTitleTextView
 id orderImage
 id orderItemsContainer
 id orderMenuText
@@ -1294,6 +1305,13 @@ id storeListRecyclerView
 id storeLocation
 id storeName
 id storeNameText
+id storeOrderDateTextView
+id storeOrderIdTextView
+id storeOrderRecyclerView
+id storeOrderStatusTextView
+id storeStatusTextView
+id storeTotalPriceTextView
+id storeViewDetailsButton
 id submenuarrow
 id submit_area
 id supportScrollUp
@@ -1332,6 +1350,8 @@ id todaySpecialMenuListRecyclerView
 id toggle
 id top
 id topPanel
+id totalPaymentAmountTextView
+id totalPaymentTextView
 id total_amount
 id total_calories_row
 id total_calories_text
@@ -1429,6 +1449,7 @@ layout activity_menu_list
 layout activity_menu_register
 layout activity_order_history
 layout activity_store_menu
+layout activity_store_order
 layout activity_store_use_menu
 layout activity_user
 layout activity_user_use_menu
@@ -1436,6 +1457,7 @@ layout custom_dialog
 layout dialog_menu_action
 layout dialog_order_details
 layout fragment_header
+layout fragment_store_order_detail
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_cart
@@ -1443,6 +1465,7 @@ layout item_image
 layout item_menu
 layout item_order
 layout item_order_row
+layout item_store_order
 layout menu_item
 layout menu_item_layout
 layout notification_action
@@ -1456,6 +1479,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout store_item
 layout support_simple_spinner_dropdown_item
+layout table_row_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 string abc_action_bar_home_description

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-93:12
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-98:12
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-98:12
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-98:12
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:2:1-98:12
 MERGED from [androidx.databinding:viewbinding:8.7.2] /Users/dorosee/.gradle/caches/8.9/transforms/3802758146a027392bd5f80c64f71ad1/transformed/viewbinding-8.7.2/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/dorosee/.gradle/caches/8.9/transforms/97d95be18f1dab0674f564fcc81daf42/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/dorosee/.gradle/caches/8.9/transforms/95aac94b108dcaefd6b6ee0594e4cdf6/transformed/appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
@@ -55,6 +55,7 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.1] /Users/dorosee/.gradl
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1] /Users/dorosee/.gradle/caches/8.9/transforms/03e169ccddda23b45a833b01cae0f866/transformed/lifecycle-viewmodel-savedstate-2.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core-ktx:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/b6eaea0dc8cd30c374417d7349bc318e/transformed/core-ktx-1.12.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:2:1-14:12
+MERGED from [com.github.NaikSoftware:StompProtocolAndroid:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/c7e45f39512bba45a1bdbbe278d396f5/transformed/StompProtocolAndroid-1.6.6/AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/0b9e7065c7b0dd26fe2bb9d56e2feb1b/transformed/runtime-saveable-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.runtime:runtime-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/2f985d0c7b221f10ad64a405ef948920/transformed/runtime-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/dorosee/.gradle/caches/8.9/transforms/7ebb9252cdd8d8119ae480024722d928/transformed/annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
@@ -68,6 +69,7 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/dorosee/.gradle/cach
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/dorosee/.gradle/caches/8.9/transforms/87e0fe6f57696ccb5db1880b2eea0b7a/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/dorosee/.gradle/caches/8.9/transforms/474b0dff2c09ef1eeb86d524c23631e7/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/dorosee/.gradle/caches/8.9/transforms/540c3e72092eebe67583a144749ba8b1/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/11c6910553cfda7e5e176db2ec0f5d46/transformed/rxandroid-2.1.1/AndroidManifest.xml:15:1-20:12
 MERGED from [com.android.support:exifinterface:27.1.0] /Users/dorosee/.gradle/caches/8.9/transforms/4b212199a795f377a8208b4a9ca7c073/transformed/exifinterface-27.1.0/AndroidManifest.xml:17:1-22:12
 	package
 		INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml
@@ -84,8 +86,8 @@ ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/Andro
 	android:name
 		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-91:19
-INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-91:19
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-96:19
+INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:7:5-96:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/dorosee/.gradle/caches/8.9/transforms/97d95be18f1dab0674f564fcc81daf42/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/dorosee/.gradle/caches/8.9/transforms/97d95be18f1dab0674f564fcc81daf42/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
 MERGED from [com.github.bumptech.glide:glide:4.15.1] /Users/dorosee/.gradle/caches/8.9/transforms/233550c68e05b4d3aedfeca1ef0b38be/transformed/glide-4.15.1/AndroidManifest.xml:9:5-20
@@ -102,6 +104,8 @@ MERGED from [androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transf
 MERGED from [androidx.core:core:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/baf3f5c1c6ca2135ae1e42171c78052a/transformed/core-1.12.0/AndroidManifest.xml:28:5-89
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.github.NaikSoftware:StompProtocolAndroid:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/c7e45f39512bba45a1bdbbe278d396f5/transformed/StompProtocolAndroid-1.6.6/AndroidManifest.xml:11:5-20
+MERGED from [com.github.NaikSoftware:StompProtocolAndroid:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/c7e45f39512bba45a1bdbbe278d396f5/transformed/StompProtocolAndroid-1.6.6/AndroidManifest.xml:11:5-20
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/c7811bdc0c0d589aec2bd05a4ddef356/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/c7811bdc0c0d589aec2bd05a4ddef356/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [com.github.bumptech.glide:gifdecoder:4.15.1] /Users/dorosee/.gradle/caches/8.9/transforms/950643f0a9676aaf1c5d4e4b72bc735f/transformed/gifdecoder-4.15.1/AndroidManifest.xml:9:5-20
@@ -232,6 +236,12 @@ ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/Andro
 		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:89:17-59
 	android:name
 		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:88:17-60
+activity#com.example.myapplication.ui.activity.StoreOrderActivity
+ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:92:9-94:62
+	android:theme
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:94:17-59
+	android:name
+		ADDED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml:93:17-63
 uses-sdk
 INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/dorosee/Documents/Smart-lucnh-client-master/app/src/main/AndroidManifest.xml
@@ -338,6 +348,8 @@ MERGED from [androidx.core:core-ktx:1.12.0] /Users/dorosee/.gradle/caches/8.9/tr
 MERGED from [androidx.core:core-ktx:1.12.0] /Users/dorosee/.gradle/caches/8.9/transforms/b6eaea0dc8cd30c374417d7349bc318e/transformed/core-ktx-1.12.0/AndroidManifest.xml:5:5-44
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/dorosee/.gradle/caches/8.9/transforms/170a922af62e45755e72b8835c25ee5f/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [com.github.NaikSoftware:StompProtocolAndroid:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/c7e45f39512bba45a1bdbbe278d396f5/transformed/StompProtocolAndroid-1.6.6/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.NaikSoftware:StompProtocolAndroid:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/c7e45f39512bba45a1bdbbe278d396f5/transformed/StompProtocolAndroid-1.6.6/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/0b9e7065c7b0dd26fe2bb9d56e2feb1b/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/0b9e7065c7b0dd26fe2bb9d56e2feb1b/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.runtime:runtime-android:1.6.6] /Users/dorosee/.gradle/caches/8.9/transforms/2f985d0c7b221f10ad64a405ef948920/transformed/runtime-release/AndroidManifest.xml:5:5-44
@@ -364,6 +376,8 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/dorosee/.gradle/ca
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/dorosee/.gradle/caches/8.9/transforms/474b0dff2c09ef1eeb86d524c23631e7/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/dorosee/.gradle/caches/8.9/transforms/540c3e72092eebe67583a144749ba8b1/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/dorosee/.gradle/caches/8.9/transforms/540c3e72092eebe67583a144749ba8b1/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/11c6910553cfda7e5e176db2ec0f5d46/transformed/rxandroid-2.1.1/AndroidManifest.xml:18:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/dorosee/.gradle/caches/8.9/transforms/11c6910553cfda7e5e176db2ec0f5d46/transformed/rxandroid-2.1.1/AndroidManifest.xml:18:5-43
 MERGED from [com.android.support:exifinterface:27.1.0] /Users/dorosee/.gradle/caches/8.9/transforms/4b212199a795f377a8208b4a9ca7c073/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:exifinterface:27.1.0] /Users/dorosee/.gradle/caches/8.9/transforms/4b212199a795f377a8208b4a9ca7c073/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
 	android:targetSdkVersion

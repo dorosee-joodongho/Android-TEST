@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.myapplication.app-mergeDebugResources-50:/values/values.xml",
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-51:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/dorosee/.gradle/caches/8.9/transforms/a4582abb5ad79e6422a781d44780b3a5/transformed/lifecycle-runtime-2.6.1/res/values/values.xml",

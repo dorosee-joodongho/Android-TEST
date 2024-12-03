@@ -101,6 +101,11 @@
         <activity
             android:name="com.example.myapplication.ui.activity.MenuAddActivity"
             android:theme="@style/Theme.MyApplication" />
+
+        <!-- 식당 주문 리스트 조회 -->
+        <activity
+            android:name="com.example.myapplication.ui.activity.StoreOrderActivity"
+            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name="androidx.compose.ui.tooling.PreviewActivity"
             android:exported="true" />

@@ -27,21 +27,17 @@ public final class ActivityStoreUseMenuBinding implements ViewBinding {
   public final Button btnMenuList;
 
   @NonNull
-  public final Button btnOrderHistory;
-
-  @NonNull
   public final FragmentHeaderBinding header;
 
   @NonNull
   public final LinearLayout linearLayout;
 
   private ActivityStoreUseMenuBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnLogout,
-      @NonNull Button btnMenuList, @NonNull Button btnOrderHistory,
-      @NonNull FragmentHeaderBinding header, @NonNull LinearLayout linearLayout) {
+      @NonNull Button btnMenuList, @NonNull FragmentHeaderBinding header,
+      @NonNull LinearLayout linearLayout) {
     this.rootView = rootView;
     this.btnLogout = btnLogout;
     this.btnMenuList = btnMenuList;
-    this.btnOrderHistory = btnOrderHistory;
     this.header = header;
     this.linearLayout = linearLayout;
   }
@@ -85,12 +81,6 @@ public final class ActivityStoreUseMenuBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btnOrderHistory;
-      Button btnOrderHistory = ViewBindings.findChildViewById(rootView, id);
-      if (btnOrderHistory == null) {
-        break missingId;
-      }
-
       id = R.id.header;
       View header = ViewBindings.findChildViewById(rootView, id);
       if (header == null) {
@@ -105,7 +95,7 @@ public final class ActivityStoreUseMenuBinding implements ViewBinding {
       }
 
       return new ActivityStoreUseMenuBinding((ConstraintLayout) rootView, btnLogout, btnMenuList,
-          btnOrderHistory, binding_header, linearLayout);
+          binding_header, linearLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

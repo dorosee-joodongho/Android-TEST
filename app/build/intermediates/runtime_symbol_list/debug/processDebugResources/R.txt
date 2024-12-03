@@ -1059,6 +1059,7 @@ int id calendar_view 0x7f080071
 int id callMeasure 0x7f080072
 int id calorie 0x7f080073
 int id calories_input 0x7f080074
+int id cancelOrderButton 0x7f0801b4
 int id carbs 0x7f080075
 int id carbs_input 0x7f080076
 int id carryVelocity 0x7f080077
@@ -1086,6 +1087,8 @@ int id cos 0x7f08008c
 int id currentState 0x7f08008d
 int id custom 0x7f08008e
 int id customPanel 0x7f08008f
+int id customerNameTextView 0x7f0801b5
+int id customerPhoneNumberTextView 0x7f0801b6
 int id date_spinner 0x7f080090
 int id decelerate 0x7f080091
 int id decelerateAndComplete 0x7f080092
@@ -1184,8 +1187,14 @@ int id loginBut 0x7f0800ee
 int id match_constraint 0x7f0800ef
 int id match_parent 0x7f0800f0
 int id menuImage 0x7f0800f1
+int id menuItemsTableLayout 0x7f0801b7
+int id menuItemsTextView 0x7f0801b8
 int id menuName 0x7f0800f2
+int id menuNameTextView 0x7f0801b9
 int id menuPrice 0x7f0800f3
+int id menuPriceTextView 0x7f0801ba
+int id menuQuantityTextView 0x7f0801bb
+int id menuTotalAmountTextView 0x7f0801bc
 int id menu_list_container 0x7f0800f4
 int id menu_name_input 0x7f0800f5
 int id message 0x7f0800f6
@@ -1208,6 +1217,8 @@ int id on 0x7f080106
 int id onInterceptTouchReturnSwipe 0x7f080107
 int id orderAmountText 0x7f080108
 int id orderDateText 0x7f080109
+int id orderDateTextView 0x7f0801bd
+int id orderDetailTitleTextView 0x7f0801be
 int id orderImage 0x7f08010a
 int id orderItemsContainer 0x7f08010b
 int id orderMenuText 0x7f08010c
@@ -1293,6 +1304,13 @@ int id storeListRecyclerView 0x7f08015b
 int id storeLocation 0x7f08015c
 int id storeName 0x7f08015d
 int id storeNameText 0x7f08015e
+int id storeOrderDateTextView 0x7f0801bf
+int id storeOrderIdTextView 0x7f0801c0
+int id storeOrderRecyclerView 0x7f0801c1
+int id storeOrderStatusTextView 0x7f0801c2
+int id storeStatusTextView 0x7f0801c3
+int id storeTotalPriceTextView 0x7f0801c4
+int id storeViewDetailsButton 0x7f0801c5
 int id submenuarrow 0x7f08015f
 int id submit_area 0x7f080160
 int id supportScrollUp 0x7f080161
@@ -1331,6 +1349,8 @@ int id todaySpecialMenuListRecyclerView 0x7f080181
 int id toggle 0x7f080182
 int id top 0x7f080183
 int id topPanel 0x7f080184
+int id totalPaymentAmountTextView 0x7f0801c6
+int id totalPaymentTextView 0x7f0801c7
 int id total_amount 0x7f080185
 int id total_calories_row 0x7f080186
 int id total_calories_text 0x7f080187
@@ -1428,6 +1448,7 @@ int layout activity_menu_list 0x7f0b0022
 int layout activity_menu_register 0x7f0b0023
 int layout activity_order_history 0x7f0b0024
 int layout activity_store_menu 0x7f0b0025
+int layout activity_store_order 0x7f0b0041
 int layout activity_store_use_menu 0x7f0b0026
 int layout activity_user 0x7f0b0027
 int layout activity_user_use_menu 0x7f0b0028
@@ -1435,6 +1456,7 @@ int layout custom_dialog 0x7f0b0029
 int layout dialog_menu_action 0x7f0b002a
 int layout dialog_order_details 0x7f0b002b
 int layout fragment_header 0x7f0b002c
+int layout fragment_store_order_detail 0x7f0b0042
 int layout ime_base_split_test_activity 0x7f0b002d
 int layout ime_secondary_split_test_activity 0x7f0b002e
 int layout item_cart 0x7f0b002f
@@ -1442,6 +1464,7 @@ int layout item_image 0x7f0b0030
 int layout item_menu 0x7f0b0031
 int layout item_order 0x7f0b0032
 int layout item_order_row 0x7f0b0033
+int layout item_store_order 0x7f0b0043
 int layout menu_item 0x7f0b0034
 int layout menu_item_layout 0x7f0b0035
 int layout notification_action 0x7f0b0036
@@ -1455,6 +1478,7 @@ int layout select_dialog_multichoice_material 0x7f0b003d
 int layout select_dialog_singlechoice_material 0x7f0b003e
 int layout store_item 0x7f0b003f
 int layout support_simple_spinner_dropdown_item 0x7f0b0040
+int layout table_row_item 0x7f0b0044
 int mipmap ic_launcher 0x7f0c0000
 int mipmap ic_launcher_round 0x7f0c0001
 int string abc_action_bar_home_description 0x7f0d0000

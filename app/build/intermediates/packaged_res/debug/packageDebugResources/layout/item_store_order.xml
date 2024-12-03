@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/border">
+
+    <!-- 주문 ID -->
+    <TextView
+            android:id="@+id/storeOrderIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+    <!-- 주문 일자 -->
+    <TextView
+            android:id="@+id/storeOrderDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_below="@id/storeOrderIdTextView"
+            android:layout_alignParentStart="true" />
+
+    <!-- 총 결제 금액 -->
+    <TextView
+            android:id="@+id/storeTotalPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_below="@id/storeOrderDateTextView"
+            android:layout_alignParentStart="true" />
+
+    <!-- 주문 상태 (오른쪽 상단 배치) -->
+    <TextView
+            android:id="@+id/storeStatusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+
+    <!-- 세부 정보 보기 버튼 -->
+    <Button
+            android:id="@+id/storeViewDetailsButton"
+            android:layout_width="397dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/storeTotalPriceTextView"
+            android:layout_alignParentStart="true"
+            android:text="주문 상세 보기" />
+</RelativeLayout>
