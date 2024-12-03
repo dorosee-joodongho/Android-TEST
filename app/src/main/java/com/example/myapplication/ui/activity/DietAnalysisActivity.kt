@@ -36,11 +36,8 @@ class DietAnalysisActivity : AppCompatActivity() {
 
         dietViewModel = ViewModelProvider(this)[DietViewModel::class.java]
 
-        // 공통 헤더 설정
         val backButton = findViewById<TextView>(R.id.backButton)
-        backButton.setOnClickListener {
-            onBackPressed()
-        }
+        backButton.setOnClickListener { onBackPressed() }
         backButton.text = "←  식단 분석"
 
         prevWeekButton = findViewById(R.id.button_prev_week)
@@ -55,7 +52,6 @@ class DietAnalysisActivity : AppCompatActivity() {
         updateDateRange()
         setupListeners()
         fetchDietDataForWeek()
-
     }
 
     private fun setupListeners() {
@@ -88,10 +84,11 @@ class DietAnalysisActivity : AppCompatActivity() {
     }
 
     private fun fetchDietDataForWeek() {
-        // 현재 주 범위에 해당하는 Diet 데이터를 필터링
-        val weeklyDiet = dietViewModel.dietList.value?.filter { it.date in startDate..endDate }.orEmpty()
+        val weeklyDiet = dietViewModel.dietList.value?.filter { diet ->
+            val dietDate = diet.getDateAsLocalDate()
+            dietDate in startDate..endDate
+        }.orEmpty()
 
-        // 각 영양소와 칼로리를 합산
         val aggregatedData = weeklyDiet.flatMap { it.menuItems }.fold(
             MenuItem("", 0, 0, 0, 0)
         ) { acc, item ->
@@ -103,14 +100,13 @@ class DietAnalysisActivity : AppCompatActivity() {
             }
         }
 
-        // 비율 계산
         val totalNutrients = aggregatedData.carbs + aggregatedData.protein + aggregatedData.fat
         val percentages = if (totalNutrients > 0) {
             mapOf(
                 "carbohydrates" to aggregatedData.carbs * 100 / totalNutrients,
                 "protein" to aggregatedData.protein * 100 / totalNutrients,
                 "fat" to aggregatedData.fat * 100 / totalNutrients,
-                "calories" to aggregatedData.calorie // 칼로리는 합산 값 그대로 전달
+                "calories" to aggregatedData.calorie
             )
         } else {
             mapOf("carbohydrates" to 0, "protein" to 0, "fat" to 0, "calories" to 0)
