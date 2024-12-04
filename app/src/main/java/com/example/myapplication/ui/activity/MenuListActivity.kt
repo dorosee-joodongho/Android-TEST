@@ -36,7 +36,7 @@ class MenuListActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             onBackPressed()
         }
-        backButton.text = "←  메뉴 목록"
+        backButton.text = "←  장바구니"
 
         recyclerView = findViewById(R.id.recyclerViewMenu)
         btnAddMenu = findViewById(R.id.btnAddMenu)

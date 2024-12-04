@@ -1,9 +1,7 @@
 package com.example.myapplication.ui.activity
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +29,8 @@ class StoreOrderActivity : AppCompatActivity(), StoreOrderDetailDialogFragment.O
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_order)
 
+        val userName: TextView = findViewById(R.id.userName)
+
         val userService = MemberService(this@StoreOrderActivity, RetrofitClient.instance)
 
         lifecycleScope.launch {
@@ -38,6 +38,8 @@ class StoreOrderActivity : AppCompatActivity(), StoreOrderDetailDialogFragment.O
             val getCurrentUser = userService.getMember()
 
             if (getCurrentUser != null) {
+                userName.text = getCurrentUser.memberName
+
                 Glide.with(this@StoreOrderActivity)
                     .load(getCurrentUser.userImage)
                     .placeholder(R.drawable.ic_launcher_background)

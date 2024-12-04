@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -24,6 +25,7 @@ class CartActivity : AppCompatActivity() {
     private lateinit var totalAmountTextView: TextView
     private val cartItems = CartManager.getItems()
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
@@ -35,6 +37,12 @@ class CartActivity : AppCompatActivity() {
         cartAdapter = CartAdapter(cartItems) { updateTotalAmount() }
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = cartAdapter
+
+        val backButton = findViewById<TextView>(R.id.backButton)
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
+        backButton.text = "←  메뉴 목록"
 
         orderButton.setOnClickListener {
             val totalAmount = cartItems.sumOf { it.price * it.quantity }

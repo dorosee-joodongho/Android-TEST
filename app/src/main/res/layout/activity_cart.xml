@@ -4,14 +4,16 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-    <TextView
-            android:id="@+id/cart_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="장바구니"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:paddingBottom="8dp" />
+    <include layout="@layout/fragment_header" />
+
+<!--    <TextView-->
+<!--            android:id="@+id/cart_title"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="장바구니"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:paddingBottom="8dp" />-->
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cart_recycler_view"

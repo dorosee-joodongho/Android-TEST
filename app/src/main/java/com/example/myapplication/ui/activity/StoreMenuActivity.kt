@@ -1,9 +1,11 @@
 package com.example.myapplication.ui.activity
 
 import StoreMenuAdapter
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -22,9 +24,16 @@ class StoreMenuActivity : AppCompatActivity() {
     // StoreService를 ViewModel에서 가져올 수도 있지만, 여기서는 액티비티에서 직접 사용합니다.
     private val storeService = StoreService(RetrofitClient.instance)
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_menu)
+
+        val backButton = findViewById<TextView>(R.id.backButton)
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
+        backButton.text = "←  식당 메뉴 목록"
 
         val storeId = intent.getLongExtra("storeId", -1L)  // -1L은 default 값, 전달되지 않으면 -1L이 반환됨
 

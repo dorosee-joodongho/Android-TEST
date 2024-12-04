@@ -5,6 +5,8 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
+    <include layout="@layout/fragment_header" />
+
     <!-- 장바구니로 이동하는 버튼 -->
     <Button
             android:id="@+id/cartButton"

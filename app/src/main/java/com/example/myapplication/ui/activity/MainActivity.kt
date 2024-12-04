@@ -3,6 +3,7 @@ package com.example.myapplication.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.network.RetrofitClient
+import com.example.myapplication.network.StompManager
 import com.example.myapplication.service.MemberService
 import com.example.myapplication.service.MenuService
 import com.example.myapplication.service.StoreService
 import com.example.myapplication.ui.adapter.ImageAdapter
 import com.example.myapplication.ui.adapter.StoreAdapter
 import com.example.myapplication.ui.listener.OnItemClickListener
+import com.example.myapplication.utils.ToastUtils
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -27,29 +30,35 @@ class MainActivity : ComponentActivity() {
 
         val menuRecyclerView: RecyclerView = findViewById(R.id.todaySpecialMenuListRecyclerView)
         val storeRecyclerView: RecyclerView = findViewById(R.id.storeListRecyclerView)
+        val userName: TextView = findViewById(R.id.userName)
 
         // 서비스 인스턴스 생성
         val menuService = MenuService(RetrofitClient.instance)
         val storeService = StoreService(RetrofitClient.instance)
         val userService = MemberService(this@MainActivity, RetrofitClient.instance)
-        // 유저 정보 가져오기
-        val getCurrentUser = userService.getCurrentUser() // 현재 접속 중인 유저
 
-        // Glide로 유저 이미지 표시
-        Glide.with(this)
-            .load(getCurrentUser.userImage)  // 로드할 이미지 URL
-            .placeholder(R.drawable.ic_launcher_background)  // 로딩 중 이미지
-            .error(R.drawable.error_image)  // 이미지 로딩 실패 시 표시할 이미지
-            .into(findViewById(R.id.userImage))  // ImageView에 이미지를 로드
+        lifecycleScope.launch {
+            // 유저 정보 가져오기
+            val getCurrentUser = userService.getMember()
 
-        // 유저 이미지 또는 이름 클릭 시 UserProfileActivity로 이동
-        findViewById<View>(R.id.userImage).setOnClickListener {
-            val intent = Intent(this, UserUseMenuActivity::class.java)
-            startActivity(intent)
-        }
-        findViewById<View>(R.id.userName).setOnClickListener {
-            val intent = Intent(this, UserUseMenuActivity::class.java)
-            startActivity(intent)
+            if (getCurrentUser != null) {
+                userName.text = getCurrentUser.memberName
+
+                Glide.with(this@MainActivity)
+                    .load(getCurrentUser.userImage)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.error_image)
+                    .into(findViewById(R.id.userImage))
+
+                findViewById<View>(R.id.userImage).setOnClickListener {
+                    startActivity(Intent(this@MainActivity, StoreUseMenuActivity::class.java))
+                }
+                findViewById<View>(R.id.userName).setOnClickListener {
+                    startActivity(Intent(this@MainActivity, StoreUseMenuActivity::class.java))
+                }
+            } else {
+                ToastUtils.showToast(this@MainActivity, "유저 정보를 가져오는 데 실패했습니다.")
+            }
         }
 
         // RecyclerView 어댑터 설정
