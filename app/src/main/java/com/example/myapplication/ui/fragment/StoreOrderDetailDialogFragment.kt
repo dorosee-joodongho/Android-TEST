@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,16 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
 import com.example.myapplication.data.storeOrder.StoreOrderDetail
+import com.example.myapplication.network.RetrofitClient
+import com.example.myapplication.service.StoreOrderService
+import kotlinx.coroutines.launch
 
 class StoreOrderDetailDialogFragment : DialogFragment() {
+    val storeOrderService = StoreOrderService(RetrofitClient.instance)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,10 +41,10 @@ class StoreOrderDetailDialogFragment : DialogFragment() {
             "주문 일자: ${orderDetail?.orderDate}"
 
         view.findViewById<TextView>(R.id.customerNameTextView).text =
-            "고객명: ${orderDetail?.customerName}"
+            "고객명: ${orderDetail?.consumerName}"
 
         view.findViewById<TextView>(R.id.customerPhoneNumberTextView).text =
-            "전화번호: ${orderDetail?.customerPhoneNumber}"
+            "전화번호: ${orderDetail?.consumerPhoneNumber}"
 
         view.findViewById<TextView>(R.id.totalPaymentAmountTextView).text = "${totalPayment}"
 
@@ -58,11 +65,22 @@ class StoreOrderDetailDialogFragment : DialogFragment() {
 
         // 취소 버튼 설정
         val cancelOrderButton = view.findViewById<Button>(R.id.cancelOrderButton)
-        if (status == "취소") {
+        if (status == "cancel") {
             cancelOrderButton.visibility = View.GONE
+            view.findViewById<TextView>(R.id.storeOrderStatusTextView).setTextColor(Color.RED)
         } else {
             cancelOrderButton.setOnClickListener {
-                cancelOrder(status)
+                lifecycleScope.launch {
+                    val response = storeOrderService.orderDelete(orderId!!)
+                    if (response) {
+                        Toast.makeText(requireContext(), "주문 취소가 완료 되었습니다.", Toast.LENGTH_SHORT).show()
+                        // 액티비티에 알리기
+                        (activity as? OnOrderCancelListener)?.onOrderCanceled()
+                        dismiss() // 다이얼로그 종료
+                    } else {
+                        Toast.makeText(requireContext(), "주문 취소가 실패, 다시 시도해주세요.", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
 
@@ -74,10 +92,10 @@ class StoreOrderDetailDialogFragment : DialogFragment() {
         )
     }
 
-    private fun cancelOrder(orderStatus: String?) {
-        // 주문 취소 로직
-        Toast.makeText(requireContext(), "주문 취소: $orderStatus", Toast.LENGTH_SHORT).show()
+    interface OnOrderCancelListener {
+        fun onOrderCanceled()
     }
+
 
     companion object {
         fun newInstance(orderDetail: StoreOrderDetail, status: String, orderId: Long): StoreOrderDetailDialogFragment {

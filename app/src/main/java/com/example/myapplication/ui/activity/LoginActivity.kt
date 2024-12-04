@@ -89,7 +89,6 @@ class LoginActivity : AppCompatActivity() {
                     val targetActivity = if (loginResult) { // 고객 로그인
                         MainActivity::class.java
                     } else {// 가게 로그인
-//                        StoreUseMenuActivity::class.java
                         StoreOrderActivity::class.java
                     }
                     ToastUtils.showToast(this@LoginActivity, "로그인 성공")

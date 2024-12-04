@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.myapplication.data.Member
 import com.example.myapplication.data.PostJoinRequestDto
+import com.example.myapplication.data.PostJoinResponseDto
 import com.example.myapplication.data.PostLoginRequestDto
 import com.example.myapplication.network.RetrofitApi
 import com.example.myapplication.utils.TransRequestBody
+import com.google.gson.Gson
 
 class MemberService(context: Context, private val retrofitApi: RetrofitApi) {
     private val sharedPreferences: SharedPreferences = context.applicationContext.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
@@ -41,8 +43,8 @@ class MemberService(context: Context, private val retrofitApi: RetrofitApi) {
 
         return try {
             val response = retrofitApi.login(loginInfo)
-            println("로그인 응답: ${response}")
-            println("저장된 토큰 : ${getAuthToken()}")
+
+            println("로그인 후 저장된 토큰 : ${getAuthToken()}")
             saveAuthToken(response.token)
             if (response.isMember) {
                 return true // 고객 로그인
@@ -56,23 +58,46 @@ class MemberService(context: Context, private val retrofitApi: RetrofitApi) {
     }
 
     // 회원가입
-    suspend fun saveMember(name: String, phone: String, email: String, password: String): Boolean {
+    suspend fun saveMember(name: String, phone: String, email: String, password: String): Int {
         val joinInfo = PostJoinRequestDto(
             name = name,
             phone = phone,
             email = email,
             password = password
         )
-
         return try {
             val response = retrofitApi.join(joinInfo)
-            println("회원가입 응답 코드: ${response.code}")
-            response.code == "SU" // 성공 여부 확인
+
+            println("HTTP 상태 코드: ${response.code()}")
+
+            if (response.isSuccessful) {
+                // 성공 응답 처리
+                val responseBody = response.body()
+                when (responseBody?.code) {
+                    "SU" -> 1 // 성공
+                    else -> -1 // 알 수 없는 코드
+                }
+            } else {
+                // 실패 응답의 본문에서 `code` 값 추출
+                val errorBody = response.errorBody()?.string()
+                println("에러 응답 본문: $errorBody")
+
+                if (errorBody != null) {
+                    val errorResponse = Gson().fromJson(errorBody, PostJoinResponseDto::class.java)
+                    when (errorResponse.code) {
+                        "DE" -> 2 // 중복 이메일
+                        else -> 0 // 기타 오류
+                    }
+                } else {
+                    0 // 에러 본문 없음
+                }
+            }
         } catch (e: Exception) {
-            println("회원가입 중 오류 발생: ${e.message}")
-            false
+            println("회원가입 중 네트워크 오류 발생: ${e.message}")
+            0 // 네트워크 오류
         }
     }
+
 
     // 회원 정보 수정
     suspend fun updateMember(memberId: Long, memberName: String, memberPhone: String, memberPassword: String) : Boolean {

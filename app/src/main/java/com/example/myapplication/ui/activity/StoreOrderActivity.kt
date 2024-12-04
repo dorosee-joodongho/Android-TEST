@@ -1,8 +1,11 @@
 package com.example.myapplication.ui.activity
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,45 +22,52 @@ import com.example.myapplication.ui.fragment.StoreOrderDetailDialogFragment
 import com.example.myapplication.utils.ToastUtils
 import kotlinx.coroutines.launch
 
-class StoreOrderActivity : AppCompatActivity() {
+class StoreOrderActivity : AppCompatActivity(), StoreOrderDetailDialogFragment.OnOrderCancelListener {
     private lateinit var stompManager: StompManager // 소켓
     private val storeOrderService = StoreOrderService(RetrofitClient.instance)
+    private lateinit var storeOrderAdapter: StoreOrderAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_order)
 
         val userService = MemberService(this@StoreOrderActivity, RetrofitClient.instance)
+
         lifecycleScope.launch {
             // 유저 정보 가져오기
             val getCurrentUser = userService.getMember()
 
             if (getCurrentUser != null) {
-                // Glide로 유저 이미지 표시
                 Glide.with(this@StoreOrderActivity)
-                    .load(getCurrentUser.userImage) // 로드할 이미지 URL
-                    .placeholder(R.drawable.ic_launcher_background) // 로딩 중 이미지
-                    .error(R.drawable.error_image) // 이미지 로딩 실패 시 표시할 이미지
-                    .into(findViewById(R.id.userImage)) // ImageView에 이미지를 로드
+                    .load(getCurrentUser.userImage)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.error_image)
+                    .into(findViewById(R.id.userImage))
 
-                // 유저 이미지 또는 이름 클릭 시 StoreUseMenuActivity 이동
                 findViewById<View>(R.id.userImage).setOnClickListener {
-                    val intent = Intent(this@StoreOrderActivity, StoreUseMenuActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this@StoreOrderActivity, StoreUseMenuActivity::class.java))
                 }
                 findViewById<View>(R.id.userName).setOnClickListener {
-                    val intent = Intent(this@StoreOrderActivity, StoreUseMenuActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this@StoreOrderActivity, StoreUseMenuActivity::class.java))
                 }
 
-                // STOMP 연결
                 stompManager = StompManager()
                 stompManager.connect(getCurrentUser.memberID.toString()) { message ->
                     runOnUiThread {
-                        println("Received message: $message")
-                        // UI 업데이트 하기
+                        try {
+                            // 메시지 JSON 파싱
+                            val updatedOrder = parseOrderMessage(message)
+                            println("주문 알람 : ${updatedOrder}")
+                            if (updatedOrder != null) {
+                                ToastUtils.showToast(this@StoreOrderActivity, "새로운 주문이 생성되었습니다.")
+                                updateOrderInAdapter(updatedOrder)
+                            }
+                        } catch (e: Exception) {
+                            ToastUtils.showToast(this@StoreOrderActivity, "메시지 처리 오류: ${e.message}")
+                        }
                     }
                 }
+
             } else {
                 ToastUtils.showToast(this@StoreOrderActivity, "유저 정보를 가져오는 데 실패했습니다.")
             }
@@ -65,19 +75,16 @@ class StoreOrderActivity : AppCompatActivity() {
 
         val storeOrderRecyclerView: RecyclerView = findViewById(R.id.storeOrderRecyclerView)
 
-        // getOrderList를 비동기적으로 호출하여 결과를 RecyclerView에 반영
         lifecycleScope.launch {
             val orders = getOrderList()
 
-            // 어댑터에 데이터를 설정
-            val adapter = StoreOrderAdapter(orders ?: emptyList()) { storeOrderItem ->
+            storeOrderAdapter = StoreOrderAdapter(orders ?: emptyList()) { storeOrderItem ->
                 showStoreOrderDetailModal(storeOrderItem)
             }
 
             storeOrderRecyclerView.layoutManager = LinearLayoutManager(this@StoreOrderActivity)
-            storeOrderRecyclerView.adapter = adapter
+            storeOrderRecyclerView.adapter = storeOrderAdapter
         }
-
     }
 
     private fun showStoreOrderDetailModal(storeOrderItem: StoreOrderItem) {
@@ -91,6 +98,7 @@ class StoreOrderActivity : AppCompatActivity() {
                     storeOrderItem.orderId
                 )
                 dialog.show(supportFragmentManager, "StoreOrderDetailDialog")
+                dialog.setTargetFragment(null, 0) // 추가된 Listener 설정
             }
         }
     }
@@ -105,9 +113,47 @@ class StoreOrderActivity : AppCompatActivity() {
         }
     }
 
+    private fun parseOrderMessage(message: String): StoreOrderItem? {
+        return try {
+            val gson = com.google.gson.Gson()
+            gson.fromJson(message, StoreOrderItem::class.java)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    private fun updateOrderInAdapter(updatedOrder: StoreOrderItem) {
+        val currentOrders = storeOrderAdapter.orders.toMutableList()
+        val existingIndex = currentOrders.indexOfFirst { it.orderId == updatedOrder.orderId }
+
+        if (existingIndex != -1) {
+            currentOrders[existingIndex] = updatedOrder
+            storeOrderAdapter.notifyItemChanged(existingIndex)
+        } else {
+            currentOrders.add(updatedOrder)
+            storeOrderAdapter.notifyItemInserted(currentOrders.size - 1)
+        }
+
+        storeOrderAdapter.updateData(currentOrders)
+    }
+
+
+    override fun onOrderCanceled() {
+        refreshOrders()
+    }
+
+    private fun refreshOrders() {
+        lifecycleScope.launch {
+            val updatedOrders = getOrderList()
+            storeOrderAdapter.updateData(updatedOrders ?: emptyList())
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         stompManager.disconnect()
     }
 }
+
 

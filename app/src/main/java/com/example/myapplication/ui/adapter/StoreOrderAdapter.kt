@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.storeOrder.StoreOrderItem
 
 class StoreOrderAdapter(
-    private val orders: List<StoreOrderItem>,
+    var orders: List<StoreOrderItem>,
     private val onViewDetails: (StoreOrderItem) -> Unit
 ) : RecyclerView.Adapter<StoreOrderAdapter.StoreOrderViewHolder>() {
 
@@ -31,10 +32,19 @@ class StoreOrderAdapter(
     override fun onBindViewHolder(holder: StoreOrderViewHolder, position: Int) {
         val order = orders[position]
         holder.orderIdTextView.text = "주문번호: ${order.orderId}"
+        holder.statusTextView.text = order.status
         holder.orderDateTextView.text = order.orderDate
         holder.totalPriceTextView.text = "₩${order.totalPrice}"
-        holder.statusTextView.text = order.status
         holder.viewDetailsButton.setOnClickListener { onViewDetails(order) }
+
+        if (order.status == "cancel") {
+            holder.statusTextView.setTextColor(Color.RED)
+        }
+    }
+
+    fun updateData(newOrders: List<StoreOrderItem>) {
+        orders = newOrders
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = orders.size

@@ -32,5 +32,6 @@ data class MemberDto(
 )
 
 data class PostJoinResponseDto(
-    val code: String
+    val code: String,
+    val message: String,
 )

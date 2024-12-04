@@ -106,10 +106,12 @@ class UserActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     val success = userService.saveMember(name, phone, email, password)
-                    if (success) {
+                    if (success == 1) {
                         ToastUtils.showToast(this@UserActivity, "회원 가입에 성공하셨습니다.")
                         val intent = Intent(this@UserActivity, LoginActivity::class.java)
                         startActivity(intent)
+                    } else if (success == 2) {
+                        ToastUtils.showToast(this@UserActivity, "해당 이메일은 이미 사용 중입니다.")
                     } else {
                         ToastUtils.showToast(this@UserActivity, "회원 가입에 실패하셨습니다. 다시 시도 해주세요.")
                     }

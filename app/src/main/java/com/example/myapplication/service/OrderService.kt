@@ -34,39 +34,19 @@ class OrderService(private val retrofitApi: RetrofitApi, private val context: Co
         return try {
             val response = retrofitApi.menuOrder(storeId, postOrderRequestDto)
             println("주문 성공: ${response}")
-            println(response.next_redirect_mobile_url)
+            println("결제 링크: ${response.next_redirect_mobile_url}")
 
             response.next_redirect_mobile_url?.let {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
-
-            } ?: println("결제 링크를 찾을 수 없습니다.")
+                openKakaoPay(it) // 결제 페이지로 이동
+            } ?: run {
+                println("결제 링크를 찾을 수 없습니다.")
+                return false
+            }
             true
         } catch (e: Exception) {
             println("주문 중 오류 발생: ${e.message}")
             false
         }
-    }
-
-
-    fun getOrderById() : Order{
-        return Order(
-                orderId = 1L,
-                date = "2022-10-15 (화)",
-                storeName = "파스타",
-                menuSummary = "피자 외 3",
-                orderImage = "null",
-                amount = 23000,
-                orderDate = "2022-10-15 12:30:00", // 주문 시간
-                estimatedTime = "40분", // 예상시간
-                waitingTime = "1분", // 웨이팅 시간
-                crowdLevel = "원활", // 혼잡도
-                items = listOf(
-                    OrderItem("짜장면", 5000, 1, 5000),
-                    OrderItem("짬뽕", 6000, 1, 6000),
-                    OrderItem("군만두", 2000, 1, 2000)
-                ),
-                totalPrice = 15000 // 총 금액
-            )
     }
 
     suspend fun getOrderHistory() : List<Order> {

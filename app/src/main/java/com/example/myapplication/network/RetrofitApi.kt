@@ -20,6 +20,7 @@ import com.example.myapplication.data.storeOrder.StoreOrderDetail
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -32,7 +33,7 @@ import retrofit2.http.Path
 // controller 전부 다 넣기
 interface RetrofitApi {
     @POST("join")
-    suspend fun join(@Body postJoinRequestDto: PostJoinRequestDto): PostJoinResponseDto
+    suspend fun join(@Body postJoinRequestDto: PostJoinRequestDto): Response<PostJoinResponseDto>
 
     @POST("login")
     suspend fun login(@Body postLoginRequestDto: PostLoginRequestDto): LoginResponse
@@ -92,8 +93,12 @@ interface RetrofitApi {
     @GET("store/order")
     suspend fun storeOrder(): GetStoreOrderResponseDto
 
+    // 식당 주문 상세 보기
     @GET("store/order/{orderId}")
-    suspend fun orderDetail(@Path("orderId") orderId: Long,): StoreOrderDetail
+    suspend fun orderDetail(@Path("orderId") orderId: Long): StoreOrderDetail
+
+    @DELETE("store/order/{orderId}")
+    suspend fun orderDelete(@Path("orderId") orderId: Long)
 
     //추천 메뉴 목록 가지고오기
     @GET("recommendation")

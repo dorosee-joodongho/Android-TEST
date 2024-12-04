@@ -15,8 +15,8 @@ data class StoreOrderItem(
 data class StoreOrderDetail(
     val menuList: List<StoreMenuItem>,
     val orderDate: String,
-    val customerName: String,
-    val customerPhoneNumber: String
+    val consumerName: String,
+    val consumerPhoneNumber: String
 ) : Parcelable
 
 @Parcelize

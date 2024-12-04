@@ -29,4 +29,16 @@ class StoreOrderService(private val retrofitApi: RetrofitApi) {
             return null
         }
     }
+
+    // 주문 취소하기
+    suspend fun orderDelete(orderId: Long): Boolean {
+        try {
+            val response = retrofitApi.orderDelete(orderId)
+            println("주문 취소 완료 $response")
+            return true
+        } catch (e: Exception) {
+            println("주문 취소 중 오류 발생: ${e.message}")
+            return false
+        }
+    }
 }
