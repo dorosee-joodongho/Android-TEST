@@ -1,6 +1,5 @@
 package com.example.myapplication.ui.activity
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.Gravity
@@ -10,14 +9,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.ui.adapter.OrderAdapter
 import com.example.myapplication.R
 import com.example.myapplication.data.Order
 import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.service.OrderService
+import com.example.myapplication.ui.adapter.OrderAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +26,6 @@ class OrderHistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_history)
-
 
         val orderService = OrderService(RetrofitClient.instance, this@OrderHistoryActivity)
 
@@ -68,7 +65,10 @@ class OrderHistoryActivity : AppCompatActivity() {
         // orderItemsContainer, tvTotalPrice, storeNameTextView, summaryTextView 초기화
         val orderItemsContainer: LinearLayout = dialogView.findViewById(R.id.orderItemsContainer)
         val tvTotalPrice: TextView = dialogView.findViewById(R.id.tvTotalPrice)
-
+        val tvStoreName = dialogView.findViewById<TextView>(R.id.tvStoreName)
+        val tvOrderDate = dialogView.findViewById<TextView>(R.id.tvOrderDate)
+        val tvEstimatedTime = dialogView.findViewById<TextView>(R.id.tvEstimatedTime)
+        val tvCrowdLevel = dialogView.findViewById<TextView>(R.id.tvCrowdLevel)
 
         // 주문 항목 동적으로 추가
         for (item in order.items) {
@@ -122,6 +122,10 @@ class OrderHistoryActivity : AppCompatActivity() {
 
         // 총 결제 금액 표시
         tvTotalPrice.text = "총 결제 금액: ${order.totalPrice}원"
+        tvStoreName.text = "가게명: ${order.storeName}"
+        tvOrderDate.text = "주문일자: ${order.orderDate}"
+        tvEstimatedTime.text = "예상 시간: ${order.estimatedTime}분"
+        tvCrowdLevel.text = "혼잡도: ${order.crowdLevel}"
 
         // 다이얼로그 생성 및 표시
         val dialog = AlertDialog.Builder(this)

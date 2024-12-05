@@ -33,12 +33,14 @@ class OrderAdapter(
         private val summaryTextView: TextView = view.findViewById(R.id.orderMenuText)
         private val tvOrderNameTextView : TextView = view.findViewById(R.id.tvOrderName)
         private val orderImage: ImageView = view.findViewById(R.id.orderImage)
+        private val orderDateText : TextView = view.findViewById(R.id.orderDateText)
 
         // bind 메서드에서 데이터를 설정
         fun bind(order: Order) {
             tvOrderNameTextView.text = order.storeName + " 주문"
             storeNameTextView.text = order.storeName  // 가게명 텍스트 설정
             summaryTextView.text = order.menuSummary  // 메뉴 요약 텍스트 설정
+            orderDateText.text = order.orderDate
 
             Glide.with(itemView.context)  // itemView.context를 사용
                 .load(order.orderImage)  // 실제 이미지 URL을 로드

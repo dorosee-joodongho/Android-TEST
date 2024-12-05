@@ -67,7 +67,7 @@ class OrderService(private val retrofitApi: RetrofitApi, private val context: Co
                         orderImage = order.storeImg!!,
                         orderDate = order.orderDate.toString(),
                         estimatedTime = order.estimatedTime,
-                        waitingTime = order.waiting,
+                        waiting = order.waiting,
                         crowdLevel = order.crowdLevel,
                         items = createOrderItems(order.items),
                         totalPrice = order.totalPrice.toLong()

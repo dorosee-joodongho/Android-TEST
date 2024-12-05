@@ -51,10 +51,10 @@ class MainActivity : ComponentActivity() {
                     .into(findViewById(R.id.userImage))
 
                 findViewById<View>(R.id.userImage).setOnClickListener {
-                    startActivity(Intent(this@MainActivity, StoreUseMenuActivity::class.java))
+                    startActivity(Intent(this@MainActivity, UserUseMenuActivity::class.java))
                 }
                 findViewById<View>(R.id.userName).setOnClickListener {
-                    startActivity(Intent(this@MainActivity, StoreUseMenuActivity::class.java))
+                    startActivity(Intent(this@MainActivity, UserUseMenuActivity::class.java))
                 }
             } else {
                 ToastUtils.showToast(this@MainActivity, "유저 정보를 가져오는 데 실패했습니다.")
