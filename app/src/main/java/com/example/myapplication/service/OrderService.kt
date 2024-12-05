@@ -34,15 +34,14 @@ class OrderService(private val retrofitApi: RetrofitApi, private val context: Co
         return try {
             val response = retrofitApi.menuOrder(storeId, postOrderRequestDto)
             println("주문 성공: ${response}")
-            println("결제 링크: ${response.next_redirect_mobile_url}")
+            println("결제 링크: ${response.next_redirect_app_url}")
 
-            response.next_redirect_mobile_url?.let {
+            response.next_redirect_app_url?.let {
                 openKakaoPay(it) // 결제 페이지로 이동
             } ?: run {
                 println("결제 링크를 찾을 수 없습니다.")
                 return false
             }
-            true
         } catch (e: Exception) {
             println("주문 중 오류 발생: ${e.message}")
             false
@@ -97,17 +96,20 @@ class OrderService(private val retrofitApi: RetrofitApi, private val context: Co
         return orderList
     }
 
-    private fun openKakaoPay(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        try {
-            // 카카오톡 앱을 먼저 열어보려 시도
-            intent.setPackage("com.kakao.talk")
-            context.startActivity(intent) // Context를 통해 startActivity 호출
+    private fun openKakaoPay(url: String): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)  // 새로운 태스크에서 실행
+            addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) // 기존 브라우저가 있으면, 그 브라우저가 포그라운드로 올라오도록
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) // 기존 액티비티를 제거하고, 새로운 액티비티로 이동
+        }
+
+        return try {
+            context.startActivity(intent)  // 브라우저로 URL 실행
+            println("결제 페이지로 이동합니다: $url")
+            true
         } catch (e: Exception) {
-            // 카카오톡이 설치되어 있지 않으면 기본 브라우저로 열기
-            intent.setPackage(null)
-            context.startActivity(intent) // Context를 통해 startActivity 호출
+            println("URL 열기 실패: ${e.message}")
+            false
         }
     }
 

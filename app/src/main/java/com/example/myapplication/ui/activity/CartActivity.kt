@@ -61,9 +61,9 @@ class CartActivity : AppCompatActivity() {
 
                     if (orderResult) {
                         // 주문 성공
-                        val intent = Intent(this@CartActivity, OrderHistoryActivity::class.java)
+//                        val intent = Intent(this@CartActivity, OrderHistoryActivity::class.java)
+//                        startActivity(intent) // 주문 내역으로 이동
                         CartManager.clearCart() // 장바구니 비우기
-                        startActivity(intent) // 주문 내역으로 이동
                         Toast.makeText(this@CartActivity, "주문이 접수되었습니다.", Toast.LENGTH_SHORT).show()
                     } else {
                         // 주문 실패
