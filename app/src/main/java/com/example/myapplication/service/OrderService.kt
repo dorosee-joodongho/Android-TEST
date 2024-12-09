@@ -34,9 +34,9 @@ class OrderService(private val retrofitApi: RetrofitApi, private val context: Co
         return try {
             val response = retrofitApi.menuOrder(storeId, postOrderRequestDto)
             println("주문 성공: ${response}")
-            println("결제 링크: ${response.next_redirect_app_url}")
+            println("결제 링크: ${response.next_redirect_mobile_url}")
 
-            response.next_redirect_app_url?.let {
+            response.next_redirect_mobile_url?.let {
                 openKakaoPay(it) // 결제 페이지로 이동
             } ?: run {
                 println("결제 링크를 찾을 수 없습니다.")
@@ -97,14 +97,10 @@ class OrderService(private val retrofitApi: RetrofitApi, private val context: Co
     }
 
     private fun openKakaoPay(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)  // 새로운 태스크에서 실행
-            addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) // 기존 브라우저가 있으면, 그 브라우저가 포그라운드로 올라오도록
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) // 기존 액티비티를 제거하고, 새로운 액티비티로 이동
-        }
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
 
         return try {
-            context.startActivity(intent)  // 브라우저로 URL 실행
+            context.startActivity(intent)  // 브라우저 또는 앱으로 URL 실행
             println("결제 페이지로 이동합니다: $url")
             true
         } catch (e: Exception) {
@@ -112,5 +108,7 @@ class OrderService(private val retrofitApi: RetrofitApi, private val context: Co
             false
         }
     }
+
+
 
 }

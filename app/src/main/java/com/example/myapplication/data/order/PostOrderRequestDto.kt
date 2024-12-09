@@ -6,6 +6,6 @@ data class PostOrderRequestDto(
 )
 data class MenuListItem(
     val menuName : String,
-    val  price : Int,
+    val price : Int,
     val quantity : Int
 )

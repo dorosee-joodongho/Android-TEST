@@ -17,6 +17,7 @@ import com.example.myapplication.service.PayService
 import com.example.myapplication.ui.manager.CartManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CartActivity : AppCompatActivity() {
@@ -54,7 +55,6 @@ class CartActivity : AppCompatActivity() {
 
                 // 결제 처리
                 val paymentResult = payService.executePayment(totalAmount)
-
                 if (paymentResult) {
                     // 결제 성공 시, 주문 처리
                     val orderResult = orderService.menuOrder(cartItems )
@@ -73,6 +73,12 @@ class CartActivity : AppCompatActivity() {
                     // 결제 실패
                     Toast.makeText(this@CartActivity, "결제 실패:", Toast.LENGTH_SHORT).show()
                 }
+            }
+            CoroutineScope(Dispatchers.Main).launch{
+                delay(10000)
+                var intent = Intent(this@CartActivity, OrderHistoryActivity::class.java)
+                startActivity(intent)
+                finish();
             }
         }
 

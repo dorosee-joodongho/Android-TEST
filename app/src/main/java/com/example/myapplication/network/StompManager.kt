@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 class StompManager {
 
-    private val stompClient: StompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "ws://10.0.2.2:8080/ws/websocket")
+    private val stompClient: StompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "ws://43.201.68.50:8080/ws/websocket")
     private val compositeDisposable = CompositeDisposable()
 
     fun connect(memberId: String, onMessageReceived: (String) -> Unit) {
