@@ -47,6 +47,7 @@ class MenuDetailService(private val retrofitApi: RetrofitApi) {
 
     // 메뉴 수정
     suspend fun updateMenuDetail(menuDetail: MenuDetailRequest): Boolean {
+        println("메뉴 수정 전달 받음 ${menuDetail}")
         return try {
             val name = TransRequestBody.prepareStringPart(menuDetail.name)
             val description = TransRequestBody.prepareStringPart(menuDetail.description)

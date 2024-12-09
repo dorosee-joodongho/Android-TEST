@@ -99,9 +99,26 @@ class MenuDetailActivity : AppCompatActivity() {
                         .submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                         .get()
                 }
-                imageFile = file
+
+                // MIME 타입 확인 후 확장자 추출
+                val mimeType = contentResolver.getType(Uri.fromFile(file))
+                val extension = when (mimeType) {
+                    "image/jpeg" -> ".jpg"
+                    "image/png" -> ".png"
+                    "image/gif" -> ".gif"
+                    else -> ".png" // 기본 확장자
+                }
+
+                // 파일 이름 변경
+                val correctedFile = File(file.parent, "${file.nameWithoutExtension}$extension")
+                if (file.renameTo(correctedFile)) {
+                    imageFile = correctedFile // 올바른 파일로 설정
+                } else {
+                    imageFile = file // 이름 변경 실패 시 원본 파일 사용
+                }
+
                 Glide.with(this@MenuDetailActivity)
-                    .load(file)
+                    .load(correctedFile)
                     .placeholder(R.drawable.placeholder_image)
                     .error(R.drawable.error_image)
                     .into(ivMenuImage)
@@ -110,6 +127,7 @@ class MenuDetailActivity : AppCompatActivity() {
             }
         }
     }
+
 
     private fun updateSoldOutButton() {
         btnMarkSoldOut.text = if (menu.isSoldOut == 1) "품절 해제" else "품절 등록"
@@ -140,12 +158,19 @@ class MenuDetailActivity : AppCompatActivity() {
                 calorie = updatedCalorie,
                 protein = updatedProtein,
             )
+            println("메뉴 수정 ${updateMenu}")
 
             lifecycleScope.launch {
                 try {
                     val isUpdated = menuService.updateMenuDetail(updateMenu)
                     if (isUpdated == true) {
                         ToastUtils.showToast(this@MenuDetailActivity, "메뉴가 성공적으로 수정되었습니다.")
+
+                        val resultIntent = Intent().apply {
+                            putExtra("updatedMenuId", menu.menuId)
+                            putExtra("isSoldOut", menu.isSoldOut)
+                        }
+                        setResult(RESULT_OK, resultIntent)
                         if (!stayOnScreen) finish()
                     } else {
                         ToastUtils.showToast(this@MenuDetailActivity, "메뉴 수정에 실패했습니다.")

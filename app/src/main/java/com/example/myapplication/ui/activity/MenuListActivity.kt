@@ -36,7 +36,7 @@ class MenuListActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             onBackPressed()
         }
-        backButton.text = "←  장바구니"
+        backButton.text = "←  메뉴 관리"
 
         recyclerView = findViewById(R.id.recyclerViewMenu)
         btnAddMenu = findViewById(R.id.btnAddMenu)
@@ -80,14 +80,22 @@ class MenuListActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == MENU_DETAIL_REQUEST_CODE && resultCode == RESULT_OK) {
+            val updatedMenu = data?.getSerializableExtra("updatedMenu") as? MenuDetail
+            updatedMenu?.let { menu ->
+                menuList = menuList.map {
+                    if (it.menuId == menu.menuId) menu else it
+                }
+                adapter.updateMenuList(menuList)
+            }
+
             val deletedMenuId = data?.getLongExtra("deletedMenuId", -1)
             if (deletedMenuId != null && deletedMenuId != -1L) {
-                // 삭제된 메뉴를 리스트에서 제거
                 menuList = menuList.filter { it.menuId != deletedMenuId }
                 adapter.updateMenuList(menuList)
             }
         }
     }
+
 
     companion object {
         private const val MENU_DETAIL_REQUEST_CODE = 1001

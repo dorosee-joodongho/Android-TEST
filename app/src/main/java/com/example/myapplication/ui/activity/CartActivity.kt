@@ -43,7 +43,7 @@ class CartActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             onBackPressed()
         }
-        backButton.text = "←  메뉴 목록"
+        backButton.text = "←  장바구니"
 
         orderButton.setOnClickListener {
             val totalAmount = cartItems.sumOf { it.price * it.quantity }

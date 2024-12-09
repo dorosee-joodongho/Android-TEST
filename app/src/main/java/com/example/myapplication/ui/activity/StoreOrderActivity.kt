@@ -108,7 +108,7 @@ class StoreOrderActivity : AppCompatActivity(), StoreOrderDetailDialogFragment.O
     private suspend fun getOrderList(): List<StoreOrderItem>? {
         return try {
             val response = storeOrderService.getStoreOrderList()
-            response
+            response?.sortedByDescending { it.orderDate }
         } catch (e: Exception) {
             ToastUtils.showToast(this@StoreOrderActivity, "${e.message}")
             null
@@ -130,15 +130,19 @@ class StoreOrderActivity : AppCompatActivity(), StoreOrderDetailDialogFragment.O
         val existingIndex = currentOrders.indexOfFirst { it.orderId == updatedOrder.orderId }
 
         if (existingIndex != -1) {
+            // 기존 아이템 업데이트
             currentOrders[existingIndex] = updatedOrder
             storeOrderAdapter.notifyItemChanged(existingIndex)
         } else {
-            currentOrders.add(updatedOrder)
-            storeOrderAdapter.notifyItemInserted(currentOrders.size - 1)
+            // 새로운 아이템을 리스트의 맨 앞에 추가
+            currentOrders.add(0, updatedOrder)
+            storeOrderAdapter.notifyItemInserted(0)
         }
 
+        // 업데이트된 데이터로 어댑터 갱신
         storeOrderAdapter.updateData(currentOrders)
     }
+
 
 
     override fun onOrderCanceled() {

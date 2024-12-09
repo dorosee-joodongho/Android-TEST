@@ -34,6 +34,13 @@ class MenuAdapter(
                 .error(R.drawable.error_image) // 이미지 로드 실패 시 보여줄 기본 이미지
                 .into(ivMenuImage)
 
+            // 품절 상태 UI 처리
+            if (menu.isSoldOut == 1) {
+                itemView.alpha = 0.5f // 품절된 메뉴는 반투명 처리
+            } else {
+                itemView.alpha = 1.0f
+            }
+
             itemView.setOnClickListener {
                 onItemClick(menu)
             }
