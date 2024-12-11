@@ -129,9 +129,10 @@ class UserActivity : AppCompatActivity() {
         val name = etName.text.toString()
         val phone = etPhone.text.toString()
         val password = etPassword.text.toString()
+        val confirmPassword = etConfirmPassword.text.toString()
 
         // 유효성 검사
-        if (!isValidUpdateInput(name, phone, password)) return
+        if (!isValidUpdateInput(name, phone, password, confirmPassword)) return
 
         lifecycleScope.launch {
             try {
@@ -148,40 +149,62 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun isValidInput(name: String, phone: String, email: String, password: String, confirmPassword: String): Boolean {
-        if (name.isEmpty()) {
-            ToastUtils.showToast(this, "이름을 입력해주세요.")
+        // 1~20자 사이의 문자열
+        if (name.isEmpty() || name.length !in 1..20) {
+            ToastUtils.showToast(this, "이름은 1자 이상 20자 이하로 입력해주세요.")
             return false
         }
-        if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
-            ToastUtils.showToast(this, "유효한 전화번호를 입력해주세요.")
+
+        // 하이픈이 포함된 형식
+        val phonePattern = "^\\d{3}-\\d{3,4}-\\d{4}\$".toRegex()
+        if (phone.isEmpty() || !phonePattern.matches(phone)) {
+            ToastUtils.showToast(this, "유효한 전화번호를 입력해주세요. (예: 010-1234-5678)")
             return false
         }
+
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             ToastUtils.showToast(this, "유효한 이메일 주소를 입력해주세요.")
             return false
         }
+
+        // 4자 이상
         if (password.isEmpty() || password.length < 4) {
             ToastUtils.showToast(this, "비밀번호는 4자리 이상이어야 합니다.")
             return false
         }
+
+        // 비밀번호와 일치하는지 확인
         if (confirmPassword.isEmpty() || confirmPassword != password) {
             ToastUtils.showToast(this, "비밀번호가 일치하지 않습니다.")
             return false
         }
+
         return true
     }
 
-    private fun isValidUpdateInput(name: String, phone: String, password: String): Boolean {
-        if (name.isEmpty()) {
-            ToastUtils.showToast(this, "이름을 입력해주세요.")
+    private fun isValidUpdateInput(name: String, phone: String, password: String, confirmPassword: String): Boolean {
+        // 1~20자 사이의 문자열
+        if (name.isEmpty() || name.length !in 1..20) {
+            ToastUtils.showToast(this, "이름은 1자 이상 20자 이하로 입력해주세요.")
             return false
         }
-        if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
-            ToastUtils.showToast(this, "유효한 전화번호를 입력해주세요.")
+
+        // 하이픈이 포함된 형식
+        val phonePattern = "^\\d{3}-\\d{3,4}-\\d{4}\$".toRegex()
+        if (phone.isEmpty() || !phonePattern.matches(phone)) {
+            ToastUtils.showToast(this, "유효한 전화번호를 입력해주세요. (예: 010-1234-5678)")
             return false
         }
+
+        // 4자 이상
         if (password.isEmpty() || password.length < 4) {
             ToastUtils.showToast(this, "비밀번호는 4자리 이상이어야 합니다.")
+            return false
+        }
+
+        // 비밀번호와 일치하는지 확인
+        if (confirmPassword.isEmpty() || confirmPassword != password) {
+            ToastUtils.showToast(this, "비밀번호가 일치하지 않습니다.")
             return false
         }
         return true

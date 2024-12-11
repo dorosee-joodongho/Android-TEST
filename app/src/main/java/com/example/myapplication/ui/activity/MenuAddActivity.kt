@@ -73,6 +73,7 @@ class MenuAddActivity : AppCompatActivity() {
         btnMarkSoldOut.visibility = View.GONE
 
         // 메뉴 등록 버튼 클릭 리스너
+// 메뉴 등록 버튼 클릭 리스너
         btnRegisterMenu.setOnClickListener {
             val name = menuName.text.toString()
             val price = menuPrice.text.toString().toIntOrNull()
@@ -82,27 +83,48 @@ class MenuAddActivity : AppCompatActivity() {
             val protein = protein.text.toString().toIntOrNull() ?: 0
             val fat = fat.text.toString().toIntOrNull() ?: 0
 
-            if (name.isNotEmpty() && price != null && selectedImageFile != null) {
-                val newMenu = MenuDetailRequest(
-                    menuId = 1,
-                    name = name,
-                    description = description,
-                    price = price,
-                    menuImg = selectedImageFile,
-                    calorie = calorie,
-                    carbs = carbs,
-                    protein = protein,
-                    fat = fat,
-                    isSoldOut = 0
-                )
-
-                // 서버로 데이터 전송 로직
-                saveMenuDetail(newMenu)
-            } else {
-                Toast.makeText(this, "모든 필드를 입력하고 이미지를 선택해주세요.", Toast.LENGTH_SHORT).show()
+            // 필드별 유효성 검사
+            if (name.isEmpty() || name.length !in 1..20) {
+                Toast.makeText(this, "메뉴 이름은 1자 이상 20자 이하로 입력해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
-        }
 
+            if (price == null || price <= 0) {
+                Toast.makeText(this, "올바른 메뉴 가격을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (description.isEmpty() || description.length !in 1..200) {
+                Toast.makeText(this, "설명은 1자 이상 200자 이하로 입력해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (selectedImageFile == null) {
+                Toast.makeText(this, "이미지를 선택해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (calorie < 0 || carbs < 0 || protein < 0 || fat < 0) {
+                Toast.makeText(this, "칼로리, 탄수화물, 단백질, 지방 값은 0 이상의 숫자로 입력해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val newMenu = MenuDetailRequest(
+                menuId = 1,
+                name = name,
+                description = description,
+                price = price,
+                menuImg = selectedImageFile,
+                calorie = calorie,
+                carbs = carbs,
+                protein = protein,
+                fat = fat,
+                isSoldOut = 0
+            )
+
+            // 서버로 데이터 전송 로직
+            saveMenuDetail(newMenu)
+        }
     }
 
     private fun saveMenuDetail(newMenu: MenuDetailRequest) {
