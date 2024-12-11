@@ -75,7 +75,7 @@ class CartActivity : AppCompatActivity() {
                 }
             }
             CoroutineScope(Dispatchers.Main).launch{
-                delay(10000)
+                delay(5000)
                 var intent = Intent(this@CartActivity, OrderHistoryActivity::class.java)
                 startActivity(intent)
                 finish();
