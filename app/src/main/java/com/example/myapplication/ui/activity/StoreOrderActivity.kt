@@ -55,6 +55,7 @@ class StoreOrderActivity : AppCompatActivity(), StoreOrderDetailDialogFragment.O
 
                 stompManager = StompManager()
                 stompManager.connect(getCurrentUser.memberID.toString()) { message ->
+                    println("memberId ${getCurrentUser.memberID}")
                     runOnUiThread {
                         try {
                             // 메시지 JSON 파싱
